@@ -26,4 +26,15 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notifyNowButton" />
+
+    <Button
+        android:id="@+id/goToDiaryButton"
+        android:layout_width="178dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="240dp"
+        android:text="Diary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notifyNowButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

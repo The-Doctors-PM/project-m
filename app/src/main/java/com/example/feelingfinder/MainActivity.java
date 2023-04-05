@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         welcomeString.setTextSize(24);
 
         timerString = binding.timerTextView;
-        CountDownTimer cdt = new CountDownTimer(3000, 1000){
+        CountDownTimer cdt = new CountDownTimer(3000, 1){
             @Override
             public void onTick(long l) {
                 timerString.setText(" " + (3000-l) + " ");
