@@ -15,7 +15,7 @@
         android:theme="@style/Theme.FeelingFinder"
         tools:targetApi="31">
         <activity
-            android:name=".MyDiaryActivity"
+            android:name=".Diary.MyDiaryActivity"
             android:exported="false" />
         <activity
             android:name=".NotificationTappedActivity"

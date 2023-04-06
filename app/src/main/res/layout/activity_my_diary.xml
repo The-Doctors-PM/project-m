@@ -72,11 +72,11 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/previousDaysButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="128dp"
-        android:text="Prevoius Days"
+        android:text="Previous Days"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
