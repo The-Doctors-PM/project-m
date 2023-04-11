@@ -2,6 +2,8 @@ package com.example.feelingfinder.Diary;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -11,8 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.feelingfinder.FeelingFinder;
 import com.example.feelingfinder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -75,6 +79,11 @@ public class MyDiaryActivity extends AppCompatActivity {
                 todaysNote = todaysNoteRaw.getText().toString();
                 editor.putString(todaysDateString, todaysNote);
                 editor.apply();
+                // Creates a "Snack-bar" that informs the user that the data has been saved
+                ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
+                Snackbar snackbar = Snackbar.make(constraintLayout, "SAVED", Snackbar.LENGTH_LONG);
+                snackbar.show();
+
             }
         });
 
@@ -105,17 +114,24 @@ public class MyDiaryActivity extends AppCompatActivity {
 
                 // All valid entries only printed here.
                 // We'll use this list to retrieve the previous days' diaries
+                String all = "All valid entries:\n";
                 System.out.println("All valid entries:");
                 for(Map.Entry<String,?> entry : keys.entrySet()){
                     if (entry.getValue().toString().isEmpty()){
                         System.out.println("map values: INVALID: EMPTY");
+                        all = all + "INVALID: EMPTY\n";
                     }
-                    else{
+                    else {
                         System.out.println("map values: " + entry.getKey() + ": " +
                                 entry.getValue().toString());
+                        all = all + entry.getKey() + ": " +
+                                entry.getValue().toString() + "\n";
                     }
 
                 }
+                TextView allData = findViewById(R.id.allData);
+                allData.setText(all);
+
             }
         });
 
