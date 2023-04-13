@@ -19,6 +19,7 @@ import android.widget.Button;
 
 import com.example.feelingfinder.Dialogs.NotificationPermissionDialog;
 import com.example.feelingfinder.Diary.MyDiaryActivity;
+import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.databinding.ActivityNotificationBinding;
 
 public class NotificationActivity extends AppCompatActivity {
@@ -76,6 +77,14 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(FeelingFinder.getAppContext(), MyDiaryActivity.class));
+            }
+        });
+
+        Button goalsButton = findViewById(R.id.goalsButton);
+        goalsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FeelingFinder.getAppContext(), GoalsActivity.class));
             }
         });
     }

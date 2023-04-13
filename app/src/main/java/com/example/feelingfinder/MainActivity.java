@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.feelingfinder.Database.Data;
 import com.example.feelingfinder.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        Data.buildAppDatabase();
 
         TextView welcomeString, timerString;
         welcomeString = binding.textView;
