@@ -7,6 +7,8 @@ import androidx.room.Room;
 
 import com.example.feelingfinder.FeelingFinder;
 
+import java.util.List;
+
 public class Data {
     private static Context context = FeelingFinder.getAppContext();
     private static String KEY = "todaysNote";
@@ -18,7 +20,10 @@ public class Data {
     public static void buildAppDatabase(){
         // Allow main thread queries should be a temporary solution!!
         Data.db = Room.databaseBuilder(FeelingFinder.getAppContext(),
-                AppDatabase.class, "FeelingFinderDB").allowMainThreadQueries().build();
+                AppDatabase.class, "FeelingFinderDB")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     public static AppDatabase getAppDatabase() {
@@ -33,6 +38,13 @@ public class Data {
         return instance;
     }
 
+    public static void wipeDatabase(){
+        List<Goal> lg = db.goalsDAO().getAll();
+        for (Goal g: lg) {
+            db.goalsDAO().deleteGoal(g);
+        }
+        System.out.println("Database wiped");
+    }
 
 
 }

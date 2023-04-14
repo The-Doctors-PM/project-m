@@ -17,6 +17,8 @@ import java.util.List;
 
 public class GoalsActivity extends AppCompatActivity {
 
+    private String text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,7 @@ public class GoalsActivity extends AppCompatActivity {
                     "Add a new one with the button on the top right");
         }
         else {
-            String text = "";
+            text = "";
             for (Goal g: lg) {
                 text = text + "ID: " + g.getId() + ". " + g.getDescription() + ". STATUS: " +
                         g.getStatus() + "\n";
@@ -47,12 +49,29 @@ public class GoalsActivity extends AppCompatActivity {
             goalsList.setText(text);
         }
 
-
+        // Add a new auto-generated goal to the database
         Button addGoalButton = findViewById(R.id.addGoalButton);
         addGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gDao.addGoal(new Goal());
+                Goal newGoal = new Goal();
+                System.out.println(newGoal.id + ": " + newGoal.description);
+                gDao.addGoal(newGoal);
+                text = text + "ID: " + newGoal.getId() + ". " + newGoal.getDescription() +
+                        ". STATUS: " + newGoal.getStatus() + "\n";
+                goalsList.setText(text);
+            }
+
+            //TODO: study MutableLiveData for better performance?
+        });
+
+        // Wipes the database entire data. Use with care!
+        Button wipeDbButton = findViewById(R.id.wipeDbButton);
+        wipeDbButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Data.wipeDatabase();
+                finish();
             }
         });
     }

@@ -6,15 +6,8 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "goals")
 public class Goal {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
-
-    private static int counter = 0;
-
-    private static int getNextId(){
-        counter++;
-        return counter;
-    }
 
     @NonNull
     public String description;
@@ -22,12 +15,10 @@ public class Goal {
     public Boolean status;
 
     public Goal(){
-        this.id = getNextId();
         this.description = "Default Description";
         this.status = false;
     }
     public Goal(@NonNull String desc) {
-        this.id = getNextId();
         this.description = desc;
         this.status = false;
     }
