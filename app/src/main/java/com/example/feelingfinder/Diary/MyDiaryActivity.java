@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import com.example.feelingfinder.Database.Data;
 import com.example.feelingfinder.Database.DateToStringConverter;
 import com.example.feelingfinder.Database.Note;
 import com.example.feelingfinder.Database.NotesDAO;
+import com.example.feelingfinder.FeelingFinder;
 import com.example.feelingfinder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -48,11 +50,11 @@ public class MyDiaryActivity extends AppCompatActivity {
         // Get access to the notes query
         NotesDAO notesDAO = db.notesDAO();
 
+        // Setup of everything date related
         todayDate = LocalDate.now();
         infoTodaysDateString = DateToStringConverter.transform(todayDate);
         todaysDateInt = DateToStringConverter.dateToInt(todayDate);
         todayNote = notesDAO.getTodayNote(todaysDateInt);
-        System.out.println("Today ID: " + todaysDateInt);
 
 
         // If today's note doesn't exist, it creates one.
@@ -99,7 +101,6 @@ public class MyDiaryActivity extends AppCompatActivity {
                     snackbar.show();
                 }
 
-
             }
         });
 
@@ -128,6 +129,9 @@ public class MyDiaryActivity extends AppCompatActivity {
                 for (Note n: ln2) {
                     System.out.println(n.fullDate + ": " + n.content);
                 }
+
+                startActivity(new Intent(FeelingFinder.getAppContext(), PastNotesActivity.class));
+
             }
         });
 
