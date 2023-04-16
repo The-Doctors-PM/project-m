@@ -20,8 +20,6 @@ public interface GoalsDAO {
     @Delete
     void deleteGoal(Goal goal);
 
-    // When using FTS, you have to explicitly include the row "rowid" in your query even if you
-    // are using select * to select all rows
     @Query("SELECT * FROM goals")
     List<Goal> getAll();
 

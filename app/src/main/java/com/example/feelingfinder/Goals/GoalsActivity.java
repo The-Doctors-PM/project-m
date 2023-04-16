@@ -70,7 +70,7 @@ public class GoalsActivity extends AppCompatActivity {
         wipeDbButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Data.wipeDatabase();
+                Data.wipeGoals();
                 finish();
             }
         });

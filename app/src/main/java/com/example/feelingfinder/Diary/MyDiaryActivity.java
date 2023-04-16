@@ -5,37 +5,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Data;
+import com.example.feelingfinder.Database.DateToStringConverter;
+import com.example.feelingfinder.Database.Note;
+import com.example.feelingfinder.Database.NotesDAO;
 import com.example.feelingfinder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDate;
-import java.time.format.TextStyle;
-import java.util.Locale;
-import java.util.Map;
+import java.util.List;
 
 public class MyDiaryActivity extends AppCompatActivity {
 
-    private LocalDate todayDate = LocalDate.now();
-    private String todaysDateString = todayDate.getDayOfMonth() + "-" +
-            todayDate.getMonthValue() + "-" +
-            todayDate.getYear();
-
-    private String infoTodaysDateString = todayDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.US) + " " + todaysDateString;
-    private String todaysNote = "";
+    private LocalDate todayDate;
+    private String infoTodaysDateString;
+    private int todaysDateInt;
     private String savedNote = "";
 
-    private EditText todaysNoteRaw;
+    private Note todayNote;
 
-    private SharedPreferences data;
+    private EditText todaysNoteRaw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,25 +43,36 @@ public class MyDiaryActivity extends AppCompatActivity {
         TextView dateTag = findViewById(R.id.dateTag);
         dateTag.setText(infoTodaysDateString);
 
-        // Retrieve the data instance, in order to be able to edit it and save/edit today's note in
-        // the storage
-        data = Data.getInstance();
+        // Retrieve the Database instance
+        AppDatabase db = Data.getAppDatabase();
+        // Get access to the notes query
+        NotesDAO notesDAO = db.notesDAO();
 
-        // If today's note is empty, prints it in the log (DEBUG ONLY)
-        // Otherwise saves in the variable "savedNote" the current day's note.
-        if (data.getString(todaysDateString, "").isEmpty()){
-            System.out.println("No data today");
+        todayDate = LocalDate.now();
+        infoTodaysDateString = DateToStringConverter.transform(todayDate);
+        todaysDateInt = DateToStringConverter.dateToInt(todayDate);
+        todayNote = notesDAO.getTodayNote(todaysDateInt);
+        System.out.println("Today ID: " + todaysDateInt);
+
+
+        // If today's note doesn't exist, it creates one.
+        // If it instead exists, saves its content in String that will be used later
+        if (todayNote == null){
+            System.out.println("No note today, creating a new one...");
+            notesDAO.addNote(new Note());
+            System.out.println("Creation finished!");
+            todayNote = notesDAO.getTodayNote(todaysDateInt);
         }
         else{
-            savedNote = data.getString(todaysDateString, "");
+            savedNote = todayNote.content;
         }
 
         // Just retrieves some things
-        SharedPreferences.Editor editor = Data.getEditor();
         Button saveButton = findViewById(R.id.saveButton);
         todaysNoteRaw = findViewById(R.id.todaysNote);
         FloatingActionButton backButton = findViewById(R.id.backButton);
         Button yest = findViewById(R.id.previousDaysButton);
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
 
         // If savedNote isn't empty, it will be displayed in the note
         if (!savedNote.isEmpty()){
@@ -75,13 +83,22 @@ public class MyDiaryActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                todaysNote = todaysNoteRaw.getText().toString();
-                editor.putString(todaysDateString, todaysNote);
-                editor.apply();
-                // Creates a "Snack-bar" that informs the user that the data has been saved
-                ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
-                Snackbar snackbar = Snackbar.make(constraintLayout, "SAVED", Snackbar.LENGTH_LONG);
-                snackbar.show();
+                if (todaysNoteRaw.getText().toString().isEmpty()){
+                    // Creates a "Snack-bar" that informs the user that the data must not be empty
+                    Snackbar snackbar = Snackbar.make(constraintLayout, "ERROR, " +
+                            "Note must not be empty", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+                else {
+                    System.out.println("Update starting");
+                    todayNote.content = todaysNoteRaw.getText().toString();
+                    notesDAO.updateNote(todayNote);
+                    System.out.println("Update completed");
+                    // Creates a "Snack-bar" that informs the user that the data has been saved
+                    Snackbar snackbar = Snackbar.make(constraintLayout, "SAVED", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+
 
             }
         });
@@ -96,41 +113,21 @@ public class MyDiaryActivity extends AppCompatActivity {
 
         // ### DEBUG ONLY ###
         // Clicking the previous days button prints in the log/runner tabs of android studio
-        // a list of all the notes which are not empty/invalid, from all days.
+        // a list of all the notes from all days.
         yest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String,?> keys = data.getAll();
-
-                // All entries. Only for debug. We'll use the one below
-                /*
-                System.out.println("All entries:");
-                for(Map.Entry<String,?> entry : keys.entrySet()){
-                    System.out.println("map values: " + entry.getKey() + ": " +
-                            entry.getValue().toString());
-                } */
-
-
-                // All valid entries only printed here.
-                // We'll use this list to retrieve the previous days' diaries
-                String all = "All valid entries:\n";
-                System.out.println("All valid entries:");
-                for(Map.Entry<String,?> entry : keys.entrySet()){
-                    if (entry.getValue().toString().isEmpty()){
-                        System.out.println("map values: INVALID: EMPTY");
-                        all = all + "INVALID: EMPTY\n";
-                    }
-                    else {
-                        System.out.println("map values: " + entry.getKey() + ": " +
-                                entry.getValue().toString());
-                        all = all + entry.getKey() + ": " +
-                                entry.getValue().toString() + "\n";
-                    }
-
+                List<Note> ln = notesDAO.getAll();
+                for (Note n: ln) {
+                    System.out.println(n.fullDate + ": " + n.content);
                 }
-                TextView allData = findViewById(R.id.allData);
-                allData.setText(all);
 
+                System.out.println("\n\n---------All past---------");
+
+                List<Note> ln2 = notesDAO.getAllPast(todaysDateInt);
+                for (Note n: ln2) {
+                    System.out.println(n.fullDate + ": " + n.content);
+                }
             }
         });
 
@@ -141,7 +138,7 @@ public class MyDiaryActivity extends AppCompatActivity {
     // If so, it will alert the user to remember him of saving
     @Override
     public void onBackPressed() {
-        savedNote = data.getString(todaysDateString, "");
+        savedNote = todayNote.content;
         if (!savedNote.equals(todaysNoteRaw.getText().toString())){
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
