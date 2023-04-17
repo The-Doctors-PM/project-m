@@ -1,12 +1,12 @@
-package com.example.feelingfinder;
+package com.example.feelingfinder.Utility;
 
 import android.app.Application;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.os.Build;
 
-public class FeelingFinder extends Application {
+/** Utility class, used mainly for the notification channels and the ability to easily retrieve
+ * the context from anywhere.
+*/
+ public class FeelingFinder extends Application {
     private static Context context;
     private static final String CHANNEL_ID = "FF00";
     private static final String CHANNEL_NAME = "Feeling Finder Notifications";

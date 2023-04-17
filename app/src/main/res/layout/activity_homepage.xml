@@ -4,18 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotificationActivity">
-
-    <Button
-        android:id="@+id/notify10secButton"
-        android:layout_width="219dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="60dp"
-        android:text="Notify Me In 10 Sec (NOT WORKING)"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notifyNowButton" />
+    android:background="@color/blueSplash"
+    tools:context=".HomepageActivity">
 
     <Button
         android:id="@+id/notifyNowButton"
@@ -33,7 +23,7 @@
         android:id="@+id/goToDiaryButton"
         android:layout_width="178dp"
         android:layout_height="102dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="32dp"
         android:text="Diary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -46,8 +36,11 @@
         android:layout_height="83dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="36dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/teal_700"
         android:text="Goals"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goToDiaryButton" />
+        app:layout_constraintTop_toBottomOf="@+id/goToDiaryButton"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

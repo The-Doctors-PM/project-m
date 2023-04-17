@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+// Activity that appears when you click the notification
 public class NotificationTappedActivity extends AppCompatActivity {
 
     @Override

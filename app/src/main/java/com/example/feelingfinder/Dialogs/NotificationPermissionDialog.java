@@ -13,9 +13,9 @@ import android.provider.Settings;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.feelingfinder.FeelingFinder;
+import com.example.feelingfinder.Utility.FeelingFinder;
 
-
+// Popup that appears when the user has denied access to the notification permission
 public class NotificationPermissionDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

@@ -20,24 +20,27 @@ import android.widget.Button;
 import com.example.feelingfinder.Dialogs.NotificationPermissionDialog;
 import com.example.feelingfinder.Diary.MyDiaryActivity;
 import com.example.feelingfinder.Goals.GoalsActivity;
-import com.example.feelingfinder.databinding.ActivityNotificationBinding;
+import com.example.feelingfinder.Utility.FeelingFinder;
+import com.example.feelingfinder.databinding.ActivityHomepageBinding;
 
-public class NotificationActivity extends AppCompatActivity {
-    private ActivityNotificationBinding binding;
+public class HomepageActivity extends AppCompatActivity {
+    private ActivityHomepageBinding binding;
     private String CHANNEL_ID = "FFChannel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityNotificationBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_notification);
+        binding = ActivityHomepageBinding.inflate(getLayoutInflater());
+        setContentView(R.layout.activity_homepage);
 
+        // Retrieving some stuff
         Button nowButton, tenButton;
         nowButton = findViewById(R.id.notifyNowButton);
         Intent intent = new Intent(this, NotificationTappedActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
+        // If Device is Android Oreo or more recent, creates the notification channels
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
@@ -48,6 +51,7 @@ public class NotificationActivity extends AppCompatActivity {
             manager.createNotificationChannel(channel);
         }
 
+        // Create a notification on button click
         nowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +76,7 @@ public class NotificationActivity extends AppCompatActivity {
             }
         });
 
+        // Button that goes to Diary
         Button diaryButton = findViewById(R.id.goToDiaryButton);
         diaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +85,8 @@ public class NotificationActivity extends AppCompatActivity {
             }
         });
 
+
+        // Button that goes to Goals
         Button goalsButton = findViewById(R.id.goalsButton);
         goalsButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
-import com.example.feelingfinder.FeelingFinder;
+import com.example.feelingfinder.Utility.FeelingFinder;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Database {
     private Database(){}
 
     public static void buildAppDatabase(){
-        // Allow main thread queries should be a temporary solution!!
+        //TODO: Allow main thread queries should be a temporary solution!!
         Database.db = Room.databaseBuilder(FeelingFinder.getAppContext(),
                 AppDatabase.class, "FeelingFinderDB")
                 .allowMainThreadQueries()

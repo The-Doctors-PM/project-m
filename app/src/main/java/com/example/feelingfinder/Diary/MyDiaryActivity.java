@@ -17,7 +17,7 @@ import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Database.DateToStringConverter;
 import com.example.feelingfinder.Database.Note;
 import com.example.feelingfinder.Database.NotesDAO;
-import com.example.feelingfinder.FeelingFinder;
+import com.example.feelingfinder.Utility.FeelingFinder;
 import com.example.feelingfinder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
