@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.feelingfinder.Database.AppDatabase;
-import com.example.feelingfinder.Database.Data;
+import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Database.Goal;
 import com.example.feelingfinder.Database.GoalsDAO;
 import com.example.feelingfinder.R;
@@ -25,7 +25,7 @@ public class GoalsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_goals);
 
         // Retrieve the Database instance
-        AppDatabase db = Data.getAppDatabase();
+        AppDatabase db = Database.getAppDatabase();
         // Get access to the goals query
         GoalsDAO gDao = db.goalsDAO();
         // Queries all goals
@@ -70,7 +70,7 @@ public class GoalsActivity extends AppCompatActivity {
         wipeDbButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Data.wipeGoals();
+                Database.wipeGoals();
                 finish();
             }
         });

@@ -8,15 +8,15 @@ import com.example.feelingfinder.FeelingFinder;
 
 import java.util.List;
 
-public class Data {
+public class Database {
     private static Context context = FeelingFinder.getAppContext();
 
     private static AppDatabase db;
-    private Data(){}
+    private Database(){}
 
     public static void buildAppDatabase(){
         // Allow main thread queries should be a temporary solution!!
-        Data.db = Room.databaseBuilder(FeelingFinder.getAppContext(),
+        Database.db = Room.databaseBuilder(FeelingFinder.getAppContext(),
                 AppDatabase.class, "FeelingFinderDB")
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
@@ -24,7 +24,7 @@ public class Data {
     }
 
     public static AppDatabase getAppDatabase() {
-        return Data.db;
+        return Database.db;
     }
 
     public static void wipeGoals(){

@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.feelingfinder.Database.AppDatabase;
-import com.example.feelingfinder.Database.Data;
+import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Database.DateToStringConverter;
 import com.example.feelingfinder.Database.Note;
 import com.example.feelingfinder.Database.NotesDAO;
@@ -46,7 +46,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         dateTag.setText(infoTodaysDateString);
 
         // Retrieve the Database instance
-        AppDatabase db = Data.getAppDatabase();
+        AppDatabase db = Database.getAppDatabase();
         // Get access to the notes query
         NotesDAO notesDAO = db.notesDAO();
 
