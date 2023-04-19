@@ -57,13 +57,7 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         addGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                Goal newGoal = new Goal();
-                System.out.println(newGoal.id + ": " + newGoal.description);
-                gDao.addGoal(newGoal);
-                text = text + "ID: " + newGoal.getId() + ". " + newGoal.getDescription() +
-                        ". STATUS: " + newGoal.getStatus() + "\n";
-                goalsList.setText(text);*/
+                // Creates and show a popup where the user inputs the goal description
                 DialogFragment popup = new CreateGoalDialog();
                 popup.show(getSupportFragmentManager(), "createGoalPopUp");
             }
@@ -82,10 +76,18 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         });
     }
 
+    // Implementation of the method inside the Interface "CreateGoalDialog.NoticeDialogListener"
+    // When the "Add" button has been clicked, it retrieves the data from the dialog and uses it
+    // to create a new goal
     @Override
     public void onDialogPositiveClick(String content) {
-
+        if (content.isEmpty()){
+            content = "Default Description";
+        }
+        System.out.println("Arrived content here: " + content);
+        createGoal(content);
     }
+    // Creates a new goal inside the database and updates the user.
     private void createGoal(@NonNull String content){
         // Retrieve the Database instance
         AppDatabase db = Database.getAppDatabase();
@@ -94,10 +96,12 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         Goal newGoal = new Goal(content);
         System.out.println(newGoal.id + ": " + newGoal.description);
         gDao.addGoal(newGoal);
-        text = text + "ID: " + newGoal.getId() + ". " + newGoal.getDescription() +
-                ". STATUS: " + newGoal.getStatus() + "\n";
-        // Get the Text containing all goals
+        System.out.println("Added new Goal:\n" +
+                "ID: " + newGoal.id + "\nContent: " + newGoal.description + "\n\n");
         TextView goalsList = findViewById(R.id.goalsList);
-        goalsList.setText(text);
+        String prev = goalsList.getText().toString();
+        prev = prev + "ID: " + newGoal.getId() + ". " + newGoal.getDescription() +
+                ". STATUS: " + newGoal.getStatus() + "\n";
+        goalsList.setText(prev);
     }
 }

@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -47,7 +46,9 @@ public class CreateGoalDialog extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
-        //View view = inflater.inflate(R.layout.dialog_create_goal, container, false);
+        // Stuff
+        //View view = inflater.inflate(R.layout.dialog_create_goal, null);
+        //EditText text = view.findViewById(R.id.goalDescription);
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
@@ -55,9 +56,8 @@ public class CreateGoalDialog extends DialogFragment {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        //listener.onDialogPositiveClick();
-                        // TODO: do stuff with db
-
+                        // See down below for more info.
+                        sendDataToActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -73,5 +73,15 @@ public class CreateGoalDialog extends DialogFragment {
     public void onCancel(@NonNull DialogInterface dialog) {
         super.onCancel(dialog);
         dismiss();
+    }
+
+    /* Retrieves the input written by the user from the popup/dialog, then sends it
+    * to the calling activity (in our case it's always "GoalsActivity")
+    * */
+    public void sendDataToActivity(){
+        EditText text = getDialog().findViewById(R.id.goalDescription);
+        String res = text.getText().toString();
+        System.out.println("Content: " + res);
+        listener.onDialogPositiveClick(res);
     }
 }
