@@ -34,7 +34,7 @@ public class HomepageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         // Retrieving some stuff
-        Button nowButton, tenButton;
+        Button nowButton;
         nowButton = findViewById(R.id.notifyNowButton);
         Intent intent = new Intent(this, NotificationTappedActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

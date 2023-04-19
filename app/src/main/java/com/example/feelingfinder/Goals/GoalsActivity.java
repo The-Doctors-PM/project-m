@@ -1,6 +1,8 @@
 package com.example.feelingfinder.Goals;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +13,12 @@ import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Database.Goal;
 import com.example.feelingfinder.Database.GoalsDAO;
+import com.example.feelingfinder.Dialogs.CreateGoalDialog;
 import com.example.feelingfinder.R;
 
 import java.util.List;
 
-public class GoalsActivity extends AppCompatActivity {
+public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog.NoticeDialogListener {
 
     private String text;
 
@@ -54,12 +57,15 @@ public class GoalsActivity extends AppCompatActivity {
         addGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Goal newGoal = new Goal();
                 System.out.println(newGoal.id + ": " + newGoal.description);
                 gDao.addGoal(newGoal);
                 text = text + "ID: " + newGoal.getId() + ". " + newGoal.getDescription() +
                         ". STATUS: " + newGoal.getStatus() + "\n";
-                goalsList.setText(text);
+                goalsList.setText(text);*/
+                DialogFragment popup = new CreateGoalDialog();
+                popup.show(getSupportFragmentManager(), "createGoalPopUp");
             }
 
             //TODO: study MutableLiveData for better performance?
@@ -74,5 +80,24 @@ public class GoalsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onDialogPositiveClick(String content) {
+
+    }
+    private void createGoal(@NonNull String content){
+        // Retrieve the Database instance
+        AppDatabase db = Database.getAppDatabase();
+        // Get access to the goals query
+        GoalsDAO gDao = db.goalsDAO();
+        Goal newGoal = new Goal(content);
+        System.out.println(newGoal.id + ": " + newGoal.description);
+        gDao.addGoal(newGoal);
+        text = text + "ID: " + newGoal.getId() + ". " + newGoal.getDescription() +
+                ". STATUS: " + newGoal.getStatus() + "\n";
+        // Get the Text containing all goals
+        TextView goalsList = findViewById(R.id.goalsList);
+        goalsList.setText(text);
     }
 }
