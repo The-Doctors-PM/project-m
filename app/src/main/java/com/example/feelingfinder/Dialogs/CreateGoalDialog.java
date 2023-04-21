@@ -46,10 +46,6 @@ public class CreateGoalDialog extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
-        // Stuff
-        //View view = inflater.inflate(R.layout.dialog_create_goal, null);
-        //EditText text = view.findViewById(R.id.goalDescription);
-
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(inflater.inflate(R.layout.dialog_create_goal, null))
