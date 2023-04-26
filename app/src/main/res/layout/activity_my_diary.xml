@@ -5,8 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
-    android:backgroundTint="@color/purple_200"
+    android:background="@drawable/blue_gradient"
     tools:context=".Diary.MyDiaryActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,16 +16,18 @@
         android:layout_marginTop="32dp"
         android:clickable="true"
         android:contentDescription="Back"
-        app:backgroundTint="@color/teal_700"
+        app:backgroundTint="@color/pastel_purple"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_arrow_back_24" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="409dp"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="128dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -34,8 +35,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/purple_500"
-            android:backgroundTint="@color/purple_500">
+            android:background="@color/pastel_purple">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -55,6 +55,7 @@
                     android:id="@+id/todaysNote"
                     android:layout_width="match_parent"
                     android:layout_height="235dp"
+                    android:background="@color/pastel_pink"
                     android:hint="Today's note"
                     android:singleLine="false" />
 
@@ -69,7 +70,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="Thursday 10/04/2021"
                 android:textAlignment="textEnd"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

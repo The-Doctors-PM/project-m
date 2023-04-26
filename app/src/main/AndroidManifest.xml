@@ -25,10 +25,10 @@
             android:name=".Diary.MyDiaryActivity"
             android:exported="false" />
         <activity
-            android:name=".NotificationTappedActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".HomepageActivity"
+            android:name=".Profile.ProfilePlaceholderActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

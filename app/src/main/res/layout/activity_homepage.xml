@@ -4,58 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blueSplash"
-    tools:context=".HomepageActivity">
+    android:background="@color/goals_blue"
+    tools:context=".Profile.ProfilePlaceholderActivity">
 
     <Button
         android:id="@+id/notifyNowButton"
         android:layout_width="178dp"
         android:layout_height="102dp"
-        android:layout_marginTop="92dp"
-        android:backgroundTint="@color/red_500"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/blueSplash"
         android:text="Notify Me Now"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/goToDiaryButton"
-        android:layout_width="178dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="32dp"
-        android:text="Diary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notifyNowButton" />
-
-    <Button
-        android:id="@+id/goalsButton"
-        android:layout_width="172dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="Goals"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goToDiaryButton"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/textView"
-        android:layout_width="318dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="Here should be the Bubbly menu"
-        android:textAlignment="center"
-        android:textSize="34sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="Notification Testing"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalsButton" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
