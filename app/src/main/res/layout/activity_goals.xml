@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
-    android:backgroundTint="@color/purple_200"
+    android:background="@drawable/blue_gradient"
     tools:context=".Goals.GoalsActivity">
 
     <TextView
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="You goals"
+        android:text="Your goals"
         android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/addGoalButton"
@@ -24,7 +23,7 @@
 
     <Button
         android:id="@+id/addGoalButton"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
