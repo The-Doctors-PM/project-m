@@ -115,6 +115,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         // ### DEBUG ONLY ###
         // Clicking the previous days button prints in the log/runner tabs of android studio
         // a list of all the notes from all days.
+        // Also redirect to another activity where all past notes are shown
         yest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
