@@ -10,7 +10,8 @@
         android:id="@+id/backgroundNote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/notebg" />
+        android:background="@drawable/notebg"
+        android:clickable="true" />
 
     <TextView
         android:id="@+id/noteContent"

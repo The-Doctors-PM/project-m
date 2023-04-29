@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FeelingFinder"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Diary.SinglePastNoteActivity"
+            android:exported="false" />
         <activity
             android:name=".Diary.PastNotesActivity"
             android:exported="false" />
@@ -41,8 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".QuizActivity" />
+        <activity android:name=".QuizActivity" />
     </application>
 
 </manifest>
