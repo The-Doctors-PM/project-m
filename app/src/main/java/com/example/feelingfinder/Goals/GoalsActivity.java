@@ -3,6 +3,7 @@ package com.example.feelingfinder.Goals;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,6 +21,7 @@ import com.example.feelingfinder.Database.Goal;
 import com.example.feelingfinder.Database.GoalsDAO;
 import com.example.feelingfinder.Dialogs.CreateGoalDialog;
 import com.example.feelingfinder.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -33,6 +35,8 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
     private GoalsActivityViewModel viewModel;
 
     private MutableLiveData<List<Goal>> lgMLD;
+
+    private TextView infoNoGoals;
 
 
     // ------------------- Recycler View -------------------
@@ -76,20 +80,14 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         lgMLD.setValue(lg);
 
 
-        // Get the Text containing all goals
-        TextView info = findViewById(R.id.goalsInfo);
-
         // If there are no goals, then change text to inform user, otherwise shows all
         // goals to them
         if(lg.size() == 0){
-            info.setText("There are no goals here!\n" +
-                    "Add a new one with the button on the top right");
-        }
-        else {
-            info.setText("Your goals");
+            infoNoGoals = findViewById(R.id.noGoalsInfo);
+            infoNoGoals.setVisibility(View.VISIBLE);
         }
 
-        // Initialize the RecyclerView
+        // Initialize the RecyclerView, showing the goals
         initRV();
 
 
@@ -120,11 +118,21 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
     // to create a new goal
     @Override
     public void onDialogPositiveClick(String content) {
+        ConstraintLayout constraintLayout = findViewById(R.id.goalsCL);
         if (content.isEmpty()){
-            content = "Default Description";
+            // Creates a "Snack-bar" that informs the user that the data must not be empty
+            Snackbar snackbar = Snackbar.make(constraintLayout, "ERROR, " +
+                    "Goal must not be empty", Snackbar.LENGTH_LONG);
+            snackbar.show();
         }
-        System.out.println("Arrived content here: " + content);
-        createGoal(content);
+        else{
+            System.out.println("Arrived content here: " + content);
+            // Creates a "Snack-bar" that informs the user that the data must not be empty
+            Snackbar snackbar = Snackbar.make(constraintLayout,
+                    "Goal added successfully", Snackbar.LENGTH_LONG);
+            snackbar.show();
+            createGoal(content);
+        }
     }
     // Creates a new goal inside the database and updates the user.
     private void createGoal(@NonNull String content){
@@ -140,6 +148,10 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
                 "ID: " + newGoal.id + "\nContent: " + newGoal.description + "\n\n");
         lg = gDao.getAll();
         lgMLD.setValue(lg);
+        if(lg.size() >= 1){
+            infoNoGoals = findViewById(R.id.noGoalsInfo);
+            infoNoGoals.setVisibility(View.GONE);
+        }
     }
 
 }

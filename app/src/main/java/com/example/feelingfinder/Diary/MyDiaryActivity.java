@@ -74,7 +74,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         todaysNoteRaw = findViewById(R.id.todaysNote);
         FloatingActionButton backButton = findViewById(R.id.backButton);
         Button yest = findViewById(R.id.previousDaysButton);
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
+        ConstraintLayout constraintLayout = findViewById(R.id.diaryCL);
 
         // If savedNote isn't empty, it will be displayed in the note
         if (!savedNote.isEmpty()){
