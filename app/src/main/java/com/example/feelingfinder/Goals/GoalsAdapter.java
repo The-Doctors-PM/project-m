@@ -3,6 +3,7 @@ package com.example.feelingfinder.Goals;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
@@ -27,16 +28,23 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final CheckBox checkBox;
+        private final Button deleteButton;
+        private final Button editButton;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
             checkBox = (CheckBox) view.findViewById(R.id.checkBoxGoal);
+
+            deleteButton = (Button) view.findViewById(R.id.deleteGoalButton);
+            editButton = (Button) view.findViewById(R.id.editGoalButton);
         }
 
         public CheckBox getCheckBoxView() {
             return checkBox;
         }
+        public Button getDeleteButton(){ return deleteButton;}
+        public Button getEditButton(){ return editButton;}
     }
 
     /**
@@ -93,6 +101,22 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
                     goal.status = false;
                     gDao.updateGoal(goal);
                 }
+            }
+        });
+
+        // Set the listener for the delete button
+        viewHolder.getDeleteButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Trying to delete goal #" +
+                        goalList.get(viewHolder.getAdapterPosition()).id + ": " +
+                        goalList.get(viewHolder.getAdapterPosition()).description
+                );
+
+                // Open dialog
+
+                // Listener dialogs
+
             }
         });
 
