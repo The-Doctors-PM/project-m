@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,9 @@ import com.example.feelingfinder.Database.DateToStringConverter;
 import com.example.feelingfinder.Database.Note;
 import com.example.feelingfinder.Database.NotesDAO;
 import com.example.feelingfinder.Goals.GoalsAdapter;
+import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.Utility.FeelingFinder;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -60,7 +63,7 @@ public class PastNotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Database.wipeNotes();
-                finish();
+                startActivity(new Intent(FeelingFinder.getAppContext(), MainActivity.class));
             }
         });
     }
