@@ -20,6 +20,7 @@ import android.widget.Button;
 import com.example.feelingfinder.Dialogs.NotificationPermissionDialog;
 import com.example.feelingfinder.Diary.MyDiaryActivity;
 import com.example.feelingfinder.Goals.GoalsActivity;
+import com.example.feelingfinder.MoodTracker.MoodTrackerActivity;
 import com.example.feelingfinder.Utility.FeelingFinder;
 import com.example.feelingfinder.databinding.ActivityHomepageBinding;
 
@@ -71,7 +72,7 @@ public class HomepageActivity extends AppCompatActivity {
                     DialogFragment popup = new NotificationPermissionDialog();
                     popup.show(getSupportFragmentManager(), "notificationPopUp");
                 }
-                notificationManager.notify(1, builder.build());
+                //notificationManager.notify(1, builder.build());
 
             }
         });
@@ -92,6 +93,14 @@ public class HomepageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(FeelingFinder.getAppContext(), GoalsActivity.class));
+            }
+        });
+
+        Button moodTrackerBtn = findViewById(R.id.moodTrackerBtn);
+        moodTrackerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FeelingFinder.getAppContext(), MoodTrackerActivity.class));
             }
         });
     }
