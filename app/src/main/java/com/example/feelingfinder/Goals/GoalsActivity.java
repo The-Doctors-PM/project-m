@@ -21,15 +21,15 @@ import com.example.feelingfinder.Database.Goal;
 import com.example.feelingfinder.Database.GoalsDAO;
 import com.example.feelingfinder.Dialogs.AskConfirmDialog;
 import com.example.feelingfinder.Dialogs.CreateGoalDialog;
+import com.example.feelingfinder.Dialogs.EditGoalDialog;
 import com.example.feelingfinder.R;
-import com.example.feelingfinder.Utility.FeelingFinder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
 public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog.NoticeDialogListener,
-        AskConfirmDialog.NoticeConfirmListener {
+        AskConfirmDialog.NoticeConfirmListener, EditGoalDialog.NoticeEditListener {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
@@ -46,9 +46,15 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
 
     private AdapterCallback adapterCallback = new AdapterCallback() {
         @Override
-        public void onMethodCallback(int id) {
+        public void deleteGoalCallback(int id) {
             DialogFragment popup = new AskConfirmDialog(id);
             popup.show(getSupportFragmentManager(), "AskConfirm");
+        }
+
+        @Override
+        public void editGoalCallback(int id) {
+            DialogFragment popup = new EditGoalDialog(id);
+            popup.show(getSupportFragmentManager(), "Edit");
         }
     };
 
@@ -62,7 +68,7 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
             linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         }
         recyclerView.setLayoutManager(linearLayoutManager);
-        goalsAdapter = new GoalsAdapter(lg, FeelingFinder.getAppContext(), adapterCallback);
+        goalsAdapter = new GoalsAdapter(lg, adapterCallback);
         recyclerView.setAdapter(goalsAdapter);
         goalsAdapter.notifyDataSetChanged();
     }
@@ -195,8 +201,45 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         }
     }
 
+    void editGoal(@NonNull int id, @NonNull String newContent){
+        // Retrieve the Database instance
+        AppDatabase db = Database.getAppDatabase();
+        // Get access to the goals query
+        GoalsDAO gDao = db.goalsDAO();
+        // Get the goal
+        Goal g = gDao.getGoal(id);
+        System.out.println("Trying to edit Goal:\n" +
+                "ID: " + g.id + "\nContent: " + g.description + "\n" +
+                "With new content: " + newContent + "\n");
+        // Delete goal
+        g.description = newContent;
+        gDao.updateGoal(g);
+        System.out.println("Goal edited");
+
+        lg = gDao.getAll();
+        lgMLD.setValue(lg);
+
+    }
+
     @Override
-    public void onDialogPositiveClick(int id) {
+    public void onDialogPositiveClick1(int id) {
+        LinearLayout linearLayout = findViewById(R.id.goalsLL);
+        Snackbar snackbar = Snackbar.make(linearLayout, "Goal Deleted", Snackbar.LENGTH_LONG);
+        snackbar.show();
         this.deleteGoal(id);
+    }
+
+    @Override
+    public void onDialogPositiveClick2(int id, String newContent) {
+        LinearLayout linearLayout = findViewById(R.id.goalsLL);
+        if (newContent.isEmpty()){
+            // Creates a "Snack-bar" that informs the user that the data must not be empty
+            Snackbar snackbar = Snackbar.make(linearLayout, "ERROR, " +
+                    "Goal must not be empty", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
+        else{
+            this.editGoal(id, newContent);
+        }
     }
 }

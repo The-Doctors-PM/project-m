@@ -1,5 +1,7 @@
 package com.example.feelingfinder.Goals;
 
 public interface AdapterCallback {
-    void onMethodCallback(int id);
+    void deleteGoalCallback(int id);
+
+    void editGoalCallback(int id);
 }

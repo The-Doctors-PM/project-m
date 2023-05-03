@@ -1,7 +1,5 @@
 package com.example.feelingfinder.Dialogs;
 
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -20,19 +18,20 @@ public class AskConfirmDialog extends DialogFragment {
     }
 
     public interface NoticeConfirmListener{
-        public void onDialogPositiveClick(int id);
+        void onDialogPositiveClick1(int id);
     }
 
-    NoticeConfirmListener listener;
+    NoticeConfirmListener confirmListener;
+
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            listener = (AskConfirmDialog.NoticeConfirmListener) context;
+            confirmListener = (AskConfirmDialog.NoticeConfirmListener) context;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException("Activity must implement NoticeDialogListener");
@@ -47,7 +46,7 @@ public class AskConfirmDialog extends DialogFragment {
         builder.setMessage("The goal will be deleted forever!").setTitle("Are your sure?")
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int i) {
-                        listener.onDialogPositiveClick(id);
+                        confirmListener.onDialogPositiveClick1(id);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
