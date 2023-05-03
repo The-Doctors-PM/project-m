@@ -3,7 +3,6 @@ package com.example.feelingfinder.Goals;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.feelingfinder.Database.AppDatabase;
@@ -119,7 +119,7 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
     // to create a new goal
     @Override
     public void onDialogPositiveClick(String content) {
-        ConstraintLayout constraintLayout = findViewById(R.id.goalsCL);
+        LinearLayout constraintLayout = findViewById(R.id.goalsLL);
         if (content.isEmpty()){
             // Creates a "Snack-bar" that informs the user that the data must not be empty
             Snackbar snackbar = Snackbar.make(constraintLayout, "ERROR, " +
