@@ -39,6 +39,8 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
 
     private TextView infoNoGoals;
 
+    private Button wipeDbButton;
+
 
     // ------------------- Recycler View -------------------
 
@@ -80,12 +82,15 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         // Triggers the livedata update
         lgMLD.setValue(lg);
 
+        wipeDbButton = findViewById(R.id.wipeDbButton);
+
 
         // If there are no goals, then change text to inform user, otherwise shows all
         // goals to them
         if(lg.size() == 0){
             infoNoGoals = findViewById(R.id.noGoalsInfo);
             infoNoGoals.setVisibility(View.VISIBLE);
+            wipeDbButton.setVisibility(View.GONE);
         }
 
         // Initialize the RecyclerView, showing the goals
@@ -104,7 +109,6 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         });
 
         // Wipes the database entire data. Use with care!
-        Button wipeDbButton = findViewById(R.id.wipeDbButton);
         wipeDbButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,17 +123,17 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
     // to create a new goal
     @Override
     public void onDialogPositiveClick(String content) {
-        LinearLayout constraintLayout = findViewById(R.id.goalsLL);
+        LinearLayout linearLayout = findViewById(R.id.goalsLL);
         if (content.isEmpty()){
             // Creates a "Snack-bar" that informs the user that the data must not be empty
-            Snackbar snackbar = Snackbar.make(constraintLayout, "ERROR, " +
+            Snackbar snackbar = Snackbar.make(linearLayout, "ERROR, " +
                     "Goal must not be empty", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
         else{
             System.out.println("Arrived content here: " + content);
             // Creates a "Snack-bar" that informs the user that the data must not be empty
-            Snackbar snackbar = Snackbar.make(constraintLayout,
+            Snackbar snackbar = Snackbar.make(linearLayout,
                     "Goal added successfully", Snackbar.LENGTH_LONG);
             snackbar.show();
             createGoal(content);
@@ -152,6 +156,7 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         if(lg.size() >= 1){
             infoNoGoals = findViewById(R.id.noGoalsInfo);
             infoNoGoals.setVisibility(View.GONE);
+            wipeDbButton.setVisibility(View.VISIBLE);
         }
     }
 
