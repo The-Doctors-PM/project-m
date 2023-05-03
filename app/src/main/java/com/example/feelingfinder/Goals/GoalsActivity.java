@@ -20,6 +20,7 @@ import com.example.feelingfinder.Database.Goal;
 import com.example.feelingfinder.Database.GoalsDAO;
 import com.example.feelingfinder.Dialogs.CreateGoalDialog;
 import com.example.feelingfinder.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -94,7 +95,7 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
 
 
         // Add a new auto-generated goal to the database
-        Button addGoalButton = findViewById(R.id.addGoalButton);
+        FloatingActionButton addGoalButton = findViewById(R.id.addGoalButton);
         addGoalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding;
 import com.example.feelingfinder.Diary.MyDiaryActivity;
 import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.Profile.ProfilePlaceholderActivity;
+import com.example.feelingfinder.Quiz.FirstQuestionActivity;
 import com.example.feelingfinder.Utility.FeelingFinder;
 import com.example.feelingfinder.databinding.ActivityMainBinding;
 import com.ramotion.circlemenu.CircleMenuView;
@@ -75,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 3:
-                        intent = new Intent(FeelingFinder.getAppContext(), QuizActivity.class);
+                        intent = new Intent(FeelingFinder.getAppContext(), FirstQuestionActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         break;
                     case 4:
-                        intent = new Intent(FeelingFinder.getAppContext(), QuizActivity.class);
+                        intent = new Intent(FeelingFinder.getAppContext(), FirstQuestionActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         break;

@@ -28,6 +28,21 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".Quiz.FirstQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.SecondQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.ThirdQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.FourthQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.FifthQuestionActivity"
+            android:exported="false" />
+        <activity
             android:name=".Profile.ProfilePlaceholderActivity"
             android:exported="false" />
         <activity
@@ -41,8 +56,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".QuizActivity" />
     </application>
 
 </manifest>
