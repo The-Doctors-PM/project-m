@@ -1,5 +1,6 @@
 package com.example.feelingfinder.Goals;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,19 +9,29 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Database.Goal;
 import com.example.feelingfinder.Database.GoalsDAO;
+import com.example.feelingfinder.Dialogs.AskConfirmDialog;
+import com.example.feelingfinder.Dialogs.NotificationPermissionDialog;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.Utility.FeelingFinder;
 
 import java.util.List;
 
 public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
 
     private List<Goal> goalList;
+    private Context mContext;
+
+    private AdapterCallback adapterCallback;
+
 
     /**
      * Provide a reference to the type of views that you are using
@@ -30,6 +41,10 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
         private final CheckBox checkBox;
         private final Button deleteButton;
         private final Button editButton;
+
+
+
+
 
         public ViewHolder(View view) {
             super(view);
@@ -53,8 +68,10 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView
      */
-    public GoalsAdapter(List<Goal> dataSet) {
+    public GoalsAdapter(List<Goal> dataSet, Context context, AdapterCallback adapterCallback) {
         goalList = dataSet;
+        this.mContext = context;
+        this.adapterCallback = adapterCallback;
     }
 
     // Create new views (invoked by the layout manager)
@@ -108,15 +125,14 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
         viewHolder.getDeleteButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int id = goalList.get(viewHolder.getAdapterPosition()).id;
                 System.out.println("Trying to delete goal #" +
-                        goalList.get(viewHolder.getAdapterPosition()).id + ": " +
+                        id + ": " +
                         goalList.get(viewHolder.getAdapterPosition()).description
                 );
 
                 // Open dialog
-
-                // Listener dialogs
-
+                adapterCallback.onMethodCallback(id);
             }
         });
 

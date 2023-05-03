@@ -19,14 +19,17 @@ import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Database.Goal;
 import com.example.feelingfinder.Database.GoalsDAO;
+import com.example.feelingfinder.Dialogs.AskConfirmDialog;
 import com.example.feelingfinder.Dialogs.CreateGoalDialog;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.Utility.FeelingFinder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog.NoticeDialogListener{
+public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog.NoticeDialogListener,
+        AskConfirmDialog.NoticeConfirmListener {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
@@ -41,6 +44,14 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
 
     private Button wipeDbButton;
 
+    private AdapterCallback adapterCallback = new AdapterCallback() {
+        @Override
+        public void onMethodCallback(int id) {
+            DialogFragment popup = new AskConfirmDialog(id);
+            popup.show(getSupportFragmentManager(), "AskConfirm");
+        }
+    };
+
 
     // ------------------- Recycler View -------------------
 
@@ -51,7 +62,7 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
             linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         }
         recyclerView.setLayoutManager(linearLayoutManager);
-        goalsAdapter = new GoalsAdapter(lg);
+        goalsAdapter = new GoalsAdapter(lg, FeelingFinder.getAppContext(), adapterCallback);
         recyclerView.setAdapter(goalsAdapter);
         goalsAdapter.notifyDataSetChanged();
     }
@@ -160,4 +171,32 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
         }
     }
 
+    // Deletes a Goal
+    void deleteGoal(@NonNull int id){
+        // Retrieve the Database instance
+        AppDatabase db = Database.getAppDatabase();
+        // Get access to the goals query
+        GoalsDAO gDao = db.goalsDAO();
+        // Get the goal
+        Goal g = gDao.getGoal(id);
+        System.out.println("Trying to delete Goal:\n" +
+                "ID: " + g.id + "\nContent: " + g.description + "\n\n");
+        // Delete goal
+        gDao.deleteGoal(g);
+        System.out.println("Goal deleted");
+
+        lg = gDao.getAll();
+        lgMLD.setValue(lg);
+
+        if(lg.size() == 0){
+            infoNoGoals = findViewById(R.id.noGoalsInfo);
+            infoNoGoals.setVisibility(View.VISIBLE);
+            wipeDbButton.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onDialogPositiveClick(int id) {
+        this.deleteGoal(id);
+    }
 }
