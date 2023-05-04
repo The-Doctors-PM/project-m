@@ -5,62 +5,33 @@
     android:id="@+id/moodTra"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blueSplash"
-    tools:context=".HomepageActivity">
+    android:background="@color/goals_blue"
+    tools:context=".Profile.ProfilePlaceholderActivity">
 
     <Button
         android:id="@+id/notifyNowButton"
         android:layout_width="178dp"
         android:layout_height="102dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/red_500"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/blueSplash"
         android:text="Notify Me Now"
-        app:layout_constraintBottom_toTopOf="@+id/goToDiaryButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/goToDiaryButton"
-        android:layout_width="178dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="Diary"
-        app:layout_constraintBottom_toTopOf="@+id/goalsButton"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="Notification Testing"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notifyNowButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/goalsButton"
-        android:layout_width="172dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/teal_700"
-        android:text="Goals"
-        app:layout_constraintBottom_toTopOf="@+id/moodTrackerBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goToDiaryButton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/moodTrackerBtn"
-        android:layout_width="166dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="24dp"
-        android:text="Mood Tracker"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalsButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

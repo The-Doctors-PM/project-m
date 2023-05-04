@@ -15,7 +15,7 @@ public interface GoalsDAO {
     void addGoal(Goal goal);
 
     @Update
-    void changeGoal(Goal goal);
+    void updateGoal(Goal goal);
 
     @Delete
     void deleteGoal(Goal goal);
@@ -29,5 +29,8 @@ public interface GoalsDAO {
 
     @Query("SELECT *, 'rowid' FROM goals WHERE status = 0")
     List<Goal> getAllUncompleted();
+
+    @Query("SELECT * FROM goals WHERE id == :id")
+    Goal getGoal(int id);
 
 }

@@ -1,4 +1,4 @@
-package com.example.feelingfinder;
+package com.example.feelingfinder.Profile;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,26 +7,28 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.feelingfinder.Dialogs.NotificationPermissionDialog;
+<<<<<<< HEAD:app/src/main/java/com/example/feelingfinder/HomepageActivity.java
 import com.example.feelingfinder.Diary.MyDiaryActivity;
 import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.MoodTracker.MoodTrackerActivity;
+=======
+import com.example.feelingfinder.MainActivity;
+import com.example.feelingfinder.R;
+>>>>>>> dev:app/src/main/java/com/example/feelingfinder/Profile/ProfilePlaceholderActivity.java
 import com.example.feelingfinder.Utility.FeelingFinder;
 import com.example.feelingfinder.databinding.ActivityHomepageBinding;
 
-public class HomepageActivity extends AppCompatActivity {
+public class ProfilePlaceholderActivity extends AppCompatActivity {
     private ActivityHomepageBinding binding;
-    private String CHANNEL_ID = "FFChannel";
+    private final String CHANNEL_ID = "FFChannel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +37,11 @@ public class HomepageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         // Retrieving some stuff
-        Button nowButton, tenButton;
+        Button nowButton;
         nowButton = findViewById(R.id.notifyNowButton);
-        Intent intent = new Intent(this, NotificationTappedActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-        // If Device is Android Oreo or more recent, creates the notification channels
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                    CHANNEL_ID,
-                    "Feeling Finder Channel",
-                    NotificationManager.IMPORTANCE_HIGH);
-
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-        }
 
         // Create a notification on button click
         nowButton.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +68,7 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD:app/src/main/java/com/example/feelingfinder/HomepageActivity.java
         // Button that goes to Diary
         Button diaryButton = findViewById(R.id.goToDiaryButton);
         diaryButton.setOnClickListener(new View.OnClickListener() {
@@ -103,5 +95,7 @@ public class HomepageActivity extends AppCompatActivity {
                 startActivity(new Intent(FeelingFinder.getAppContext(), MoodTrackerActivity.class));
             }
         });
+=======
+>>>>>>> dev:app/src/main/java/com/example/feelingfinder/Profile/ProfilePlaceholderActivity.java
     }
 }
