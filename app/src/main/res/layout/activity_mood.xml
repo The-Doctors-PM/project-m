@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toStartOf="@+id/saveBt"
         app:layout_constraintStart_toEndOf="@+id/backMoodIBt"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_add_24" />
+        app:srcCompat="@drawable/ic_plus" />
 
     <ImageView
         android:id="@+id/saveBt"
@@ -65,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:indeterminate="false"
+        android:contentDescription="rating"
         android:isIndicator="false"
         android:max="5"
         android:numStars="5"

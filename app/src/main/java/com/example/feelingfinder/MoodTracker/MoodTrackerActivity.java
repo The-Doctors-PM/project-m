@@ -21,10 +21,6 @@ public class MoodTrackerActivity extends AppCompatActivity {
 
         // Retrieve the Database instance
         AppDatabase db = Database.getAppDatabase();
-        // Get access to the mood query
-        //GoalsDAO gDao = db.goalsDAO();
-        // Queries all mood logs
-        //List<Goal> lg = gDao.getAll();
 
         // Back button
         ImageButton backMoodIbt = findViewById(R.id.backMoodIBt);

@@ -15,14 +15,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.feelingfinder.Dialogs.NotificationPermissionDialog;
-<<<<<<< HEAD:app/src/main/java/com/example/feelingfinder/HomepageActivity.java
-import com.example.feelingfinder.Diary.MyDiaryActivity;
-import com.example.feelingfinder.Goals.GoalsActivity;
-import com.example.feelingfinder.MoodTracker.MoodTrackerActivity;
-=======
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
->>>>>>> dev:app/src/main/java/com/example/feelingfinder/Profile/ProfilePlaceholderActivity.java
 import com.example.feelingfinder.Utility.FeelingFinder;
 import com.example.feelingfinder.databinding.ActivityHomepageBinding;
 
@@ -63,39 +57,10 @@ public class ProfilePlaceholderActivity extends AppCompatActivity {
                     DialogFragment popup = new NotificationPermissionDialog();
                     popup.show(getSupportFragmentManager(), "notificationPopUp");
                 }
-                //notificationManager.notify(1, builder.build());
+                notificationManager.notify(1, builder.build());
 
             }
         });
 
-<<<<<<< HEAD:app/src/main/java/com/example/feelingfinder/HomepageActivity.java
-        // Button that goes to Diary
-        Button diaryButton = findViewById(R.id.goToDiaryButton);
-        diaryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(FeelingFinder.getAppContext(), MyDiaryActivity.class));
-            }
-        });
-
-
-        // Button that goes to Goals
-        Button goalsButton = findViewById(R.id.goalsButton);
-        goalsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(FeelingFinder.getAppContext(), GoalsActivity.class));
-            }
-        });
-
-        Button moodTrackerBtn = findViewById(R.id.moodTrackerBtn);
-        moodTrackerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(FeelingFinder.getAppContext(), MoodTrackerActivity.class));
-            }
-        });
-=======
->>>>>>> dev:app/src/main/java/com/example/feelingfinder/Profile/ProfilePlaceholderActivity.java
     }
 }
