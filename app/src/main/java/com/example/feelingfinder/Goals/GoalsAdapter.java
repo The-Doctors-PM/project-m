@@ -81,6 +81,14 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
         // contents of the view with that element
         String content = goalList.get(position).description;
         Boolean checked = goalList.get(position).status;
+
+        // Reduce the length of the content, in case of very long goals' descriptions
+        if (content.length() >= 25){
+            content = content.substring(0, 23);
+            content = content + "..";
+        }
+
+        // Set the text and checked box
         viewHolder.getCheckBoxView().setText(content);
         viewHolder.getCheckBoxView().setChecked(checked);
 

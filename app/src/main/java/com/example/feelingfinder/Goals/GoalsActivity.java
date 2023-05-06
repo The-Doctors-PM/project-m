@@ -133,6 +133,14 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
                 finish();
             }
         });
+
+        FloatingActionButton backButton = findViewById(R.id.backButtonToHome);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     // Implementation of the method inside the Interface "CreateGoalDialog.NoticeDialogListener"
