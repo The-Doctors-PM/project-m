@@ -49,4 +49,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.ramotion.circlemenu:circle-menu:0.3.2'
+
+    implementation 'com.itextpdf:itextpdf:5.5.10'
 }
