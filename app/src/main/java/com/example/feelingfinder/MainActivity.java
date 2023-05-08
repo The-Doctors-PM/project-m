@@ -1,108 +1,61 @@
 package com.example.feelingfinder;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
-import androidx.annotation.NonNull;
-import androidx.viewbinding.ViewBinding;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.Diary.MyDiaryActivity;
 import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.Profile.ProfilePlaceholderActivity;
 import com.example.feelingfinder.Quiz.FirstQuestionActivity;
-import com.example.feelingfinder.Utility.FeelingFinder;
-import com.example.feelingfinder.databinding.ActivityMainBinding;
-import com.ramotion.circlemenu.CircleMenuView;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private ImageButton btn1, btn2, btn3, btn4, btn5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(R.layout.activity_main);
 
-        final CircleMenuView menu = findViewById(R.id.circle_menu);
-        menu.setEventListener(new CircleMenuView.EventListener() {
+        btn1 = findViewById(R.id.quizButton);
+        btn2 = findViewById(R.id.notesButton);
+        btn3 = findViewById(R.id.goalsButton);
+        btn5 = findViewById(R.id.profileButton);
+
+        btn1.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, FirstQuestionActivity.class);
+            startActivity(intent);
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onMenuOpenAnimationStart(@NonNull CircleMenuView view) {
-                Log.d("D", "onMenuOpenAnimationStart");
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MyDiaryActivity.class);
+                startActivity(i);
             }
+        });
 
+        btn3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onMenuOpenAnimationEnd(@NonNull CircleMenuView view) {
-                Log.d("D", "onMenuOpeneAnimationEnd");
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, GoalsActivity.class);
+                startActivity(i);
             }
+        });
 
+
+        btn5.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onMenuCloseAnimationStart(@NonNull CircleMenuView view) {
-                Log.d("D", "onMenuCloseAnimationStart");
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ProfilePlaceholderActivity.class);
+                startActivity(i);
             }
-
-            @Override
-            public void onMenuCloseAnimationEnd(@NonNull CircleMenuView view) {
-                Log.d("D", "onMenuCloseAnimationEnd");
-            }
-
-            @Override
-            public void onButtonClickAnimationStart(@NonNull CircleMenuView view, int buttonIndex) {
-                Log.d("D", "onButtonClickAnimationStart|index: " + buttonIndex);
-            }
-
-            @Override
-            public void onButtonClickAnimationEnd(@NonNull CircleMenuView view, int buttonIndex) {
-                Log.d("D", "onButtonClickAnimationEnd|index: " + buttonIndex);
-
-                // Start a new activity when a button is clicked
-                Intent intent;
-                switch (buttonIndex) {
-                    case 0:
-                        intent = new Intent(FeelingFinder.getAppContext(), ProfilePlaceholderActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        FeelingFinder.getAppContext().startActivity(intent);
-                        break;
-                    case 1:
-                        intent = new Intent(FeelingFinder.getAppContext(), MyDiaryActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        break;
-                    case 2:
-                        intent = new Intent(FeelingFinder.getAppContext(), GoalsActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        break;
-                    case 3:
-                        intent = new Intent(FeelingFinder.getAppContext(), FirstQuestionActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        break;
-                    case 4:
-                        intent = new Intent(FeelingFinder.getAppContext(), FirstQuestionActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        break;
-                }
-            }
-
-            @Override
-            public boolean onButtonLongClick(@NonNull CircleMenuView view, int buttonIndex) {
-                Log.d("D", "onButtonLongClick|index: " + buttonIndex);
-                return true;
-            }
-
 
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
     }
 }
