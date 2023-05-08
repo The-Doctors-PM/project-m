@@ -6,6 +6,18 @@
     <!-- Permissions needed to write pdf -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".Utility.FeelingFinder"
         android:requestLegacyExternalStorage="true"
@@ -52,6 +64,9 @@
             android:exported="false" />
         <activity
             android:name=".Profile.ProfilePlaceholderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MoodTracker.MoodTrackerActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
