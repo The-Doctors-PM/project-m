@@ -19,6 +19,7 @@ import com.example.feelingfinder.Goals.GoalsAdapter;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 import com.example.feelingfinder.Utility.FeelingFinder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -56,6 +57,14 @@ public class PastNotesActivity extends AppCompatActivity {
         // List of past notes
         ln = notesDao.getAllPast(DateToStringConverter.dateToInt(LocalDate.now()));
 
+        // Deletes possible empty notes
+        for (Note l : ln){
+            if (l.content.isEmpty()){
+                System.out.println("Note #" + l.id + " is empty. Deleting it");
+                notesDao.deleteNote(l);
+            }
+        }
+
         initRV();
 
         Button wipeButton = findViewById(R.id.wipeDBNotesButton);
@@ -64,6 +73,14 @@ public class PastNotesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Database.wipeNotes();
                 startActivity(new Intent(FeelingFinder.getAppContext(), MainActivity.class));
+            }
+        });
+
+        FloatingActionButton backButton = findViewById(R.id.backButtonToDiary);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
