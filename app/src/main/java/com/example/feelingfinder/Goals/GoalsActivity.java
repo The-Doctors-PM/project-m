@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
@@ -23,6 +24,7 @@ import com.example.feelingfinder.Dialogs.AskConfirmDialog;
 import com.example.feelingfinder.Dialogs.CreateGoalDialog;
 import com.example.feelingfinder.Dialogs.EditGoalDialog;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.Utility.FeelingFinder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -130,6 +132,7 @@ public class GoalsActivity extends AppCompatActivity implements CreateGoalDialog
             @Override
             public void onClick(View view) {
                 Database.wipeGoals();
+                Toast.makeText(FeelingFinder.getAppContext(), "All goals deleted\n Redirecting to HomePage", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
