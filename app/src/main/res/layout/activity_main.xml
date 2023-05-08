@@ -1,23 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity"
     android:background="@drawable/blue_gradient">
 
-    <com.ramotion.circlemenu.CircleMenuView
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/circle_menu"
-        app:button_colors="@array/colors"
-        app:button_icons="@array/icons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/feeling_finder"
         />
 
+    <FrameLayout
+        android:layout_width="310dp"
+        android:layout_height="150dp"
+        android:id="@+id/button1"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_menu">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            android:id="@+id/quizButton"
+            android:layout_gravity="center|end"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ioga">
+
+        </ImageButton>
+
+        <TextView
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:layout_marginLeft="13dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Daily \nQuestionary"
+            android:textColor="@color/blueDarker"
+            android:textSize="25sp">
+
+        </TextView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/button2"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/round_menu">
+
+            <ImageButton
+                android:layout_width="119dp"
+                android:layout_height="100dp"
+                android:id="@+id/notesButton"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/notes"
+                android:scaleType="fitCenter"
+                android:backgroundTint="@color/white">
+            </ImageButton>
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Notes"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp">
+
+            </TextView>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/button3"
+            android:layout_gravity="center"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/round_menu">
+
+            <ImageButton
+                android:layout_width="110dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:id="@+id/goalsButton"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/to_do"
+                android:scaleType="fitCenter"
+                android:backgroundTint="@color/white">
+            </ImageButton>
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Goals"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp">
+
+            </TextView>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/button4"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/round_menu">
+
+            <ImageButton
+                android:layout_width="125dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:id="@+id/statiticsButton"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/estatistcs"
+                android:scaleType="fitCenter"
+                android:backgroundTint="@color/white">
+            </ImageButton>
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Statistics"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp">
+
+            </TextView>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/button5"
+            android:layout_gravity="center"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/round_menu">
+
+            <ImageButton
+                android:layout_width="110dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/profileButton"
+                android:src="@drawable/doctransparent"
+                android:scaleType="fitCenter"
+                android:backgroundTint="@color/white">
+            </ImageButton>
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Profile"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp">
+
+            </TextView>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
