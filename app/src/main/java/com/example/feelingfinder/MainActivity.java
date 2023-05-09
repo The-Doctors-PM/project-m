@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.Diary.MyDiaryActivity;
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, ProfilePlaceholderActivity.class);
                 startActivity(i);
             }
-
         });
     }
 }

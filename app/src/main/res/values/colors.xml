@@ -6,10 +6,16 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="Grey">#8C8C8C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blueSplash">#06B0F3</color>
     <color name="blueDarker">#0679F3</color>
+    <color name="ivoryBlue">#c0e6f0</color>
+    <color name="skyBlue">#b5cae9</color>
+    <color name="cornFlower">#7179ba</color>
 
+    <color name="IslandSpice">#FFFAEE</color>
+    <color name="ButterMilk">#FFF1CA</color>
 
     <color name="pastel_pink">#FFC3A6B1</color>
     <color name="pastel_purple">#FFB4A7D6</color>
