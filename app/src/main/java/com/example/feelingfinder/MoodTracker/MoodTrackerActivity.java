@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
+import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.example.feelingfinder.Database.AppDatabase;
@@ -35,33 +36,26 @@ public class MoodTrackerActivity extends AppCompatActivity {
         backMoodIbt.setOnClickListener(v ->
             MoodTrackerActivity.this.onBackPressed());
 
+        //emoji moodtracker
+        ImageButton emojiBtn = findViewById(R.id.emojiBtn);
+        ImageButton sadBtn = findViewById(R.id.sadmoonBtn);
+        ImageButton neutralBtn = findViewById(R.id.neutralmoodBtn);
+        ImageButton happyBtn = findViewById(R.id.happymoodBtn);
+        TableLayout emojiTbl = findViewById(R.id.emojiTbl);
+
         //Submit button function
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // get values and then displayed in a toast
-                String totStars = "Total Stars:: " + moodBar.getNumStars();
-                String rating = "Rating :: " + moodBar.getRating();
-                Toast.makeText(getApplicationContext(), totStars + "\n" + rating, Toast.LENGTH_LONG).show();
-
-            }
-        });
-
-        //Rating Bar functions
-
-        //moodBar.setOnClickListener();
-        moodBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float r, boolean b) {
                 String msg=null;
-                int v = (int) ratingBar.getRating();
-                //int v = (int) r;
-                switch(v){
+                int r = (int) moodBar.getRating();
+                switch(r){
                     case 1:
                         msg="Sorry to hear that!";
                         break;
                     case 2:
-                        msg="Tomorrow is another day full o opportunities!";
+                        msg="Tomorrow is another day full of opportunities!";
                         break;
                     case 3:
                         msg="The glass is half full!";
@@ -73,9 +67,37 @@ public class MoodTrackerActivity extends AppCompatActivity {
                         msg="You are on top of the world!";
                         break;
                 }
-                moodBar.setRating(ratingBar.getRating());
-                Toast.makeText(MoodTrackerActivity.this, msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                moodBar.setIsIndicator(true);
             }
+        });
+
+        //Rating Bar functions
+        moodBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float r, boolean b) {
+                moodBar.setRating(ratingBar.getRating());
+                submitBtn.setVisibility(View.VISIBLE);
+            }
+        });
+
+        //Emoji Tracker Functions
+        emojiBtn.setOnClickListener(v ->
+                emojiTbl.setVisibility(View.VISIBLE));
+
+        happyBtn.setOnClickListener(v -> {
+            moodBar.setRating(5);
+            emojiTbl.setVisibility(View.INVISIBLE);
+        });
+
+        sadBtn.setOnClickListener(v -> {
+            moodBar.setRating(1);
+            emojiTbl.setVisibility(View.INVISIBLE);
+        });
+
+        neutralBtn.setOnClickListener(v -> {
+            moodBar.setRating(3);
+            emojiTbl.setVisibility(View.INVISIBLE);
         });
     }
 }
