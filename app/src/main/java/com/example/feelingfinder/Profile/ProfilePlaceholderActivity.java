@@ -15,20 +15,19 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.feelingfinder.Dialogs.NotificationPermissionDialog;
+import com.example.feelingfinder.ExportPDF.ExportActivity;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.SettingsActivity.SettingsActivity;
 import com.example.feelingfinder.Utility.FeelingFinder;
-import com.example.feelingfinder.databinding.ActivityHomepageBinding;
 
 public class ProfilePlaceholderActivity extends AppCompatActivity {
-    private ActivityHomepageBinding binding;
     private final String CHANNEL_ID = "FFChannel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityHomepageBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_profile_placeholder);
 
         // Retrieving some stuff
         Button nowButton;
@@ -59,6 +58,29 @@ public class ProfilePlaceholderActivity extends AppCompatActivity {
                 }
                 notificationManager.notify(1, builder.build());
 
+            }
+        });
+
+
+        // Go to export
+        Button goToExport = findViewById(R.id.goToExport);
+        goToExport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FeelingFinder.getAppContext(), ExportActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        // Go to Leonardo's Settings
+        Button goToSetting = findViewById(R.id.goToSettings);
+        goToSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FeelingFinder.getAppContext(), SettingsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
 

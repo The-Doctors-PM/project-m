@@ -22,6 +22,9 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
 
     private List<Goal> goalList;
 
+    private AdapterCallback adapterCallback;
+
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder)
@@ -30,6 +33,7 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
         private final CheckBox checkBox;
         private final Button deleteButton;
         private final Button editButton;
+
 
         public ViewHolder(View view) {
             super(view);
@@ -53,8 +57,9 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView
      */
-    public GoalsAdapter(List<Goal> dataSet) {
+    public GoalsAdapter(List<Goal> dataSet, AdapterCallback adapterCallback) {
         goalList = dataSet;
+        this.adapterCallback = adapterCallback;
     }
 
     // Create new views (invoked by the layout manager)
@@ -76,6 +81,14 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
         // contents of the view with that element
         String content = goalList.get(position).description;
         Boolean checked = goalList.get(position).status;
+
+        // Reduce the length of the content, in case of very long goals' descriptions
+        if (content.length() >= 25){
+            content = content.substring(0, 23);
+            content = content + "..";
+        }
+
+        // Set the text and checked box
         viewHolder.getCheckBoxView().setText(content);
         viewHolder.getCheckBoxView().setChecked(checked);
 
@@ -108,15 +121,28 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder>{
         viewHolder.getDeleteButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int id = goalList.get(viewHolder.getAdapterPosition()).id;
                 System.out.println("Trying to delete goal #" +
-                        goalList.get(viewHolder.getAdapterPosition()).id + ": " +
+                        id + ": " +
                         goalList.get(viewHolder.getAdapterPosition()).description
                 );
 
                 // Open dialog
+                adapterCallback.deleteGoalCallback(id);
+            }
+        });
 
-                // Listener dialogs
+        viewHolder.getEditButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int id = goalList.get(viewHolder.getAdapterPosition()).id;
+                System.out.println("Trying to edit goal #" +
+                        id + ": " +
+                        goalList.get(viewHolder.getAdapterPosition()).description
+                );
 
+                // Open dialog
+                adapterCallback.editGoalCallback(id);
             }
         });
 

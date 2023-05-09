@@ -3,21 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Permissions needed to write pdf -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".Utility.FeelingFinder"
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -26,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FeelingFinder"
         tools:targetApi="31">
+        <activity
+            android:name=".ExportPDF.ExportActivity"
+            android:exported="false" />
         <activity
             android:name=".Diary.SinglePastNoteActivity"
             android:exported="false" />
@@ -63,6 +57,9 @@
             android:name=".MoodTracker.MoodTrackerActivity"
             android:exported="false" />
         <activity
+            android:name=".SettingsActivity.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true"
             android:label="@string/app_name"
@@ -73,7 +70,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuizActivity" />
     </application>
 
 </manifest>

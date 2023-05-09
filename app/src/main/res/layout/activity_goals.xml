@@ -1,74 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/goalsLL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/blue_gradient"
+    android:orientation="vertical"
     tools:context=".Goals.GoalsActivity">
-
-    <TextView
-        android:id="@+id/goalsInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Your goals"
-        android:textSize="44sp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/goalsRV"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Add Goal"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="16dp">
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/backButtonToHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:clickable="true"
+            android:contentDescription="Back"
+            app:backgroundTint="@color/pastel_purple"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/goalsInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Your goals"
+            android:textSize="44sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/noGoalsInfo"
-        android:layout_width="394dp"
-        android:layout_height="118dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="272dp"
+        android:layout_height="458dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="There are no goals here!\n Please add one with the button in the upper-right corner"
+        android:layout_marginBottom="16dp"
+        android:text="There are no goals here!\n Please add one with the button down below"
         android:textAlignment="center"
         android:textSize="24sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goalsInfo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/goalsRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:text="Add Goal"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:visibility="visible">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
         <Button
             android:id="@+id/wipeDbButton"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:textColor="@color/blueDarker"
             android:backgroundTint="@color/white"
-            android:text="Wipe Database" />
+            android:text="Wipe Database"
+            android:textColor="@color/blueDarker"
+            android:visibility="visible" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addGoalButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="Add"
             android:layout_margin="32dp"
             android:backgroundTint="@color/blueDarker"
-            android:src="@drawable/ic_plus" />
+            android:contentDescription="Add"
+            android:src="@drawable/ic_plus"
+            android:visibility="visible" />
 
     </LinearLayout>
 
