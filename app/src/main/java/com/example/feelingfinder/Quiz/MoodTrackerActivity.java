@@ -2,6 +2,7 @@ package com.example.feelingfinder.Quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
+import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 
 public class MoodTrackerActivity extends AppCompatActivity {
@@ -33,18 +35,36 @@ public class MoodTrackerActivity extends AppCompatActivity {
         //Rating Bar
         RatingBar moodBar = findViewById(R.id.moodBar);
 
-        //Back button function
-        //backMoodIbt.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
+        //Back button
+        Button backBtn5 = findViewById(R.id.backBtn5);
+        backBtn5.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
+
+        //Home button
+        Button homeBtn = findViewById(R.id.homeBtn);
 
         //mood description
         TextView moodDesc = findViewById(R.id.storyTxt);
 
         //emoji moodtracker
         ImageButton emojiBtn = findViewById(R.id.emojiBtn);
-        ImageButton sadBtn = findViewById(R.id.sadmoonBtn);
-        ImageButton neutralBtn = findViewById(R.id.neutralmoodBtn);
-        ImageButton happyBtn = findViewById(R.id.happymoodBtn);
+        ImageButton sadBtn = findViewById(R.id.sadmoobIBtn);
+        ImageButton neutralBtn = findViewById(R.id.neutramoodIBtn);
+        ImageButton happyBtn = findViewById(R.id.happymoodIBtn);
+        ImageButton vhappyBtn1 = findViewById(R.id.veryhappyIBtn);
+        ImageButton vsadBtn1 = findViewById(R.id.sadcryIBtn);
+        ImageButton vsadBtn2 = findViewById(R.id.sadsurpIBtn);
+        ImageButton awkBtn = findViewById(R.id.awkwardIBtn);
+        ImageButton cryBtn = findViewById(R.id.cryIBtn);
+        ImageButton cryBtn2 = findViewById(R.id.sadcryIBtn);
+        ImageButton vhappyBtn2 = findViewById(R.id.lazyhappyIBtn);
         TableLayout emojiTbl = findViewById(R.id.emojiTbl);
+
+        //Return to main activity
+        homeBtn.setOnClickListener(v ->
+            startActivity(new Intent(MoodTrackerActivity.this, MainActivity.class)));
+
+        //Back function
+        backBtn5.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
 
         //Submit button function
         submitBtn.setOnClickListener(new View.OnClickListener() {
@@ -58,15 +78,30 @@ public class MoodTrackerActivity extends AppCompatActivity {
                         msg="Sorry to hear that!";
                         break;
                     case 2:
-                        msg="Tomorrow is another day full of opportunities!";
+                        msg="Have you had a nice cup of chocolate today?";
                         break;
                     case 3:
-                        msg="The glass is half full!";
+                        msg="It can always be worse!";
                         break;
                     case 4:
-                        msg="You are on the rise!";
+                        msg="Even the best have days like this.";
                         break;
                     case 5:
+                        msg="Sometimes maybe good, sometimes maybe shit!";
+                        break;
+                    case 6:
+                        msg="Tomorrow is another day full of opportunities!";
+                        break;
+                    case 7:
+                        msg="If you need a break, just take it.";
+                        break;
+                    case 8:
+                        msg="You are on the rise!";
+                        break;
+                    case 9:
+                        msg="Nobody can stop you!";
+                        break;
+                    case 10:
                         msg="You are on top of the world!";
                         break;
                 }
@@ -91,19 +126,63 @@ public class MoodTrackerActivity extends AppCompatActivity {
                 emojiBtn.setVisibility(View.INVISIBLE);});
 
         happyBtn.setOnClickListener(v -> {
-            moodBar.setRating(5);
+            moodBar.setRating(8);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setBackground(happyBtn.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
-        sadBtn.setOnClickListener(v -> {
+        awkBtn.setOnClickListener(v -> {
+            moodBar.setRating(4);
+            emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setBackground(awkBtn.get());
+            emojiBtn.setVisibility(View.VISIBLE);
+        });
+
+        cryBtn2.setOnClickListener(v -> {
             moodBar.setRating(1);
             emojiTbl.setVisibility(View.INVISIBLE);
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
-        neutralBtn.setOnClickListener(v -> {
+        cryBtn.setOnClickListener(v -> {
+            moodBar.setRating(2);
+            emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
+        });
+
+        vhappyBtn1.setOnClickListener(v -> {
+            moodBar.setRating(9);
+            emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
+        });
+
+        vsadBtn2.setOnClickListener(v -> {
             moodBar.setRating(3);
+            emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
+        });
+
+        vhappyBtn2.setOnClickListener(v -> {
+            moodBar.setRating(10);
+            emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
+        });
+
+        vsadBtn1.setOnClickListener(v -> {
+            moodBar.setRating(4);
+            emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
+        });
+
+        sadBtn.setOnClickListener(v -> {
+            moodBar.setRating(3);
+            emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
+        });
+
+        neutralBtn.setOnClickListener(v -> {
+            moodBar.setRating(5);
             emojiTbl.setVisibility(View.INVISIBLE);
             emojiBtn.setVisibility(View.VISIBLE);
         });

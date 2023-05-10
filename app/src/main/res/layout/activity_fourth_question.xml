@@ -1,83 +1,78 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_view_question_four"
+    <Button
+        android:id="@+id/backBtn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How you feel this week"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="32dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="BACK"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nextBtn4"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:rowCount="2"
-        android:alignmentMode="alignMargins"
-        android:columnOrderPreserved="false"
-        android:layout_marginTop="100dp"
-        android:layout_marginHorizontal="32dp"
-        android:layout_below="@id/text_view_question_four">
+    <RadioGroup
+        android:layout_width="80dp"
+        android:layout_height="114dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compareTV2">
 
-        <Button
-            android:id="@+id/button_very_sad"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/blueDarker"
-            android:background="@drawable/neutral_emoji"
-            android:onClick="onEmojiButtonClicked"
-            android:tag="very_sad"/>
+        <RadioButton
+            android:id="@+id/worseRBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Worse" />
 
-        <Button
-            android:id="@+id/button_sad"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/blueDarker"
-            android:background="@drawable/sad_emoji"
-            android:onClick="onEmojiButtonClicked"
-            android:tag="sad"/>
+        <RadioButton
+            android:id="@+id/sameRBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:orientation="vertical"
+            android:text="Same"
+            app:layout_wrapBehaviorInParent="skipped" />
 
-        <Button
-            android:id="@+id/button_happy"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/blueDarker"
-            android:background="@drawable/happy_emoji"
-            android:onClick="onEmojiButtonClicked"
-            android:tag="happy"/>
+        <RadioButton
+            android:id="@+id/betterRBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:text="Better" />
+    </RadioGroup>
 
-        <Button
-            android:id="@+id/button_very_happy"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/blueDarker"
-            android:background="@drawable/not_happy"
-            android:onClick="onEmojiButtonClicked"
-            android:tag="very_happy"/>
-
-    </GridLayout>
+    <TextView
+        android:id="@+id/compareTV2"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="38dp"
+        android:text="How was today compared to yesterday?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/next_button"
+        android:id="@+id/nextBtn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:layout_marginBottom="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onNextButtonClicked"/>
-
-</RelativeLayout>
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="NEXT"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/backBtn4" />
+</androidx.constraintlayout.widget.ConstraintLayout>
