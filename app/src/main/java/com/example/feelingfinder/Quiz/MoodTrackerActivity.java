@@ -25,7 +25,7 @@ public class MoodTrackerActivity extends AppCompatActivity {
         AppDatabase db = Database.getAppDatabase();
 
         // Back button
-        ImageButton backMoodIbt = findViewById(R.id.backMoodIBt);
+        // ImageButton backMoodIbt = findViewById(R.id.backMoodIBt);
 
         //Submit button
         Button submitBtn = findViewById(R.id.moodSubmitBtn);
@@ -34,8 +34,7 @@ public class MoodTrackerActivity extends AppCompatActivity {
         RatingBar moodBar = findViewById(R.id.moodBar);
 
         //Back button function
-        backMoodIbt.setOnClickListener(v ->
-            MoodTrackerActivity.this.onBackPressed());
+        //backMoodIbt.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
 
         //mood description
         TextView moodDesc = findViewById(R.id.storyTxt);
