@@ -70,7 +70,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         }
 
         // Just retrieves some things
-        Button saveButton = findViewById(R.id.saveButton);
+        Button saveButton = findViewById(R.id.saveButtonProfile);
         todaysNoteRaw = findViewById(R.id.todaysNote);
         FloatingActionButton backButton = findViewById(R.id.backButton);
         Button yest = findViewById(R.id.previousDaysButton);

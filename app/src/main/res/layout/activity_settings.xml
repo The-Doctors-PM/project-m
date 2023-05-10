@@ -1,65 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/ButterMilk">
 
     <TextView
         android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="App settings"
-        android:textSize="44sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="61dp" />
+        android:text="App Settings"
+        android:textSize="40sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp" />
 
 
     <TextView
         android:id="@+id/moodTrackerEditTime"
-        android:layout_width="317dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="Edit Mood Tracker notification time"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="195dp" />
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:id="@+id/moodTrackerEditTimeButton"
-        android:layout_width="51dp"
-        android:layout_height="62dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/moodTrackerEditTime"
-        tools:layout_editor_absoluteY="195dp" />
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="Example"
+        android:layout_marginTop="15dp"/>
 
 
     <Button
         android:id="@+id/profilePictureUploadButton"
-        android:layout_width="371dp"
-        android:layout_height="78dp"
-        android:text="Upload profile picture or avatar"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Upload profile picture"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="344dp" />
+        android:layout_gravity="center"
+        />
 
 
     <TextView
         android:id="@+id/dataExport"
-        android:layout_width="317dp"
-        android:layout_height="33dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="Export your diary to a save file"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="504dp" />
+        android:textSize="18sp"
+        android:layout_marginTop="40dp"/>
 
     <Button
         android:id="@+id/dataExportButton"
-        android:layout_width="51dp"
-        android:layout_height="62dp"
-        tools:layout_editor_absoluteX="344dp"
-        tools:layout_editor_absoluteY="483dp" />
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="Export Diary"
+        android:layout_marginTop="5dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
