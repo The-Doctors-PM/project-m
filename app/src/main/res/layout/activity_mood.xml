@@ -3,40 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/comment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/purple_200"
-    android:backgroundTint="@color/purple_200"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/design_default_color_background"
+    android:backgroundTint="@color/design_default_color_background"
     tools:context=".Goals.GoalsActivity">
+
+    <ImageButton
+        android:id="@+id/emojiBtn"
+        android:layout_width="84dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="28dp"
+        android:background="@android:drawable/ic_menu_add"
+        app:layout_constraintBottom_toTopOf="@+id/moodBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datetxt"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="?attr/selectableItemBackgroundBorderless" />
 
     <TextView
         android:id="@+id/goalsList"
-        android:layout_width="wrap_content"
+        android:layout_width="301dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Daily mood tracker"
-        android:textSize="20sp"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/datetxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/datetxt"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginTop="124dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="How are you feeling today?"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/emojiBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/goalsList" />
 
     <RatingBar
         android:id="@+id/moodBar"
@@ -60,66 +77,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="288dp"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/history"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toEndOf="@+id/saveBt"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_month" />
-
-    <ImageView
-        android:id="@+id/saveBt"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/history"
-        app:layout_constraintStart_toEndOf="@+id/addBt"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_save" />
-
-    <ImageView
-        android:id="@+id/addBt"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/saveBt"
-        app:layout_constraintStart_toEndOf="@+id/backMoodIBt"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_plus" />
-
-    <ImageButton
-        android:id="@+id/backMoodIBt"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:adjustViewBounds="false"
-        android:background="@drawable/baseline_arrow_back_24"
-        android:backgroundTint="@color/black"
-        android:contentDescription="/@backMoodIBt"
-        app:layout_constraintEnd_toStartOf="@+id/addBt"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/selectableItemBackground"
-        tools:srcCompat="?attr/selectableItemBackground" />
 
     <Button
         android:id="@+id/moodSubmitBtn"
@@ -137,79 +98,76 @@
 
     <TableLayout
         android:id="@+id/emojiTbl"
-        android:layout_width="409dp"
-        android:layout_height="153dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/blueDarker"
-        android:backgroundTintMode="screen"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@color/goals_blue"
         android:orientation="horizontal"
         android:saveEnabled="true"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/moodBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datetxt"
-        app:layout_constraintVertical_bias="0.98"
+        app:layout_constraintVertical_bias="1.0"
         tools:visibility="visible">
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="210dp"
+            android:layout_height="43dp"
+            android:background="@drawable/goals_round"
+            android:backgroundTint="@color/goals_blue"
             android:clipChildren="false"
             android:textAlignment="center">
 
-            <ImageButton
-                android:id="@+id/sadmoonBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/sad_emoji"
-                app:srcCompat="?attr/selectableItemBackground" />
-
-            <ImageButton
-                android:id="@+id/neutralmoodBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/neutral_emoji"
-                app:srcCompat="?android:attr/activatedBackgroundIndicator"
-                tools:srcCompat="?attr/selectableItemBackgroundBorderless" />
-
-            <ImageButton
-                android:id="@+id/happymoodBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/happy_emoji"
-                app:srcCompat="?attr/selectableItemBackground"
-                tools:srcCompat="?attr/selectableItemBackground"
-                tools:visibility="visible" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="210dp"
+            android:layout_height="70dp">
+
+            <ImageView
+                android:id="@+id/awkwardIBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/confounded_face_color" />
+
+            <ImageView
+                android:id="@+id/sadsurpIBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/anguished_face_color" />
+
+        </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
+            android:layout_width="210dp"
+            android:layout_height="70dp">
 
-    <ImageButton
-        android:id="@+id/emojiBtn"
-        android:layout_width="84dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="163dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/moodBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datetxt"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo2nobg" />
+            <ImageView
+                android:id="@+id/cryIBtn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/crying_face_color" />
+
+            <ImageView
+                android:id="@+id/sadcryIBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/anxious_face_with_sweat_color" />
+
+            <ImageView
+                android:id="@+id/lazyhappyIBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/grinning_face_with_smiling_eyes_color" />
+        </TableRow>
+    </TableLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -217,5 +175,56 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="102dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="409dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/happymoodBtn"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="?attr/selectableItemBackground"
+                tools:srcCompat="@drawable/grinning_face_color" />
+
+            <ImageButton
+                android:id="@+id/neutralmoodBtn"
+                android:layout_width="58dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="?android:attr/activatedBackgroundIndicator"
+                tools:srcCompat="@drawable/grimacing_face_color" />
+
+            <ImageButton
+                android:id="@+id/sadmoonBtn"
+                android:layout_width="68dp"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/angry_face_color" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="512dp">
+
+        <ImageView
+            android:id="@+id/veryhappyIBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/beaming_face_with_smiling_eyes_color" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

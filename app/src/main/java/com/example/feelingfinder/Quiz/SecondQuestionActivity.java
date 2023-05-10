@@ -19,13 +19,13 @@ public class SecondQuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_question);
 
-        seekBar = findViewById(R.id.seek_bar);
+        seekBar = findViewById(R.id.overallSB);
         nextButton = findViewById(R.id.next_button);
 
         nextButton.setOnClickListener(view -> {
             int progress = seekBar.getProgress();
             // Do something with the progress, such as save it in a global variable
-            Intent intent = new Intent(SecondQuestionActivity.this, ThirdQuestionActivity.class);
+            Intent intent = new Intent(SecondQuestionActivity.this, MoodTrackerActivity.class);
             startActivity(intent);
         });
     }

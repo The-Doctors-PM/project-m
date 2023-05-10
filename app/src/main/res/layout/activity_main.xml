@@ -4,38 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blue_gradient"
+    android:clickable="false"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@drawable/blue_gradient">
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:textColor="@color/white"
         android:fontFamily="sans-serif-light"
         android:text="@string/feeling_finder"
-        />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp" />
 
     <FrameLayout
+        android:id="@+id/dailyQuizbtn"
         android:layout_width="310dp"
         android:layout_height="150dp"
-        android:id="@+id/button1"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:background="@drawable/round_menu">
 
         <ImageButton
+            android:id="@+id/quizButton"
             android:layout_width="160dp"
             android:layout_height="150dp"
-            android:id="@+id/quizButton"
             android:layout_gravity="center|end"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/white"
+            android:clickable="false"
             android:scaleType="fitCenter"
             android:src="@drawable/ioga">
 
@@ -58,28 +59,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="30dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <FrameLayout
+            android:id="@+id/button2"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/button2"
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
             android:background="@drawable/round_menu">
 
             <ImageButton
+                android:id="@+id/notesButton"
                 android:layout_width="119dp"
                 android:layout_height="100dp"
-                android:id="@+id/notesButton"
                 android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
-                android:src="@drawable/notes"
+                android:backgroundTint="@color/white"
                 android:scaleType="fitCenter"
-                android:backgroundTint="@color/white">
-            </ImageButton>
+                android:src="@drawable/notes"></ImageButton>
 
             <TextView
                 android:layout_width="110dp"
@@ -98,23 +98,22 @@
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/button3"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/button3"
             android:layout_gravity="center"
             android:layout_marginRight="0dp"
             android:background="@drawable/round_menu">
 
             <ImageButton
+                android:id="@+id/goalsButton"
                 android:layout_width="110dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:id="@+id/goalsButton"
                 android:layout_marginBottom="15dp"
-                android:src="@drawable/to_do"
+                android:backgroundTint="@color/white"
                 android:scaleType="fitCenter"
-                android:backgroundTint="@color/white">
-            </ImageButton>
+                android:src="@drawable/to_do"></ImageButton>
 
             <TextView
                 android:layout_width="110dp"
@@ -137,28 +136,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <FrameLayout
+            android:id="@+id/button4"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/button4"
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
             android:background="@drawable/round_menu">
 
             <ImageButton
+                android:id="@+id/statiticsButton"
                 android:layout_width="125dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:id="@+id/statiticsButton"
                 android:layout_marginBottom="15dp"
-                android:src="@drawable/estatistcs"
+                android:backgroundTint="@color/white"
                 android:scaleType="fitCenter"
-                android:backgroundTint="@color/white">
-            </ImageButton>
+                android:src="@drawable/estatistcs"></ImageButton>
 
             <TextView
                 android:layout_width="110dp"
@@ -177,23 +175,22 @@
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/button5"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/button5"
             android:layout_gravity="center"
             android:layout_marginRight="0dp"
             android:background="@drawable/round_menu">
 
             <ImageButton
+                android:id="@+id/profileButton"
                 android:layout_width="110dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
-                android:id="@+id/profileButton"
-                android:src="@drawable/doctransparent"
+                android:backgroundTint="@color/white"
                 android:scaleType="fitCenter"
-                android:backgroundTint="@color/white">
-            </ImageButton>
+                android:src="@drawable/doctransparent"></ImageButton>
 
             <TextView
                 android:layout_width="110dp"

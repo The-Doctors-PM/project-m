@@ -1,4 +1,4 @@
-package com.example.feelingfinder.MoodTracker;
+package com.example.feelingfinder.Quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.feelingfinder.Database.AppDatabase;
@@ -35,6 +36,9 @@ public class MoodTrackerActivity extends AppCompatActivity {
         //Back button function
         backMoodIbt.setOnClickListener(v ->
             MoodTrackerActivity.this.onBackPressed());
+
+        //mood description
+        TextView moodDesc = findViewById(R.id.storyTxt);
 
         //emoji moodtracker
         ImageButton emojiBtn = findViewById(R.id.emojiBtn);
@@ -67,6 +71,7 @@ public class MoodTrackerActivity extends AppCompatActivity {
                         msg="You are on top of the world!";
                         break;
                 }
+                moodDesc.setText(msg);
                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 moodBar.setIsIndicator(true);
             }
@@ -82,22 +87,26 @@ public class MoodTrackerActivity extends AppCompatActivity {
         });
 
         //Emoji Tracker Functions
-        emojiBtn.setOnClickListener(v ->
-                emojiTbl.setVisibility(View.VISIBLE));
+        emojiBtn.setOnClickListener(v ->{
+                emojiTbl.setVisibility(View.VISIBLE);
+                emojiBtn.setVisibility(View.INVISIBLE);});
 
         happyBtn.setOnClickListener(v -> {
             moodBar.setRating(5);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
         });
 
         sadBtn.setOnClickListener(v -> {
             moodBar.setRating(1);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
         });
 
         neutralBtn.setOnClickListener(v -> {
             moodBar.setRating(3);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setVisibility(View.VISIBLE);
         });
     }
 }
