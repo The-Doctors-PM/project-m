@@ -128,62 +128,70 @@ public class MoodTrackerActivity extends AppCompatActivity {
         happyBtn.setOnClickListener(v -> {
             moodBar.setRating(8);
             emojiTbl.setVisibility(View.INVISIBLE);
-            emojiBtn.setBackground(happyBtn.getDrawable());
+            emojiBtn.setImageDrawable(happyBtn.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         awkBtn.setOnClickListener(v -> {
             moodBar.setRating(4);
             emojiTbl.setVisibility(View.INVISIBLE);
-            emojiBtn.setBackground(awkBtn.get());
+            emojiBtn.setImageDrawable(awkBtn.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         cryBtn2.setOnClickListener(v -> {
             moodBar.setRating(1);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setImageDrawable(cryBtn2.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         cryBtn.setOnClickListener(v -> {
             moodBar.setRating(2);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setImageDrawable(cryBtn.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         vhappyBtn1.setOnClickListener(v -> {
             moodBar.setRating(9);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setImageDrawable(vhappyBtn1.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         vsadBtn2.setOnClickListener(v -> {
             moodBar.setRating(3);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setImageDrawable(vsadBtn2.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         vhappyBtn2.setOnClickListener(v -> {
             moodBar.setRating(10);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setImageDrawable(vhappyBtn2.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         vsadBtn1.setOnClickListener(v -> {
             moodBar.setRating(4);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setImageDrawable(vsadBtn1.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         sadBtn.setOnClickListener(v -> {
             moodBar.setRating(3);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setImageDrawable(sadBtn.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
         neutralBtn.setOnClickListener(v -> {
             moodBar.setRating(5);
             emojiTbl.setVisibility(View.INVISIBLE);
+            emojiBtn.setImageDrawable(neutralBtn.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
     }
