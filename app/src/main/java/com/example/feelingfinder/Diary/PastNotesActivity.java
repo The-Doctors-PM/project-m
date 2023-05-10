@@ -56,6 +56,12 @@ public class PastNotesActivity extends AppCompatActivity {
         NotesDAO notesDao = db.notesDAO();
         // List of past notes
         ln = notesDao.getAllPast(DateToStringConverter.dateToInt(LocalDate.now()));
+        // Adds today's note to the list, if it's not empty
+        Note n = notesDao.getTodayNote(DateToStringConverter.dateToInt(LocalDate.now()));
+        if (!n.content.isEmpty()){
+            ln.add(0 ,n);
+        }
+
 
         // Deletes possible empty notes
         for (Note l : ln){
