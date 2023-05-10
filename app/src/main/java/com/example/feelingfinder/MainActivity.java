@@ -3,6 +3,8 @@ package com.example.feelingfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,19 +16,20 @@ import com.example.feelingfinder.Quiz.FirstQuestionActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton btn1, btn2, btn3, btn4, btn5;
+    private ImageButton btn2, btn3, btn4, btn5;
+    private FrameLayout dailyQuizbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn1 = findViewById(R.id.quizButton);
+        dailyQuizbtn = findViewById(R.id.dailyQuizbtn);
         btn2 = findViewById(R.id.notesButton);
         btn3 = findViewById(R.id.goalsButton);
         btn5 = findViewById(R.id.profileButton);
 
-        btn1.setOnClickListener(view -> {
+        dailyQuizbtn.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, FirstQuestionActivity.class);
             startActivity(intent);
         });

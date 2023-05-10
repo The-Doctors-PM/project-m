@@ -54,7 +54,7 @@
             android:name=".Profile.ProfilePlaceholderActivity"
             android:exported="false" />
         <activity
-            android:name=".MoodTracker.MoodTrackerActivity"
+            android:name=".Quiz.MoodTrackerActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity.SettingsActivity"
