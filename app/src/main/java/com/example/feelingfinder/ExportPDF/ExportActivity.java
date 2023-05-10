@@ -16,6 +16,8 @@ import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Database.DateToStringConverter;
 import com.example.feelingfinder.Database.Goal;
 import com.example.feelingfinder.Database.GoalsDAO;
+import com.example.feelingfinder.Database.Note;
+import com.example.feelingfinder.Database.NotesDAO;
 import com.example.feelingfinder.R;
 import com.example.feelingfinder.Utility.FeelingFinder;
 import com.itextpdf.text.Document;
@@ -30,10 +32,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExportActivity extends AppCompatActivity {
-
+    private final int charPerRow = 25;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,28 @@ public class ExportActivity extends AppCompatActivity {
                 try {
                     createGoalsPdf();
                 } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        exportNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    createNotesPdf();
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        exportWeeklyNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    createNotesPdfWeek();
+                } catch (IOException e){
                     e.printStackTrace();
                 }
             }
@@ -120,5 +145,97 @@ public class ExportActivity extends AppCompatActivity {
         }
         return "#" + g.id + ": " + desc +
                 " Status: " + status;
+    }
+
+    private void createNotesPdf() throws IOException{
+        int pageNumber = 1;
+        PdfDocument document = new PdfDocument();
+        Paint myPaint = new Paint();
+        AppDatabase db = Database.getAppDatabase();
+        NotesDAO nDao = db.notesDAO();
+        List<Note> ln = nDao.getAll();
+
+        for (Note n: ln) {
+            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(400,600, pageNumber).create();
+            PdfDocument.Page page = document.startPage(pageInfo);
+            Canvas canvas = page.getCanvas();
+            List<String> fullText = getTextForCanvas(n.content);
+            int y = 20;
+            for (String text: fullText) {
+                canvas.drawText(text, 10, y, myPaint);
+                y = y + 20;
+            }
+            document.finishPage(page);
+            pageNumber++;
+        }
+
+        // Decide file name. In this case is Goals_TODAYDATE(YYYYMMDD format).pdf
+        String fileName = "AllNotes_"+ DateToStringConverter.dateToInt(LocalDate.now()) + ".pdf";
+
+        // Create the new file in the "Download" folder of the device.
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+
+        try{
+            document.writeTo(new FileOutputStream(file));
+            document.close();
+            // Informs the user
+            Toast toast = Toast.makeText(FeelingFinder.getAppContext(), "Check your download folder", Toast.LENGTH_LONG);
+            toast.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private List<String> getTextForCanvas(String content){
+        List<String> res = new ArrayList<>();
+        int i = 0;
+        while (i + charPerRow + 1 < content.length()){
+            String subString = content.substring(i,i+charPerRow);
+            res.add(subString);
+            i = i + charPerRow + 1;
+        }
+        res.add(content.substring(i));
+        return res;
+    }
+
+    private void createNotesPdfWeek() throws IOException{
+        int pageNumber = 1;
+        PdfDocument document = new PdfDocument();
+        Paint myPaint = new Paint();
+        AppDatabase db = Database.getAppDatabase();
+        NotesDAO nDao = db.notesDAO();
+        int today = DateToStringConverter.dateToInt(LocalDate.now());
+        List<Note> ln = nDao.getAllPastWeek(today, today-8);
+        System.out.println("Size: " + ln.size());
+        for (Note n: ln) {
+            System.out.println("Note: " + n.content);
+            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(400,600, pageNumber).create();
+            PdfDocument.Page page = document.startPage(pageInfo);
+            Canvas canvas = page.getCanvas();
+            List<String> fullText = getTextForCanvas(n.content);
+            int y = 20;
+            for (String text: fullText) {
+                canvas.drawText(text, 10, y, myPaint);
+                y = y + 20;
+            }
+            document.finishPage(page);
+            pageNumber++;
+        }
+
+        // Decide file name. In this case is Goals_TODAYDATE(YYYYMMDD format).pdf
+        String fileName = "WeeklyNotes_"+ DateToStringConverter.dateToInt(LocalDate.now()) + ".pdf";
+
+        // Create the new file in the "Download" folder of the device.
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+
+        try{
+            document.writeTo(new FileOutputStream(file));
+            document.close();
+            // Informs the user
+            Toast toast = Toast.makeText(FeelingFinder.getAppContext(), "Check your download folder", Toast.LENGTH_LONG);
+            toast.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

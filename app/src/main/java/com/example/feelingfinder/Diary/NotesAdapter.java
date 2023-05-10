@@ -79,6 +79,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             content = content.substring(0, size);
             content = content + "..";
         }
+        // Replace all line breaks with empty spaces, to avoid bugged front-end
+        content = content.replace("\n", " ");
 
         // Date
         String noteDate = notesList.get(position).fullDate;

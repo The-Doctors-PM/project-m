@@ -28,6 +28,9 @@ public interface NotesDAO {
     @Query("SELECT * FROM notes WHERE id < :today")
     List<Note> getAllPast(int today);
 
+    @Query("SELECT * FROM notes WHERE id < :today AND id > :marker")
+    List<Note> getAllPastWeek(int today, int marker);
+
 
     @Query("SELECT * FROM notes WHERE id == :today ")
     Note getTodayNote(int today);
