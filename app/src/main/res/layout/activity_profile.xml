@@ -1,0 +1,125 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/blue_gradient"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="Back"
+            app:backgroundTint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-light"
+            android:text="Profile"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="80dp"
+            android:textColor="@color/white"
+            android:textSize="35sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/doctransparent">
+
+    </ImageView>
+
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name"/>
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/dateOfBirthLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date of Birth:"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/dateOfBirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="02/04/1997"/>
+
+    <RadioGroup
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:layout_marginHorizontal="15dp"/>
+
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:layout_marginHorizontal="15dp"/>
+
+        <RadioButton
+            android:id="@+id/other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:layout_marginHorizontal="15dp"/>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/saveButtonProfile"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:text="Save"
+        android:textColor="@color/Grey"
+        android:textSize="14sp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+</LinearLayout>

@@ -7,14 +7,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 
-public class FourthQuestionActivity extends AppCompatActivity implements View.OnClickListener {
+public class FourthQuestionActivity extends AppCompatActivity {
 
-    private Button verySadButton, sadButton, happyButton, veryHappyButton, nextButton;
-    private Button selectedButton = null;
+    private Button backBtn4, nextBtn4;
+    private RadioButton betterRb,sameRb,worseRb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,29 +23,22 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_fourth_question);
 
         // Get the buttons and set the OnClickListener
-        verySadButton = findViewById(R.id.button_very_sad);
-        verySadButton.setOnClickListener(this);
 
-        sadButton = findViewById(R.id.button_sad);
-        sadButton.setOnClickListener(this);
+        backBtn4 = findViewById(R.id.backBtn4);
+        nextBtn4 = findViewById(R.id.nextBtn4);
 
-        happyButton = findViewById(R.id.button_happy);
-        happyButton.setOnClickListener(this);
-
-        veryHappyButton = findViewById(R.id.button_very_happy);
-        veryHappyButton.setOnClickListener(this);
-
-        nextButton = findViewById(R.id.next_button);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        backBtn4.setOnClickListener(v -> FourthQuestionActivity.this.onBackPressed());
+        nextBtn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO: Store the user's rating and move to the next question/activity
-                startActivity(new Intent(FourthQuestionActivity.this, MainActivity.class));
+                startActivity(new Intent(FourthQuestionActivity.this, MoodTrackerActivity.class));
             }
         });
     }
-
+    /*
     @Override
+
     public void onClick(View view) {
         // Check if there is already a button selected
         if (selectedButton != null) {
@@ -55,4 +49,6 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
         view.setBackgroundColor(Color.parseColor("#3CB371"));
         selectedButton = (Button) view;
     }
+    */
+
 }

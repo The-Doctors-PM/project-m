@@ -5,140 +5,233 @@
     android:id="@+id/comment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
-    android:backgroundTint="@color/purple_200"
-    tools:context=".Goals.GoalsActivity">
+    android:background="@color/design_default_color_background"
+    android:backgroundTint="@color/design_default_color_background">
 
     <TextView
-        android:id="@+id/goalsList"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="/@Daily mood tracker"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:text="Press Me!"
+        app:layout_constraintBottom_toTopOf="@+id/emojiBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datetxt" />
+
+    <ImageButton
+        android:id="@+id/emojiBtn"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="28dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:srcCompat="@drawable/grinning_face_color"
+        app:layout_constraintBottom_toTopOf="@+id/moodBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datetxt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/goalsList"
+        android:layout_width="346dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Daily mood tracker"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/datetxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/datetxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:text="/@How are you feeling today?"
+        android:layout_marginBottom="32dp"
+        android:text="How are you feeling today?"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/emojiBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/addBt"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/saveBt"
-        app:layout_constraintStart_toEndOf="@+id/backMoodIBt"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_plus" />
-
-    <ImageView
-        android:id="@+id/saveBt"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/history"
-        app:layout_constraintStart_toEndOf="@+id/addBt"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_save" />
+        app:layout_constraintTop_toBottomOf="@+id/goalsList" />
 
     <RatingBar
         android:id="@+id/moodBar"
         style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:indeterminate="false"
         android:contentDescription="rating"
+        android:indeterminate="false"
         android:isIndicator="false"
-        android:max="5"
-        android:numStars="5"
-        android:progressTint="#4CAF50"
+        android:max="10"
+        android:min="0"
+        android:numStars="10"
+        android:progressTint="@color/blueSplash"
         android:stepSize="1"
         app:layout_constraintBottom_toTopOf="@+id/storyTxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.146" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="127dp"
-        android:layout_height="136dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datetxt"
-        app:srcCompat="@drawable/doctransparent" />
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/storyTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="340dp"
-        android:text="TextView"
+        android:layout_marginBottom="288dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/history"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <TableLayout
+        android:id="@+id/emojiTbl"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@color/goals_blue"
+        android:orientation="horizontal"
+        android:saveEnabled="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/moodBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toEndOf="@+id/saveBt"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_month" />
-
-    <ImageButton
-        android:id="@+id/backMoodIBt"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:adjustViewBounds="false"
-        android:background="@drawable/baseline_arrow_back_24"
-        android:backgroundTint="@color/black"
-        android:contentDescription="/@backMoodIBt"
-        app:layout_constraintEnd_toStartOf="@+id/addBt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_arrow_back_24"
-        tools:srcCompat="@drawable/baseline_arrow_back_24" />
+        app:layout_constraintTop_toBottomOf="@+id/datetxt"
+        tools:visibility="invisible">
+
+        <TableRow
+            android:layout_width="210dp"
+            android:layout_height="70dp"
+            android:background="@drawable/goals_round"
+            android:backgroundTint="@color/goals_blue"
+            android:clipChildren="false"
+            android:textAlignment="center">
+
+            <ImageButton
+                android:id="@+id/happymoodIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/grinning_face_color" />
+
+            <ImageButton
+                android:id="@+id/neutramoodIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/grimacing_face_color" />
+
+            <ImageButton
+                android:id="@+id/sadmoobIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/angry_face_color" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="210dp"
+            android:layout_height="70dp">
+
+            <ImageButton
+                android:id="@+id/veryhappyIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/beaming_face_with_smiling_eyes_color" />
+
+            <ImageButton
+                android:id="@+id/awkwardIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/confounded_face_color" />
+
+            <ImageButton
+                android:id="@+id/sadsurpIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/anguished_face_color" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="210dp"
+            android:layout_height="70dp">
+
+            <ImageButton
+                android:id="@+id/cryIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/crying_face_color" />
+
+            <ImageButton
+                android:id="@+id/sadcryIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/anxious_face_with_sweat_color" />
+
+            <ImageButton
+                android:id="@+id/lazyhappyIBtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/grinning_face_with_smiling_eyes_color" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/backBtn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="BACK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/moodSubmitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="166dp"
-        android:layout_marginEnd="157dp"
-        android:layout_marginBottom="155dp"
-        android:text="Button"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="Submit"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/homeBtn"
+        app:layout_constraintStart_toEndOf="@+id/backBtn5"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="HOME"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

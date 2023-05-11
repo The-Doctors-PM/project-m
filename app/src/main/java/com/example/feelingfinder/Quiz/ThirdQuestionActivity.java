@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
+import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,8 +13,8 @@ import com.example.feelingfinder.R;
 
 public class ThirdQuestionActivity extends AppCompatActivity {
 
-    private RatingBar ratingBar;
-    private Button nextButton;
+    private SeekBar sBar3;
+    private Button nextBtn3,backBtn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,25 +22,18 @@ public class ThirdQuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_third_question);
 
         // Get the RatingBar and Next Button views from the layout
-        ratingBar = findViewById(R.id.ratingBar);
-        nextButton = findViewById(R.id.next_button);
+        sBar3 = findViewById(R.id.happySB);
+        nextBtn3 = findViewById(R.id.nextBtn3);
+        backBtn3 = findViewById(R.id.backBtn3);
 
-        // Set an on-click listener for the Next button
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Get the user's rating from the RatingBar
-                int rating = ratingBar.getProgress();
+        backBtn3.setOnClickListener(v -> ThirdQuestionActivity.this.onBackPressed());
 
-                // Create an intent to start the FourthQuestionActivity
-                Intent intent = new Intent(ThirdQuestionActivity.this, FourthQuestionActivity.class);
+        nextBtn3.setOnClickListener(view -> {
+            int prog3 = sBar3.getProgress();
+            // Do something with the progress, such as save it in a global variable
+            Intent intent = new Intent(ThirdQuestionActivity.this, FourthQuestionActivity.class);
+            startActivity(intent);
 
-                // Pass the user's rating to the FourthQuestionActivity
-                intent.putExtra("rating", rating);
-
-                // Start the FourthQuestionActivity
-                startActivity(intent);
-            }
         });
     }
 }

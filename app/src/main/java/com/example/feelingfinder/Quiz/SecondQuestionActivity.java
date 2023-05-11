@@ -11,19 +11,22 @@ import com.example.feelingfinder.R;
 
 public class SecondQuestionActivity extends AppCompatActivity {
 
-    private SeekBar seekBar;
-    private Button nextButton;
+    private SeekBar sBar2;
+    private Button nextBtn2,backBtn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_question);
 
-        seekBar = findViewById(R.id.seek_bar);
-        nextButton = findViewById(R.id.next_button);
+        sBar2 = findViewById(R.id.overallSB);
+        nextBtn2 = findViewById(R.id.nextBtn2);
+        backBtn2 = findViewById(R.id.backBtn2);
 
-        nextButton.setOnClickListener(view -> {
-            int progress = seekBar.getProgress();
+        backBtn2.setOnClickListener(v -> SecondQuestionActivity.this.onBackPressed());
+
+        nextBtn2.setOnClickListener(view -> {
+            int progress = sBar2.getProgress();
             // Do something with the progress, such as save it in a global variable
             Intent intent = new Intent(SecondQuestionActivity.this, ThirdQuestionActivity.class);
             startActivity(intent);

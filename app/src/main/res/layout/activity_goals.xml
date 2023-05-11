@@ -22,7 +22,7 @@
             android:layout_marginTop="32dp"
             android:clickable="true"
             android:contentDescription="Back"
-            app:backgroundTint="@color/blueSplash"
+            app:backgroundTint="@color/white"
             app:srcCompat="@drawable/baseline_arrow_back_24" />
 
         <TextView
@@ -80,7 +80,7 @@
             android:layout_height="70dp"
             android:backgroundTint="@color/white"
             android:text="Wipe Database"
-            android:textColor="@color/blueDarker"
+            android:textColor="@color/Grey"
             android:visibility="visible" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
