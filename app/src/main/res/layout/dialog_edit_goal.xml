@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/goals_round">
+
+    <ImageView
+        android:src="@drawable/ic_splashimage"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/app_name" />
+
+    <EditText
+        android:id="@+id/editGoalDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:hint="Goal Description (Not Empty)"
+        android:inputType="textLongMessage"
+        android:minHeight="100dp"
+        android:textSize="20sp" />
+
+</LinearLayout>

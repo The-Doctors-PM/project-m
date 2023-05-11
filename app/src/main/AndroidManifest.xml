@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Permissions needed to write pdf -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".Utility.FeelingFinder"
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FeelingFinder"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ExportPDF.ExportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Diary.SinglePastNoteActivity"
+            android:exported="false" />
         <activity
             android:name=".Diary.PastNotesActivity"
             android:exported="false" />
@@ -25,10 +33,34 @@
             android:name=".Diary.MyDiaryActivity"
             android:exported="false" />
         <activity
+            android:name=".Profile.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Profile.ProfilePlaceholderActivity"
+            android:name=".Quiz.FirstQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.SecondQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.ThirdQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.FourthQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.FifthQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Statitics.StatitcsPlaceholderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.MoodTrackerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
@@ -41,8 +73,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".QuizActivity" />
     </application>
 
 </manifest>

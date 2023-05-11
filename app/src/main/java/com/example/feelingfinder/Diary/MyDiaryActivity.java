@@ -70,11 +70,11 @@ public class MyDiaryActivity extends AppCompatActivity {
         }
 
         // Just retrieves some things
-        Button saveButton = findViewById(R.id.saveButton);
+        Button saveButton = findViewById(R.id.saveButtonProfile);
         todaysNoteRaw = findViewById(R.id.todaysNote);
         FloatingActionButton backButton = findViewById(R.id.backButton);
         Button yest = findViewById(R.id.previousDaysButton);
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
+        ConstraintLayout constraintLayout = findViewById(R.id.diaryCL);
 
         // If savedNote isn't empty, it will be displayed in the note
         if (!savedNote.isEmpty()){
@@ -115,6 +115,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         // ### DEBUG ONLY ###
         // Clicking the previous days button prints in the log/runner tabs of android studio
         // a list of all the notes from all days.
+        // Also redirect to another activity where all past notes are shown
         yest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

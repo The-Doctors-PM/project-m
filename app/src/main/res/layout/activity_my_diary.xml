@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
+    android:id="@+id/diaryCL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/blue_gradient"
@@ -16,7 +16,7 @@
         android:layout_marginTop="32dp"
         android:clickable="true"
         android:contentDescription="Back"
-        app:backgroundTint="@color/pastel_purple"
+        app:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_arrow_back_24" />
@@ -25,9 +25,10 @@
         android:id="@+id/cardView"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="128dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="35dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -35,7 +36,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/pastel_purple">
+            android:layout_margin="5dp"
+            android:background="@color/ButterMilk">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -55,7 +57,8 @@
                     android:id="@+id/todaysNote"
                     android:layout_width="match_parent"
                     android:layout_height="235dp"
-                    android:background="@color/pastel_pink"
+                    android:background="@color/test"
+                    android:backgroundTint="@color/skyBlue"
                     android:hint="Today's note"
                     android:singleLine="false" />
 
@@ -83,23 +86,27 @@
 
     <Button
         android:id="@+id/previousDaysButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="32dp"
         android:text="Previous Days"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveButton"
+        app:layout_constraintTop_toBottomOf="@+id/saveButtonProfile"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:id="@+id/saveButtonProfile"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         android:text="Save"
+        android:textColor="@color/Grey"
+        android:textSize="14sp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -109,6 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your Diary"
+        android:fontFamily="sans-serif-light"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
