@@ -33,6 +33,9 @@
             android:name=".Diary.MyDiaryActivity"
             android:exported="false" />
         <activity
+            android:name=".Profile.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -51,7 +54,7 @@
             android:name=".Quiz.FifthQuestionActivity"
             android:exported="false" />
         <activity
-            android:name=".Profile.ProfilePlaceholderActivity"
+            android:name=".Statitics.StatitcsPlaceholderActivity"
             android:exported="false" />
         <activity
             android:name=".Quiz.MoodTrackerActivity"

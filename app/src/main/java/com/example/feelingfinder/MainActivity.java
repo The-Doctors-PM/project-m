@@ -10,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.Diary.MyDiaryActivity;
 import com.example.feelingfinder.Goals.GoalsActivity;
-import com.example.feelingfinder.Profile.ProfilePlaceholderActivity;
+import com.example.feelingfinder.Profile.ProfileActivity;
+import com.example.feelingfinder.Statitics.StatitcsPlaceholderActivity;
 import com.example.feelingfinder.Quiz.FirstQuestionActivity;
 
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         dailyQuizbtn = findViewById(R.id.dailyQuizbtn);
         btn2 = findViewById(R.id.notesButton);
         btn3 = findViewById(R.id.goalsButton);
+        btn4 = findViewById(R.id.statiticsButton);
         btn5 = findViewById(R.id.profileButton);
 
         dailyQuizbtn.setOnClickListener(view -> {
@@ -50,11 +52,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, StatitcsPlaceholderActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ProfilePlaceholderActivity.class);
+                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(i);
             }
         });

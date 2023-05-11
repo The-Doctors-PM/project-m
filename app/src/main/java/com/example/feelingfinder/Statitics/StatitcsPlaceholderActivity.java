@@ -1,4 +1,4 @@
-package com.example.feelingfinder.Profile;
+package com.example.feelingfinder.Statitics;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,13 +21,13 @@ import com.example.feelingfinder.R;
 import com.example.feelingfinder.SettingsActivity.SettingsActivity;
 import com.example.feelingfinder.Utility.FeelingFinder;
 
-public class ProfilePlaceholderActivity extends AppCompatActivity {
+public class StatitcsPlaceholderActivity extends AppCompatActivity {
     private final String CHANNEL_ID = "FFChannel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_placeholder);
+        setContentView(R.layout.activity_statitics);
 
         // Retrieving some stuff
         Button nowButton;
