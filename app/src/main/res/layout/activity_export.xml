@@ -23,7 +23,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:text="Export All Notes\n(NOT WORKING)"
+        android:text="Export All Notes"
         />
 
     <Button
@@ -32,6 +32,6 @@
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:text="Export this week notes\n (NOT WORKING)"
+        android:text="Export this week notes"
         />
 </LinearLayout>
