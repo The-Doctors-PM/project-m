@@ -3,7 +3,7 @@ package com.example.feelingfinder.Database;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Goal.class, Note.class, Quiz.class}, version = 7)
+@Database(entities = {Goal.class, Note.class, Quiz.class}, version = 8)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract GoalsDAO goalsDAO();
 
