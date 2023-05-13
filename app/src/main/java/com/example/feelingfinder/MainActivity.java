@@ -3,7 +3,6 @@ package com.example.feelingfinder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -15,7 +14,7 @@ import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Diary.MyDiaryActivity;
 import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.Profile.ProfileActivity;
-import com.example.feelingfinder.Statitics.StatitcsPlaceholderActivity;
+import com.example.feelingfinder.Statistics.StatisticsPlaceholderActivity;
 import com.example.feelingfinder.Quiz.FirstQuestionActivity;
 import com.example.feelingfinder.Utility.FeelingFinder;
 
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, StatitcsPlaceholderActivity.class);
+                Intent i = new Intent(MainActivity.this, StatisticsPlaceholderActivity.class);
                 startActivity(i);
             }
         });

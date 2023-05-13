@@ -51,4 +51,7 @@ dependencies {
     implementation 'com.ramotion.circlemenu:circle-menu:0.3.2'
 
     implementation 'com.itextpdf:itextpdf:5.5.10'
+
+    implementation 'com.jjoe64:graphview:4.2.2'
+
 }
