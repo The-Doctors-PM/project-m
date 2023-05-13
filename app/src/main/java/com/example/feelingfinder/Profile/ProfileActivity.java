@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.SettingsActivity.SettingsActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -27,6 +28,9 @@ public class ProfileActivity extends AppCompatActivity {
     Button saveButton;
     FloatingActionButton backButton;
     SharedPreferences preferences;
+
+    Button toSettingsButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,15 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveProfile();
+            }
+        });
+
+        toSettingsButton = findViewById(R.id.profileToSettings);
+        toSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, SettingsActivity.class);
+                startActivity(i);
             }
         });
     }
