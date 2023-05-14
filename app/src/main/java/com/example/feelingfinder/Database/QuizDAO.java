@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 import java.util.List;
 
@@ -28,6 +29,8 @@ public interface QuizDAO {
     @Query("SELECT * FROM quizzes WHERE id == :today")
     Quiz getTodayQuiz(int today);
 
-
+    @Transaction
+    @Query("SELECT * FROM quizzes WHERE id == :quizId")
+    List<QuestionQuizRelationship> getQuizQuestions(int quizId);
 
 }
