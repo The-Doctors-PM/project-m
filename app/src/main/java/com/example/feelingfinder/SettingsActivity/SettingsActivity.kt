@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.feelingfinder.Notifications.*
 import com.example.feelingfinder.R
 import com.example.feelingfinder.databinding.ActivitySettingsBinding
+import java.sql.Time
+import java.time.LocalTime
 import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -51,26 +53,29 @@ class SettingsActivity : AppCompatActivity() {
         )
 
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val time = getTime()
-        alarmManager.setExactAndAllowWhileIdle(
+        val time = getTime()    // get time from user input from interface
+        println("Tempo dopo getTime: $time")    // seems correct time
+
+        // schedule notification daily
+        alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
                 time,
+                AlarmManager.INTERVAL_DAY,
                 pendingIntent
         )
-        showAlert(time, title, message)
+        showAlert(time)
     }
 
-    private fun showAlert(time: Long, title: String, message: String)
+    private fun showAlert(time: Long)
     {
-        val date = Date(time)
-        val timeFormat = android.text.format.DateFormat.getTimeFormat(applicationContext)
+        val hours = (time / (1000 * 60 * 60)) % 24
+        val minutes = (time / (1000 * 60)) % 60
 
+        val timeFormat = String.format("%02d:%02d", hours, minutes)
         AlertDialog.Builder(this)
                 .setTitle("Notification Scheduled")
-                .setMessage(
-                        "Title: " + title +
-                                "\nMessage: " + message + ' ' + timeFormat.format(date))
-                .setPositiveButton("Okay"){_,_ ->}
+                .setMessage("Daily Mood Tracker reminder set to $timeFormat")
+                .setPositiveButton("Ok"){_,_ ->}
                 .show()
     }
 
@@ -79,14 +84,14 @@ class SettingsActivity : AppCompatActivity() {
         val minute = settingsBinding.moodTrackerEditTimePicker.minute
         val hour = settingsBinding.moodTrackerEditTimePicker.hour
 
-        val calendar = Calendar.getInstance()
-        calendar.set(hour, minute)
-        return calendar.timeInMillis
+        val time = LocalTime.of(hour, minute, 0)
+        println("Ora presa dall'interfaccia: $hour $minute")    // sembra che l'interfaccia ritorni risultati giusti
+        return time.toNanoOfDay() / 1000000
     }
 
     private fun createNotificationChannel()
     {
-        val name = "Mood Tracker Channel"
+        val name = "Mood Tracker"
         val desc = "Mood tracker notification channel"
         val importance = NotificationManager.IMPORTANCE_DEFAULT
         val channel = NotificationChannel(channelID, name, importance)
