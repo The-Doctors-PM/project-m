@@ -19,7 +19,7 @@ public class Quiz {
 
     public Quiz(){
         this.id = DateToStringConverter.dateToInt(LocalDate.now());
-        this.dayRating = 0;
+        this.dayRating = -1;
         this.hadAnxiety = false;
         this.wasSatisfied = false;
         this.betterTomorrow = false;
@@ -32,6 +32,15 @@ public class Quiz {
         this.hadAnxiety = hadAnxiety;
         this.wasSatisfied = wasSatisfied;
         this.betterTomorrow = betterTomorrow;
+    }
+
+    // Just for mock data
+    public Quiz(int fakeDate){
+        this.id = fakeDate;
+        this.dayRating = -1;
+        this.hadAnxiety = false;
+        this.wasSatisfied = false;
+        this.betterTomorrow = false;
     }
 
 

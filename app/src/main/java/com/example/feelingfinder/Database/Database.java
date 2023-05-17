@@ -17,6 +17,8 @@ public class Database {
     private static AppDatabase db;
     private Database(){}
 
+    private static int fakeDate = 20230503;
+
     public static void buildAppDatabase(){
         //TODO: Allow main thread queries should be a temporary solution!!
         Database.db = Room.databaseBuilder(FeelingFinder.getAppContext(),
@@ -46,6 +48,19 @@ public class Database {
         System.out.println("Notes in the database deleted");
     }
 
+    public static void wipeQuizAndQuestions(){
+        List<Question> lq = db.questionsDAO().getAll();
+        List<Quiz> lqz = db.quizDAO().getAll();
+        for (Question q: lq) {
+            db.questionsDAO().deleteQuestion(q);
+        }
+        System.out.println("Questions in the database deleted");
+        for (Quiz qz: lqz) {
+            db.quizDAO().deleteQuiz(qz);
+        }
+        System.out.println("Quizzes in the database deleted");
+    }
+
     public static void importMockData(){
         boolean nextStatus = false;
         for (int i = 0; i < 10; i++){
@@ -58,12 +73,28 @@ public class Database {
             g.status = nextStatus;
             nextStatus = !nextStatus;
             db.goalsDAO().addGoal(g);
+
+
+            Quiz quiz = new Quiz(fakeDate++);
+            quiz.hadAnxiety = nextStatus;
+            quiz.betterTomorrow = !nextStatus;
+            quiz.wasSatisfied = nextStatus;
+            quiz.dayRating = rand.nextInt(10);
+            db.quizDAO().addQuiz(quiz);
+
+            Question q = new Question("Question here", rand.nextInt(9));
+            q.quizId = quiz.id;
+            db.questionsDAO().addQuestion(q);
+            Question q2 = new Question("Question #2 here", rand.nextInt(7));
+            q2.quizId = quiz.id;
+            db.questionsDAO().addQuestion(q2);
         }
     }
 
     public static void wipeAllData(){
         Database.wipeGoals();
         Database.wipeNotes();
+        Database.wipeQuizAndQuestions();
     }
 
 
