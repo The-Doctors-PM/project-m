@@ -26,8 +26,9 @@ public class FirstQuestionActivity extends AppCompatActivity {
         nextBtn1.setOnClickListener(view -> {
             int prog1 = sBar1.getProgress();
             // Do something with the progress, such as save it in a global variable
-            Intent intent = new Intent(FirstQuestionActivity.this, SecondQuestionActivity.class);
+            Intent intent = new Intent(FirstQuestionActivity.this, MoodTrackerActivity.class);
             startActivity(intent);
         });
+
     }
 }

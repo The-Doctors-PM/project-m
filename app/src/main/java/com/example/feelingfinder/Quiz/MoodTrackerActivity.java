@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
-import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 
 public class MoodTrackerActivity extends AppCompatActivity {
@@ -26,9 +25,6 @@ public class MoodTrackerActivity extends AppCompatActivity {
         // Retrieve the Database instance
         AppDatabase db = Database.getAppDatabase();
 
-        // Back button
-        // ImageButton backMoodIbt = findViewById(R.id.backMoodIBt);
-
         //Submit button
         Button submitBtn = findViewById(R.id.moodSubmitBtn);
 
@@ -36,11 +32,11 @@ public class MoodTrackerActivity extends AppCompatActivity {
         RatingBar moodBar = findViewById(R.id.moodBar);
 
         //Back button
-        Button backBtn5 = findViewById(R.id.backBtn5);
-        backBtn5.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
+        Button back2ndBtn = findViewById(R.id.back2ndBtn);
+        back2ndBtn.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
 
         //Home button
-        Button homeBtn = findViewById(R.id.homeBtn);
+        Button next2ndBtn = findViewById(R.id.next2ndBtn);
 
         //mood description
         TextView moodDesc = findViewById(R.id.storyTxt);
@@ -51,7 +47,6 @@ public class MoodTrackerActivity extends AppCompatActivity {
         ImageButton neutralBtn = findViewById(R.id.neutramoodIBtn);
         ImageButton happyBtn = findViewById(R.id.happymoodIBtn);
         ImageButton vhappyBtn1 = findViewById(R.id.veryhappyIBtn);
-        ImageButton vsadBtn1 = findViewById(R.id.sadcryIBtn);
         ImageButton vsadBtn2 = findViewById(R.id.sadsurpIBtn);
         ImageButton awkBtn = findViewById(R.id.awkwardIBtn);
         ImageButton cryBtn = findViewById(R.id.cryIBtn);
@@ -60,11 +55,11 @@ public class MoodTrackerActivity extends AppCompatActivity {
         TableLayout emojiTbl = findViewById(R.id.emojiTbl);
 
         //Return to main activity
-        homeBtn.setOnClickListener(v ->
-            startActivity(new Intent(MoodTrackerActivity.this, MainActivity.class)));
+        next2ndBtn.setOnClickListener(v ->
+            startActivity(new Intent(MoodTrackerActivity.this, SecondQuestionActivity.class)));
 
         //Back function
-        backBtn5.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
+        back2ndBtn.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
 
         //Submit button function
         submitBtn.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +111,7 @@ public class MoodTrackerActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float r, boolean b) {
                 moodBar.setRating(ratingBar.getRating());
-                submitBtn.setVisibility(View.VISIBLE);
+                //submitBtn.setVisibility(View.VISIBLE);
             }
         });
 
@@ -171,13 +166,6 @@ public class MoodTrackerActivity extends AppCompatActivity {
             moodBar.setRating(10);
             emojiTbl.setVisibility(View.INVISIBLE);
             emojiBtn.setImageDrawable(vhappyBtn2.getDrawable());
-            emojiBtn.setVisibility(View.VISIBLE);
-        });
-
-        vsadBtn1.setOnClickListener(v -> {
-            moodBar.setRating(4);
-            emojiTbl.setVisibility(View.INVISIBLE);
-            emojiBtn.setImageDrawable(vsadBtn1.getDrawable());
             emojiBtn.setVisibility(View.VISIBLE);
         });
 
