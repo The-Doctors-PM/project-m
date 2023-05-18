@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.SeekBar;
 
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
@@ -15,8 +16,8 @@ import com.example.feelingfinder.R;
 public class FourthQuestionActivity extends AppCompatActivity {
 
     private Button backBtn4, nextBtn4;
-    private RadioButton betterRb,sameRb,worseRb;
-
+    private SeekBar sBar4;
+    private int prog4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +27,35 @@ public class FourthQuestionActivity extends AppCompatActivity {
 
         backBtn4 = findViewById(R.id.backBtn4);
         nextBtn4 = findViewById(R.id.nextBtn4);
+        sBar4 = findViewById(R.id.sBar4);
+
+        sBar4.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                prog4 = sBar4.getProgress();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         backBtn4.setOnClickListener(v -> FourthQuestionActivity.this.onBackPressed());
-        nextBtn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO: Store the user's rating and move to the next question/activity
-                startActivity(new Intent(FourthQuestionActivity.this, MoodTrackerActivity.class));
+
+        nextBtn4.setOnClickListener(v ->    {
+            Intent intent;
+            if(prog4 < 5){
+                intent = new Intent(FourthQuestionActivity.this, ThirdQuestionActivity.class);
+            } else{
+                intent = new Intent(FourthQuestionActivity.this, FifthQuestionActivity.class);
             }
+            startActivity(intent);
         });
     }
     /*

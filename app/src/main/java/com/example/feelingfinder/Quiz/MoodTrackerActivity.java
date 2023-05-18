@@ -16,17 +16,20 @@ import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.R;
 
+
 public class MoodTrackerActivity extends AppCompatActivity {
+    int rtng;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
 
+
         // Retrieve the Database instance
         AppDatabase db = Database.getAppDatabase();
 
         //Submit button
-        Button submitBtn = findViewById(R.id.moodSubmitBtn);
+        //Button submitBtn = findViewById(R.id.moodSubmitBtn);
 
         //Rating Bar
         RatingBar moodBar = findViewById(R.id.moodBar);
@@ -54,21 +57,29 @@ public class MoodTrackerActivity extends AppCompatActivity {
         ImageButton vhappyBtn2 = findViewById(R.id.lazyhappyIBtn);
         TableLayout emojiTbl = findViewById(R.id.emojiTbl);
 
-        //Return to main activity
-        next2ndBtn.setOnClickListener(v ->
-            startActivity(new Intent(MoodTrackerActivity.this, SecondQuestionActivity.class)));
+        //Go to next destination based on a value
+        next2ndBtn.setOnClickListener(v -> {
+            Intent intent;
+            rtng = moodBar.getProgress();
+            if (rtng < 5) {
+                intent = new Intent(MoodTrackerActivity.this, FourthQuestionActivity.class);
+            } else{
+                intent = new Intent(MoodTrackerActivity.this, SecondQuestionActivity.class);
+            }
+            startActivity(intent);
+        });
 
         //Back function
         back2ndBtn.setOnClickListener(v -> MoodTrackerActivity.this.onBackPressed());
 
-        //Submit button function
+        /*/Submit button function
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // get values and then displayed in a toast
                 String msg=null;
-                int r = (int) moodBar.getRating();
-                switch(r){
+                rtng = (int) moodBar.getRating();
+                switch(rtng){
                     case 1:
                         msg="Sorry to hear that!";
                         break;
@@ -105,6 +116,7 @@ public class MoodTrackerActivity extends AppCompatActivity {
                 moodBar.setIsIndicator(true);
             }
         });
+        */
 
         //Rating Bar functions
         moodBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {

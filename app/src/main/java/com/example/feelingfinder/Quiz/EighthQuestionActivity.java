@@ -9,26 +9,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.R;
 
-public class FifthQuestionActivity extends AppCompatActivity {
+public class EighthQuestionActivity extends AppCompatActivity {
 
-    private Button backBtn5, nextBtn5;
-    private SeekBar sBar5;
-    private int prog5;
+    private Button backBtn8, nextBtn8;
+    private SeekBar sBar8;
+    private int prog8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fifth_question);
+        setContentView(R.layout.activity_eighth_question);
 
         // Get the buttons and set the OnClickListener
 
-        backBtn5 = findViewById(R.id.backBtn5);
-        nextBtn5 = findViewById(R.id.nextBtn5);
-        sBar5 = findViewById(R.id.sBar5);
+        backBtn8 = findViewById(R.id.backBtn8);
+        nextBtn8 = findViewById(R.id.nextBtn8);
+        sBar8 = findViewById(R.id.sBar8);
 
-        sBar5.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sBar8.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                prog5 = sBar5.getProgress();
+                prog8 = sBar8.getProgress();
             }
 
             @Override
@@ -42,10 +42,10 @@ public class FifthQuestionActivity extends AppCompatActivity {
             }
         });
 
-        backBtn5.setOnClickListener(v -> FifthQuestionActivity.this.onBackPressed());
+        backBtn8.setOnClickListener(v -> EighthQuestionActivity.this.onBackPressed());
 
-        nextBtn5.setOnClickListener(v ->    {
-            Intent intent = new Intent(FifthQuestionActivity.this, SixthQuestionActivity.class);
+        nextBtn8.setOnClickListener(v ->    {
+            Intent intent = new Intent(EighthQuestionActivity.this, NinthQuestionActivity.class);
             startActivity(intent);
         });
     }

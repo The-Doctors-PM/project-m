@@ -7,7 +7,7 @@
     android:textAlignment="center">
 
     <Button
-        android:id="@+id/backBtn4"
+        android:id="@+id/backBtn9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -18,13 +18,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/compareTV4"
+        android:id="@+id/compareTV9"
         android:layout_width="300dp"
         android:layout_height="74dp"
         android:layout_marginStart="43dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="38dp"
-        android:text="How anxious did you feel?"
+        android:text="How do you feel right now?"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/nextBtn4"
+        android:id="@+id/nextBtn9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <SeekBar
-        android:id="@+id/sBar4"
+        android:id="@+id/sBar9"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="260dp"
         android:layout_height="30dp"
@@ -55,5 +55,5 @@
         android:progress="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compareTV4" />
+        app:layout_constraintTop_toBottomOf="@+id/compareTV9" />
 </androidx.constraintlayout.widget.ConstraintLayout>

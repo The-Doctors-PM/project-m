@@ -11,13 +11,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.MainActivity;
+import com.example.feelingfinder.Quiz.FirstQuestionActivity;
 import com.example.feelingfinder.R;
 import kotlin.random.Random;
 import kotlin.random.URandomKt;
 
 public class ThirdQuestionActivity extends AppCompatActivity {
 
-    private SeekBar sBar3;
+    public SeekBar sBar3;
     private Button nextBtn3,backBtn3;
     int prog3, rndn;
     Random rnd = new Random() {
@@ -35,6 +36,8 @@ public class ThirdQuestionActivity extends AppCompatActivity {
 
         // Get the RatingBar and Next Button views from the layout
         sBar3 = findViewById(R.id.happySB);
+        FirstQuestionActivity fqa = new FirstQuestionActivity();
+
         nextBtn3 = findViewById(R.id.nextBtn3);
         backBtn3 = findViewById(R.id.backBtn3);
 
@@ -104,6 +107,7 @@ public class ThirdQuestionActivity extends AppCompatActivity {
 
         nextBtn3.setOnClickListener(view -> {
                 // Do something with the progress, such as save it in a global variable
+                //fqa.sBar1.setClickable(false);
                 Intent intent = new Intent(ThirdQuestionActivity.this, MainActivity.class);
                 startActivity(intent);
 
