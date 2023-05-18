@@ -63,7 +63,7 @@ public class Database {
 
     public static void importMockData(){
         boolean nextStatus = false;
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 20; i++){
             int date = DateToStringConverter.dateToInt(LocalDate.now()) - i*2;
             System.out.println("Today: " + DateToStringConverter.dateToInt(LocalDate.now()) + "\nNew: " + date);
             Note n = new Note(date,"Mock Note #" + i);

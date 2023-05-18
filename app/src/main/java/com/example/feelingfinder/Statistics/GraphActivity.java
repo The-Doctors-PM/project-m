@@ -2,6 +2,7 @@ package com.example.feelingfinder.Statistics;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.example.feelingfinder.Database.AppDatabase;
@@ -13,6 +14,7 @@ import com.example.feelingfinder.Database.Quiz;
 import com.example.feelingfinder.Database.QuizDAO;
 import com.example.feelingfinder.R;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -36,7 +38,9 @@ public class GraphActivity extends AppCompatActivity {
                 new DataPoint(3, 2),
                 new DataPoint(4, 6)
         });
+        series.setColor(Color.RED);
         graph.addSeries(series);
+        graph.setTitle("Mock 1");
 
 
 
@@ -64,7 +68,18 @@ public class GraphActivity extends AppCompatActivity {
 
         GraphView graph2 = (GraphView) findViewById(R.id.graph2);
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>(dataPoints);
+        series2.setColor(Color.BLUE);
         graph2.addSeries(series2);
+        graph2.setTitle("Daily Rating");
+        GridLabelRenderer glr = graph2.getGridLabelRenderer();
+        glr.setHorizontalAxisTitle("Days");
+        glr.setVerticalAxisTitle("Rating");
+        glr.setGridColor(Color.GRAY);
+        graph2.getViewport().setScalable(true);
+        graph2.getViewport().setScalableY(true);
+        graph2.getViewport().setScrollable(true);
+        graph2.getViewport().setScrollableY(true);
+
         // -------------- END Custom data try #1 END ---------------
 
 
@@ -78,5 +93,6 @@ public class GraphActivity extends AppCompatActivity {
                 new DataPoint(4, 6)
         });
         graph3.addSeries(series3);
+        graph3.setTitle("Mock 2");
     }
 }
