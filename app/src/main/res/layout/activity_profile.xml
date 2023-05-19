@@ -86,7 +86,7 @@
         android:drawableLeft="@drawable/ic_mail"/>
 
     <EditText
-        android:id="@+id/Phone"
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="  Phone"

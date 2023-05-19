@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    EditText firstName, lastName, etDate;
+    EditText firstName, lastName, etDate, email, phone;
     RadioGroup gender;
     RadioButton selectedGender;
     Button saveButton, deleteButton;
@@ -43,6 +43,8 @@ public class ProfileActivity extends AppCompatActivity {
         lastName = findViewById(R.id.lastName);
         etDate = findViewById(R.id.et_date);
         gender = findViewById(R.id.gender);
+        phone = findViewById(R.id.phone);
+        email = findViewById(R.id.email);
         saveButton = findViewById(R.id.saveButtonProfile);
         deleteButton = findViewById(R.id.deleteButtonProfile);
         backButton = findViewById(R.id.toolbar);
@@ -113,6 +115,8 @@ public class ProfileActivity extends AppCompatActivity {
         firstName.setText(preferences.getString("firstName", ""));
         lastName.setText(preferences.getString("lastName", ""));
         etDate.setText(preferences.getString("dateOfBirth", etDate.getText().toString()));
+        phone.setText(preferences.getString("phone", ""));
+        email.setText(preferences.getString("email", ""));
         String savedGender = preferences.getString("gender", "");
         if (savedGender.equals("Male")) {
             gender.check(R.id.male);
@@ -122,6 +126,7 @@ public class ProfileActivity extends AppCompatActivity {
             gender.check(R.id.other);
         }
 
+
     }
 
     private void saveProfile() {
@@ -130,6 +135,8 @@ public class ProfileActivity extends AppCompatActivity {
         editor.putString("firstName", firstName.getText().toString());
         editor.putString("lastName", lastName.getText().toString());
         editor.putString("dateOfBirth", etDate.getText().toString());
+        editor.putString("phone", phone.getText().toString());
+        editor.putString("email", email.getText().toString());
         int selectedGenderId = gender.getCheckedRadioButtonId();
         if (selectedGenderId != -1) {
             selectedGender = findViewById(selectedGenderId);
@@ -151,6 +158,8 @@ public class ProfileActivity extends AppCompatActivity {
         firstName.setText("");
         lastName.setText("");
         etDate.setText("");
+        phone.setText("");
+        email.setText("");
 
         // Clear the selected gender radio button
         gender.clearCheck();
