@@ -18,7 +18,7 @@
 
 
     <TextView
-        android:id="@+id/moodTrackerEditTime"
+        android:id="@+id/moodTrackerEditTimeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -26,20 +26,29 @@
         android:textSize="18sp"
         android:layout_marginTop="15dp"/>
 
+    <TimePicker
+        android:id='@+id/moodTrackerEditTimePicker'
+        android:layout_width="313dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:timePickerMode="spinner" />
+
     <Button
         android:id="@+id/moodTrackerEditTimeButton"
         android:layout_width="180dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Confirm notification time"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_gravity="center"
-        android:text="Example"
-        android:layout_marginTop="15dp"/>
+        />
 
 
     <Button
         android:id="@+id/profilePictureUploadButton"
         android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
         android:text="Upload profile picture"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_gravity="center"
