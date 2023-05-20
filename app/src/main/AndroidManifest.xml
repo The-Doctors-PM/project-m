@@ -81,7 +81,7 @@
             android:name=".Quiz.NinthQuestionActivity"
             android:exported="false" />
         <activity
-            android:name=".Statitics.StatitcsPlaceholderActivity"
+            android:name=".Statistics.StatisticsPlaceholderActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity.SettingsActivity"
