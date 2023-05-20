@@ -1,4 +1,4 @@
-package com.example.feelingfinder.Statitics;
+package com.example.feelingfinder.Statistics;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +21,7 @@ import com.example.feelingfinder.R;
 import com.example.feelingfinder.SettingsActivity.SettingsActivity;
 import com.example.feelingfinder.Utility.FeelingFinder;
 
-public class StatitcsPlaceholderActivity extends AppCompatActivity {
+public class StatisticsPlaceholderActivity extends AppCompatActivity {
     private final String CHANNEL_ID = "FFChannel";
 
     @Override
@@ -79,6 +79,16 @@ public class StatitcsPlaceholderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FeelingFinder.getAppContext(), SettingsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        Button goGraph = findViewById(R.id.goToGraph);
+        goGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FeelingFinder.getAppContext(), GraphActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
