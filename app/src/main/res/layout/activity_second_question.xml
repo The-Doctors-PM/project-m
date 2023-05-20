@@ -9,13 +9,14 @@
 
     <TextView
         android:id="@+id/overallTV"
-        android:layout_width="275dp"
-        android:layout_height="25dp"
+        android:layout_width="338dp"
+        android:layout_height="66dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:text="How was your day overall?"
-        android:textSize="20sp"
+        android:text="Are you overall satisfied with yourself today?"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/overallSB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +28,10 @@
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="260dp"
         android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:indeterminate="false"
         android:max="10"
+        android:min="0"
         android:progress="3"
         app:layout_constraintBottom_toTopOf="@+id/happyTV"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,28 +43,23 @@
         android:id="@+id/backBtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="48dp"
         android:layout_marginBottom="32dp"
         android:text="BACK"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/nextBtn2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/nextBtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="32dp"
         android:text="Next"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.966"
-        app:layout_constraintStart_toEndOf="@+id/backBtn2" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

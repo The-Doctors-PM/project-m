@@ -1,9 +1,11 @@
 package com.example.feelingfinder.Diary;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -77,9 +79,23 @@ public class PastNotesActivity extends AppCompatActivity {
         wipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Database.wipeNotes();
-                startActivity(new Intent(FeelingFinder.getAppContext(), MainActivity.class));
-            }
+                // Ask for confirmation
+                new AlertDialog.Builder(PastNotesActivity.this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Delete all Notes?")
+                        .setMessage("Are you sure you want to delete ALL the notes?\n" +
+                                "You won't be able to retrieve them in any way!!")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Wipes Db and goes back to Main Activity to enable the refresh
+                                Database.wipeNotes();
+                                startActivity(new Intent(FeelingFinder.getAppContext(), MainActivity.class));
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+                }
         });
 
         FloatingActionButton backButton = findViewById(R.id.backButtonToDiary);
