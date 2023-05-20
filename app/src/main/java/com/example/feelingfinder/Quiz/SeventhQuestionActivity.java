@@ -7,7 +7,9 @@ import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.feelingfinder.Database.Question;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.Utility.QuizGlobalVariables;
 
 public class SeventhQuestionActivity extends AppCompatActivity {
 
@@ -45,6 +47,8 @@ public class SeventhQuestionActivity extends AppCompatActivity {
         backBtn7.setOnClickListener(v -> SeventhQuestionActivity.this.onBackPressed());
 
         nextBtn7.setOnClickListener(v ->    {
+            System.out.println("Val: " + prog7);
+            QuizGlobalVariables.todaysQuestions.add(new Question("Heart", prog7));
             Intent intent = new Intent(SeventhQuestionActivity.this, EighthQuestionActivity.class);
             startActivity(intent);
         });

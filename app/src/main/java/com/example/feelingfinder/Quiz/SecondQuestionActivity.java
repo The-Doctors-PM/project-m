@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.feelingfinder.Database.Question;
+import com.example.feelingfinder.Utility.QuizGlobalVariables;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 
@@ -66,16 +68,21 @@ public class SecondQuestionActivity extends AppCompatActivity {
         });
 
         nextBtn2.setOnClickListener(view -> {
+            System.out.println("Val: " + val);
+            QuizGlobalVariables.todaysQuestions.add(new Question("Satisfaction", val));
+
             if(val < 5) {
-                // Do something with the progress, such as save it in a global variable
+                QuizGlobalVariables.wasSatisfied = false;
                 Intent intent = new Intent(SecondQuestionActivity.this, ThirdQuestionActivity.class);
                 startActivity(intent);
             }
             else {
-                Intent intent = new Intent(SecondQuestionActivity.this, MainActivity.class);
+                QuizGlobalVariables.wasSatisfied = true;
+                Intent intent = new Intent(SecondQuestionActivity.this, QuizCompletedActivity.class);
                 startActivity(intent);
+                //TODO Lock the mood activity for the day
             }
-            //TODO Lock the mood activity for the day
+
         });
     }
 }

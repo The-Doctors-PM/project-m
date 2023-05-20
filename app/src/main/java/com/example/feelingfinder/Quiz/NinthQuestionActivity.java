@@ -8,8 +8,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.feelingfinder.Database.Question;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.Utility.QuizGlobalVariables;
 
 import kotlin.random.Random;
 
@@ -77,7 +79,9 @@ public class NinthQuestionActivity extends AppCompatActivity {
         backBtn9.setOnClickListener(v -> NinthQuestionActivity.this.onBackPressed());
 
         nextBtn9.setOnClickListener(v ->    {
-            Intent intent = new Intent(NinthQuestionActivity.this, MainActivity.class);
+            System.out.println("Val: " + prog9);
+            QuizGlobalVariables.todaysQuestions.add(new Question("RightNow", prog9));
+            Intent intent = new Intent(NinthQuestionActivity.this, QuizCompletedActivity.class);
             startActivity(intent);
         });
     }

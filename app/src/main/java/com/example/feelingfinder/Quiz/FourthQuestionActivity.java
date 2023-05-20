@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 
+import com.example.feelingfinder.Database.Question;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.Utility.QuizGlobalVariables;
 
 public class FourthQuestionActivity extends AppCompatActivity {
 
@@ -50,9 +52,13 @@ public class FourthQuestionActivity extends AppCompatActivity {
 
         nextBtn4.setOnClickListener(v ->    {
             Intent intent;
+            System.out.println("Val: " + prog4);
+            QuizGlobalVariables.todaysQuestions.add(new Question("Anxiety", prog4));
             if(prog4 < 5){
+                QuizGlobalVariables.hadAnxiety = false;
                 intent = new Intent(FourthQuestionActivity.this, ThirdQuestionActivity.class);
             } else{
+                QuizGlobalVariables.hadAnxiety = true;
                 intent = new Intent(FourthQuestionActivity.this, FifthQuestionActivity.class);
             }
             startActivity(intent);
