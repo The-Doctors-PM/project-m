@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/blue_gradient"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".Statistics.GraphActivity">
 
@@ -20,7 +21,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,19 +31,25 @@
             <com.jjoe64.graphview.GraphView
                 android:id="@+id/graph1"
                 android:layout_width="390dp"
-                android:layout_height="200dip" />
-
-            <com.jjoe64.graphview.GraphView
-                android:id="@+id/graph2"
-                android:layout_width="390dp"
-                android:layout_height="200dip" />
+                android:layout_height="200dip"
+                android:background="@color/cornFlower" />
 
             <com.jjoe64.graphview.GraphView
                 android:id="@+id/graph3"
                 android:layout_width="390dp"
-                android:layout_height="200dip" />
+                android:layout_height="200dip"
+                android:background="@color/white" />
 
         </LinearLayout>
     </HorizontalScrollView>
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph2"
+        android:layout_width="380dp"
+        android:layout_height="300dip"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/ButterMilk" />
 
 </LinearLayout>
