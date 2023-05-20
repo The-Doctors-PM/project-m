@@ -8,11 +8,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.feelingfinder.Notifications.*
 import com.example.feelingfinder.R
 import com.example.feelingfinder.databinding.ActivitySettingsBinding
+import org.w3c.dom.Text
 import java.sql.Time
 import java.time.LocalTime
 import java.util.*
@@ -54,7 +56,10 @@ class SettingsActivity : AppCompatActivity() {
 
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val time = getTime()    // get time from user input from interface
-        println("Tempo dopo getTime: $time")    // seems correct time
+
+        val showCurrentTimeSet = findViewById<TextView>(R.id.moodTrackerCurrentNotifTimeSet)
+        val currentTimeSetText = "Current mood tracker notification time set to: " + timeString(time)
+        showCurrentTimeSet.text = currentTimeSetText
 
         // schedule notification daily
         alarmManager.setRepeating(
@@ -68,13 +73,9 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun showAlert(time: Long)
     {
-        val hours = (time / (1000 * 60 * 60)) % 24
-        val minutes = (time / (1000 * 60)) % 60
-
-        val timeFormat = String.format("%02d:%02d", hours, minutes)
         AlertDialog.Builder(this)
                 .setTitle("Notification Scheduled")
-                .setMessage("Daily Mood Tracker reminder set to $timeFormat")
+                .setMessage("Daily Mood Tracker reminder set to ${timeString(time)}")
                 .setPositiveButton("Ok"){_,_ ->}
                 .show()
     }
@@ -85,8 +86,14 @@ class SettingsActivity : AppCompatActivity() {
         val hour = settingsBinding.moodTrackerEditTimePicker.hour
 
         val time = LocalTime.of(hour, minute, 0)
-        println("Ora presa dall'interfaccia: $hour $minute")    // sembra che l'interfaccia ritorni risultati giusti
         return time.toNanoOfDay() / 1000000
+    }
+
+    private fun timeString(time: Long): String {
+        val hours = (time / (1000 * 60 * 60)) % 24
+        val minutes = (time / (1000 * 60)) % 60
+
+        return String.format("%02d:%02d", hours, minutes)
     }
 
     private fun createNotificationChannel()

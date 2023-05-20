@@ -26,11 +26,22 @@
         android:textSize="18sp"
         android:layout_marginTop="15dp"/>
 
+    <TextView
+        android:id="@+id/moodTrackerCurrentNotifTimeSet"
+        android:layout_width="117dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="15dp"
+        android:text="Current notification time set: "
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
     <TimePicker
         android:id='@+id/moodTrackerEditTimePicker'
-        android:layout_width="313dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="158dp"
         android:layout_marginStart="50dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
         android:timePickerMode="spinner" />
 
     <Button
