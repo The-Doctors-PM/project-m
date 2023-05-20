@@ -10,32 +10,37 @@ import java.time.LocalDate;
 public class Quiz {
 
     @PrimaryKey @NonNull
-    public int id;
-
-    @NonNull
-    public int overall;
-
-    @NonNull
-    public int anxiety;
-
-    @NonNull
-    public int happiness;
-
-
+    public int id; //aka date
+    public int dayRating;
+    public boolean hadAnxiety;
+    public boolean wasSatisfied;
+    public boolean betterTomorrow;
 
 
     public Quiz(){
         this.id = DateToStringConverter.dateToInt(LocalDate.now());
-        this.overall = 0;
-        this.anxiety = 0;
-        this.happiness = 0;
+        this.dayRating = -1;
+        this.hadAnxiety = false;
+        this.wasSatisfied = false;
+        this.betterTomorrow = false;
+
     }
 
-    public Quiz(int overall, int anxiety, int happiness){
+    public Quiz(int dayRating, boolean hadAnxiety, boolean wasSatisfied, boolean betterTomorrow){
         this.id = DateToStringConverter.dateToInt(LocalDate.now());
-        this.overall = overall;
-        this.anxiety = anxiety;
-        this.happiness = happiness;
+        this.dayRating = dayRating;
+        this.hadAnxiety = hadAnxiety;
+        this.wasSatisfied = wasSatisfied;
+        this.betterTomorrow = betterTomorrow;
+    }
+
+    // Just for mock data
+    public Quiz(int fakeDate){
+        this.id = fakeDate;
+        this.dayRating = -1;
+        this.hadAnxiety = false;
+        this.wasSatisfied = false;
+        this.betterTomorrow = false;
     }
 
 
