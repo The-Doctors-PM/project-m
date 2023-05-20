@@ -3,60 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:textAlignment="center">
 
     <Button
         android:id="@+id/backBtn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="48dp"
         android:layout_marginBottom="32dp"
         android:text="BACK"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/nextBtn4"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <RadioGroup
-        android:layout_width="80dp"
-        android:layout_height="114dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compareTV2">
-
-        <RadioButton
-            android:id="@+id/worseRBtn2"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="Worse" />
-
-        <RadioButton
-            android:id="@+id/sameRBtn2"
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:orientation="vertical"
-            android:text="Same"
-            app:layout_wrapBehaviorInParent="skipped" />
-
-        <RadioButton
-            android:id="@+id/betterRBtn2"
-            android:layout_width="match_parent"
-            android:layout_height="33dp"
-            android:text="Better" />
-    </RadioGroup>
-
     <TextView
-        android:id="@+id/compareTV2"
-        android:layout_width="280dp"
-        android:layout_height="55dp"
+        android:id="@+id/compareTV4"
+        android:layout_width="300dp"
+        android:layout_height="74dp"
         android:layout_marginStart="43dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="38dp"
-        android:text="How was today compared to yesterday?"
-        android:textSize="20sp"
+        android:text="How anxious did you feel?"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,13 +36,24 @@
         android:id="@+id/nextBtn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="32dp"
         android:text="NEXT"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <SeekBar
+        android:id="@+id/sBar4"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:max="10"
+        android:progress="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/backBtn4" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compareTV4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

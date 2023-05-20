@@ -9,8 +9,12 @@ import com.example.feelingfinder.R;
 
 public class FirstQuestionActivity extends AppCompatActivity {
 
-    private SeekBar sBar1;
+    public SeekBar sBar1;
     private Button nextBtn1, backBtn1;
+    private int prog;
+    void dissSeekBar(){
+        sBar1.setClickable(false);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +27,24 @@ public class FirstQuestionActivity extends AppCompatActivity {
 
         backBtn1.setOnClickListener(v -> FirstQuestionActivity.this.onBackPressed());
 
+        sBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                prog = sBar1.getProgress();
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
         nextBtn1.setOnClickListener(view -> {
-            int prog1 = sBar1.getProgress();
             // Do something with the progress, such as save it in a global variable
-            Intent intent = new Intent(FirstQuestionActivity.this, SecondQuestionActivity.class);
+            Intent intent = new Intent(FirstQuestionActivity.this, MoodTrackerActivity.class);
             startActivity(intent);
         });
+
     }
 }

@@ -9,26 +9,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.R;
 
-public class FifthQuestionActivity extends AppCompatActivity {
+public class SixthQuestionActivity extends AppCompatActivity {
 
-    private Button backBtn5, nextBtn5;
-    private SeekBar sBar5;
-    private int prog5;
+    private Button backBtn6, nextBtn6;
+    private SeekBar sBar6;
+    private int prog6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fifth_question);
+        setContentView(R.layout.activity_sixth_question);
 
         // Get the buttons and set the OnClickListener
 
-        backBtn5 = findViewById(R.id.backBtn5);
-        nextBtn5 = findViewById(R.id.nextBtn5);
-        sBar5 = findViewById(R.id.sBar5);
+        backBtn6 = findViewById(R.id.backBtn6);
+        nextBtn6 = findViewById(R.id.nextBtn6);
+        sBar6 = findViewById(R.id.sBar6);
 
-        sBar5.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sBar6.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                prog5 = sBar5.getProgress();
+                prog6 = sBar6.getProgress();
             }
 
             @Override
@@ -42,12 +42,13 @@ public class FifthQuestionActivity extends AppCompatActivity {
             }
         });
 
-        backBtn5.setOnClickListener(v -> FifthQuestionActivity.this.onBackPressed());
+        backBtn6.setOnClickListener(v -> SixthQuestionActivity.this.onBackPressed());
 
-        nextBtn5.setOnClickListener(v ->    {
-            Intent intent = new Intent(FifthQuestionActivity.this, SixthQuestionActivity.class);
+        nextBtn6.setOnClickListener(v ->{
+            Intent intent = new Intent(SixthQuestionActivity.this, SeventhQuestionActivity.class);
             startActivity(intent);
         });
-    }
 
+
+    }
 }

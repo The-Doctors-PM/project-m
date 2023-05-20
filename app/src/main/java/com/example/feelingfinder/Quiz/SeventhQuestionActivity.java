@@ -9,26 +9,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.R;
 
-public class FifthQuestionActivity extends AppCompatActivity {
+public class SeventhQuestionActivity extends AppCompatActivity {
 
-    private Button backBtn5, nextBtn5;
-    private SeekBar sBar5;
-    private int prog5;
+    private Button backBtn7, nextBtn7;
+    private SeekBar sBar7;
+    private int prog7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fifth_question);
+        setContentView(R.layout.activity_seventh_question);
 
         // Get the buttons and set the OnClickListener
 
-        backBtn5 = findViewById(R.id.backBtn5);
-        nextBtn5 = findViewById(R.id.nextBtn5);
-        sBar5 = findViewById(R.id.sBar5);
+        backBtn7 = findViewById(R.id.backBtn7);
+        nextBtn7 = findViewById(R.id.nextBtn7);
+        sBar7 = findViewById(R.id.sBar7);
 
-        sBar5.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sBar7.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                prog5 = sBar5.getProgress();
+                prog7 = sBar7.getProgress();
             }
 
             @Override
@@ -42,10 +42,10 @@ public class FifthQuestionActivity extends AppCompatActivity {
             }
         });
 
-        backBtn5.setOnClickListener(v -> FifthQuestionActivity.this.onBackPressed());
+        backBtn7.setOnClickListener(v -> SeventhQuestionActivity.this.onBackPressed());
 
-        nextBtn5.setOnClickListener(v ->    {
-            Intent intent = new Intent(FifthQuestionActivity.this, SixthQuestionActivity.class);
+        nextBtn7.setOnClickListener(v ->    {
+            Intent intent = new Intent(SeventhQuestionActivity.this, EighthQuestionActivity.class);
             startActivity(intent);
         });
     }

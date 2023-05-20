@@ -51,6 +51,9 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".Quiz.MoodTrackerActivity"
+            android:exported="false" />
+        <activity
             android:name=".Quiz.FirstQuestionActivity"
             android:exported="false" />
         <activity
@@ -66,10 +69,19 @@
             android:name=".Quiz.FifthQuestionActivity"
             android:exported="false" />
         <activity
-            android:name=".Statistics.StatisticsPlaceholderActivity"
+            android:name=".Quiz.SixthQuestionActivity"
             android:exported="false" />
         <activity
-            android:name=".Quiz.MoodTrackerActivity"
+            android:name=".Quiz.SeventhQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.EighthQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Quiz.NinthQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Statitics.StatitcsPlaceholderActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity.SettingsActivity"
