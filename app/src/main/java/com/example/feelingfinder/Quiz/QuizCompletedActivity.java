@@ -8,8 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.feelingfinder.Database.AppDatabase;
+import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Database.Question;
+import com.example.feelingfinder.Database.QuestionsDAO;
 import com.example.feelingfinder.Database.Quiz;
+import com.example.feelingfinder.Database.QuizDAO;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 import com.example.feelingfinder.Utility.QuizGlobalVariables;
@@ -40,6 +44,19 @@ public class QuizCompletedActivity extends AppCompatActivity {
         Button restartQuiz = findViewById(R.id.restartQuiz);
         finishQuiz.setOnClickListener(view -> {
             //TODO: create the quiz and all the DB stuff to save things
+            AppDatabase db = Database.getAppDatabase();
+            QuizDAO quizDAO = db.quizDAO();
+            QuestionsDAO questionsDAO = db.questionsDAO();
+            Quiz quiz = new Quiz();
+            quiz.dayRating = QuizGlobalVariables.dayRating;
+            quiz.hadAnxiety = QuizGlobalVariables.hadAnxiety;
+            quiz.wasSatisfied = QuizGlobalVariables.wasSatisfied;
+            quiz.betterTomorrow = QuizGlobalVariables.betterTomorrow;
+            quizDAO.addQuiz(quiz);
+            for (Question q :QuizGlobalVariables.todaysQuestions){
+                q.quizId = quiz.id;
+                questionsDAO.addQuestion(q);
+            }
 
             // TODO: Can lock here the test.
 

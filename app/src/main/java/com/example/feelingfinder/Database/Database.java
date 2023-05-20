@@ -63,8 +63,8 @@ public class Database {
 
     public static void importMockData(){
         boolean nextStatus = false;
-        for (int i = 0; i < 20; i++){
-            int date = DateToStringConverter.dateToInt(LocalDate.now()) - i*2;
+        for (int i = 0; i < 14; i++){
+            int date = fakeDate + i;
             System.out.println("Today: " + DateToStringConverter.dateToInt(LocalDate.now()) + "\nNew: " + date);
             Note n = new Note(date,"Mock Note #" + i);
             db.notesDAO().addNote(n);
@@ -88,6 +88,9 @@ public class Database {
             Question q2 = new Question("Question #2 here", rand.nextInt(7));
             q2.quizId = quiz.id;
             db.questionsDAO().addQuestion(q2);
+            Question q3 = new Question("Question #3 here", rand.nextInt(5));
+            q3.quizId = quiz.id;
+            db.questionsDAO().addQuestion(q3);
         }
     }
 
