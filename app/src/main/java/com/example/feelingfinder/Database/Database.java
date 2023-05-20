@@ -65,7 +65,6 @@ public class Database {
         boolean nextStatus = false;
         for (int i = 0; i < 14; i++){
             int date = fakeDate + i;
-            System.out.println("Today: " + DateToStringConverter.dateToInt(LocalDate.now()) + "\nNew: " + date);
             Note n = new Note(date,"Mock Note #" + i);
             db.notesDAO().addNote(n);
             Random rand = new Random();
@@ -74,8 +73,8 @@ public class Database {
             nextStatus = !nextStatus;
             db.goalsDAO().addGoal(g);
 
-
-            Quiz quiz = new Quiz(fakeDate++);
+            int fakedate2 = fakeDate + i;
+            Quiz quiz = new Quiz(fakedate2);
             quiz.hadAnxiety = nextStatus;
             quiz.betterTomorrow = !nextStatus;
             quiz.wasSatisfied = nextStatus;
@@ -92,6 +91,7 @@ public class Database {
             q3.quizId = quiz.id;
             db.questionsDAO().addQuestion(q3);
         }
+        System.out.println("Mock Data Added successfully");
     }
 
     public static void wipeAllData(){
