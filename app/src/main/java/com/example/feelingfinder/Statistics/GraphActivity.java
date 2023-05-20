@@ -1,13 +1,14 @@
 package com.example.feelingfinder.Statistics;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
-import com.example.feelingfinder.Database.GoalsDAO;
 import com.example.feelingfinder.Database.Question;
 import com.example.feelingfinder.Database.QuestionsDAO;
 import com.example.feelingfinder.Database.Quiz;
@@ -19,32 +20,20 @@ import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GraphActivity extends AppCompatActivity {
 
     private List<Quiz> quizList;
     private List<Question> questionList;
+    private GraphView graph;
+    private AppDatabase db = Database.getAppDatabase();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
-        GraphView graph = (GraphView) findViewById(R.id.graph1);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        series.setColor(Color.RED);
-        graph.addSeries(series);
-        graph.setTitle("Mock 1");
-
-
-
-        // ------------------ Custom data try #1 ------------------
         // Retrieve the Database instance
         AppDatabase db = Database.getAppDatabase();
         // Get access to the quiz query
@@ -53,7 +42,50 @@ public class GraphActivity extends AppCompatActivity {
         QuestionsDAO qDao = db.questionsDAO();
         // Gets all the quiz
         quizList = qzDao.getAll();
+        questionList = qDao.getAll();
 
+        graph = (GraphView) findViewById(R.id.graph);
+        graph.getGridLabelRenderer().setGridColor(Color.GRAY);
+        //graph.getViewport().setScalable(true);
+        //graph.getViewport().setScalableY(true);
+        //graph.getViewport().setScrollable(true);
+        //graph.getViewport().setScrollableY(true);
+
+        loadDailyRatingGraph();
+
+
+        // Items
+        CardView dailyRating = findViewById(R.id.dailyRatingCV);
+        CardView anxiety = findViewById(R.id.anxietyCV);
+        CardView anxietyRating = findViewById(R.id.anxietyRating);
+        dailyRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadDailyRatingGraph();
+            }
+        });
+        anxiety.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadAnxietyGraph();
+            }
+        });
+        anxietyRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadAnxietyRatingGraph();
+            }
+        });
+
+
+    }
+
+    private void resetGraph(){
+        graph.removeAllSeries();
+    }
+
+    private void loadDailyRatingGraph(){
+        resetGraph();
         // Datapoint array for the graph
         DataPoint[] dataPoints;
         dataPoints = new DataPoint[quizList.size()];
@@ -66,33 +98,80 @@ public class GraphActivity extends AppCompatActivity {
             counter++;
         }
 
-        GraphView graph2 = (GraphView) findViewById(R.id.graph2);
-        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>(dataPoints);
-        series2.setColor(Color.BLUE);
-        graph2.addSeries(series2);
-        graph2.setTitle("Daily Rating");
-        GridLabelRenderer glr = graph2.getGridLabelRenderer();
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(dataPoints);
+        series.setColor(Color.BLUE);
+        graph.addSeries(series);
+        graph.setTitle("Daily Rating");
+        GridLabelRenderer glr = graph.getGridLabelRenderer();
         glr.setHorizontalAxisTitle("Days");
         glr.setVerticalAxisTitle("Rating");
-        glr.setGridColor(Color.GRAY);
-        graph2.getViewport().setScalable(true);
-        graph2.getViewport().setScalableY(true);
-        graph2.getViewport().setScrollable(true);
-        graph2.getViewport().setScrollableY(true);
 
-        // -------------- END Custom data try #1 END ---------------
+    }
 
+    private void loadAnxietyGraph(){
+        resetGraph();
+        DataPoint[] dataPoints;
+        dataPoints = new DataPoint[quizList.size()];
 
+        int counter = 0;
 
-        GraphView graph3 = (GraphView) findViewById(R.id.graph3);
-        BarGraphSeries<DataPoint> series3 = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, -1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        graph3.addSeries(series3);
-        graph3.setTitle("Mock 2");
+        for (Quiz q: quizList) {
+            int val = 0;
+            if (q.hadAnxiety){
+                val = 1;
+            }
+            dataPoints[counter] = new DataPoint(counter, val);
+            counter++;
+        }
+
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(dataPoints);
+        series.setColor(Color.BLUE);
+        graph.addSeries(series);
+        graph.setTitle("Anxiety");
+        GridLabelRenderer glr = graph.getGridLabelRenderer();
+        glr.setHorizontalAxisTitle("Days");
+        glr.setVerticalAxisTitle("Yes/No");
+    }
+    private void loadAnxietyRatingGraph(){
+        resetGraph();
+        DataPoint[] dataPoints;
+        dataPoints = new DataPoint[quizList.size()];
+        List<Quiz> quizAnx = new ArrayList<>();
+        for (Quiz q: quizList) {
+            if (q.hadAnxiety) {
+                quizAnx.add(q);
+            }
+        }
+
+        int counter = 0;
+
+        for (Quiz q: quizList) {
+            if (quizAnx.contains(q)){
+                List<Question> questions = db.questionsDAO().getQuestionFromQuizId(q.id);
+                for (Question qq : questions){
+                    if (qq.question.equals("Anxiety")){
+                        DataPoint d = new DataPoint(counter, qq.answer);
+                        dataPoints[counter] = d;
+                    }
+                }
+            }
+            else{
+                DataPoint d = new DataPoint(counter, 0);
+                dataPoints[counter] = d;
+            }
+
+            counter++;
+        }
+
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(dataPoints);
+        series.setColor(Color.BLUE);
+        graph.addSeries(series);
+        graph.setTitle("Anxiety Detailed");
+        GridLabelRenderer glr = graph.getGridLabelRenderer();
+        glr.setHorizontalAxisTitle("Days");
+        glr.setVerticalAxisTitle("Amount");
     }
 }

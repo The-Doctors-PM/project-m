@@ -90,6 +90,11 @@ public class Database {
             Question q3 = new Question("Question #3 here", rand.nextInt(5));
             q3.quizId = quiz.id;
             db.questionsDAO().addQuestion(q3);
+            if(quiz.hadAnxiety){
+                Question q4 = new Question("Anxiety", rand.nextInt(8));
+                q4.quizId = quiz.id;
+                db.questionsDAO().addQuestion(q4);
+            }
         }
         System.out.println("Mock Data Added successfully");
     }
