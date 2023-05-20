@@ -42,7 +42,7 @@ public class SecondQuestionActivity extends AppCompatActivity {
                 if(val>=5) {
                     switch (val) {
                         case 5:
-                            msg = "Sometimes maybe good, sometimes maybe shit!";
+                            msg = "Sometimes maybe good, sometimes maybe not!";
                             break;
                         case 6:
                             msg = "Tomorrow is another day full of opportunities!";
