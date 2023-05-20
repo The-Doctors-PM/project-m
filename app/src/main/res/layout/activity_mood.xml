@@ -83,6 +83,7 @@
         android:max="10"
         android:min="0"
         android:numStars="10"
+        android:progress="0"
         android:progressTint="@color/blueSplash"
         android:stepSize="1"
         app:layout_constraintBottom_toTopOf="@+id/storyTxt"

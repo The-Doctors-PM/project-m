@@ -13,7 +13,7 @@ public class EighthQuestionActivity extends AppCompatActivity {
 
     private Button backBtn8, nextBtn8;
     private SeekBar sBar8;
-    private int prog8;
+    public int prog8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,7 @@ public class EighthQuestionActivity extends AppCompatActivity {
         backBtn8.setOnClickListener(v -> EighthQuestionActivity.this.onBackPressed());
 
         nextBtn8.setOnClickListener(v ->    {
+            sBar8.setEnabled(false);
             Intent intent = new Intent(EighthQuestionActivity.this, NinthQuestionActivity.class);
             startActivity(intent);
         });

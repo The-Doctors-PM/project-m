@@ -24,7 +24,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btn2, btn3, btn4, btn5;
     private FrameLayout dailyQuizbtn;
 
-    private int count = 0;
+    private int count=0;
+    private static int quizCounter;
+    public int getQuizCounter(){return quizCounter;}
+    public static void setQuizCounterActive(){quizCounter=1;}
+    public void setQuizCounterInactive(){quizCounter=0;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +41,15 @@ public class MainActivity extends AppCompatActivity {
         btn4 = findViewById(R.id.statiticsButton);
         btn5 = findViewById(R.id.profileButton);
 
+
+
         dailyQuizbtn.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, FirstQuestionActivity.class);
-            startActivity(intent);
+           if(quizCounter==1){
+                Toast.makeText(FeelingFinder.getAppContext(), "Congratulations, you have already done your quiz today, come back tomorrow!", Toast.LENGTH_LONG).show();
+            } else if(quizCounter==0){
+                Intent intent = new Intent(MainActivity.this, FirstQuestionActivity.class);
+                startActivity(intent);
+            }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setQuizCounterInactive();//TODO for the moment its definer here
                 Intent i = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(i);
             }

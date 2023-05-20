@@ -17,7 +17,7 @@ public class FourthQuestionActivity extends AppCompatActivity {
 
     private Button backBtn4, nextBtn4;
     private SeekBar sBar4;
-    private int prog4;
+    public int prog4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +49,7 @@ public class FourthQuestionActivity extends AppCompatActivity {
         backBtn4.setOnClickListener(v -> FourthQuestionActivity.this.onBackPressed());
 
         nextBtn4.setOnClickListener(v ->    {
+            sBar4.setEnabled(false);
             Intent intent;
             if(prog4 < 5){
                 intent = new Intent(FourthQuestionActivity.this, ThirdQuestionActivity.class);

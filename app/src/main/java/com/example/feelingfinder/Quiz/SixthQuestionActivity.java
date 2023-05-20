@@ -13,7 +13,7 @@ public class SixthQuestionActivity extends AppCompatActivity {
 
     private Button backBtn6, nextBtn6;
     private SeekBar sBar6;
-    private int prog6;
+    public int prog6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,7 @@ public class SixthQuestionActivity extends AppCompatActivity {
         backBtn6.setOnClickListener(v -> SixthQuestionActivity.this.onBackPressed());
 
         nextBtn6.setOnClickListener(v ->{
+            sBar6.setEnabled(false);
             Intent intent = new Intent(SixthQuestionActivity.this, SeventhQuestionActivity.class);
             startActivity(intent);
         });

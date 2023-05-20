@@ -20,7 +20,7 @@ public class ThirdQuestionActivity extends AppCompatActivity {
 
     public SeekBar sBar3;
     private Button nextBtn3,backBtn3;
-    int prog3, rndn;
+    public int prog3, rndn;
     Random rnd = new Random() {
         @Override
         public int nextBits(int i) {
@@ -107,7 +107,8 @@ public class ThirdQuestionActivity extends AppCompatActivity {
 
         nextBtn3.setOnClickListener(view -> {
                 // Do something with the progress, such as save it in a global variable
-                //fqa.sBar1.setClickable(false);
+                sBar3.setEnabled(false);
+                MainActivity.setQuizCounterActive();
                 Intent intent = new Intent(ThirdQuestionActivity.this, MainActivity.class);
                 startActivity(intent);
 
