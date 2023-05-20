@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
 
@@ -19,24 +19,36 @@
             android:clickable="true"
             android:contentDescription="Back"
             app:backgroundTint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="center"
             app:srcCompat="@drawable/baseline_arrow_back_24" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:fontFamily="sans-serif-light"
             android:text="Profile"
             android:layout_marginTop="5dp"
             android:layout_marginStart="80dp"
             android:textColor="@color/white"
             android:textSize="35sp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:layout_marginStart="60dp"
+            android:contentDescription="Settings"
+            app:backgroundTint="@color/blueSplash"
+            app:srcCompat="@drawable/baseline_settings_24" />
+
     </LinearLayout>
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_gravity="center"
         android:src="@drawable/doctransparent">
 
@@ -53,22 +65,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Last Name"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/dateOfBirthLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Date of Birth:"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
     <EditText
-        android:id="@+id/dateOfBirth"
+        android:id="@+id/et_date"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint=" Select Birthday"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_calendar"/>
+
+    <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="02/04/1997"/>
+        android:hint="  Email"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_mail"/>
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="  Phone"
+        android:inputType="number"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/ic_phone"/>
+
 
     <RadioGroup
         android:id="@+id/gender"
@@ -107,20 +132,39 @@
 
     </RadioGroup>
 
-    <Button
-        android:id="@+id/saveButtonProfile"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:text="Save"
-        android:textColor="@color/Grey"
-        android:textSize="14sp"
-        android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/ic_save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/saveButtonProfile"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Save"
+            android:textColor="@color/Grey"
+            android:textSize="14sp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/ic_save" />
+
+        <Button
+            android:id="@+id/deleteButtonProfile"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="Delete"
+            android:textColor="@color/Grey"
+            android:textSize="14sp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/ic_delete"/>
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/profileToSettings"
