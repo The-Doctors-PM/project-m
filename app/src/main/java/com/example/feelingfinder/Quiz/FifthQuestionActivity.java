@@ -15,7 +15,7 @@ public class FifthQuestionActivity extends AppCompatActivity {
 
     private Button backBtn5, nextBtn5;
     private SeekBar sBar5;
-    private int prog5;
+    public int prog5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,7 @@ public class FifthQuestionActivity extends AppCompatActivity {
         backBtn5.setOnClickListener(v -> FifthQuestionActivity.this.onBackPressed());
 
         nextBtn5.setOnClickListener(v ->    {
+            sBar5.setEnabled(false);
             System.out.println("Val: " + prog5);
             QuizGlobalVariables.todaysQuestions.add(new Question("AnxietyFrequency", prog5));
             Intent intent = new Intent(FifthQuestionActivity.this, SixthQuestionActivity.class);

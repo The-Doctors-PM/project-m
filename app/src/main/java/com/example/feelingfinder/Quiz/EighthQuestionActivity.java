@@ -15,7 +15,7 @@ public class EighthQuestionActivity extends AppCompatActivity {
 
     private Button backBtn8, nextBtn8;
     private SeekBar sBar8;
-    private int prog8;
+    public int prog8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +49,7 @@ public class EighthQuestionActivity extends AppCompatActivity {
         nextBtn8.setOnClickListener(v ->    {
             System.out.println("Val: " + prog8);
             QuizGlobalVariables.todaysQuestions.add(new Question("Stomach", prog8));
+            sBar8.setEnabled(false);
             Intent intent = new Intent(EighthQuestionActivity.this, NinthQuestionActivity.class);
             startActivity(intent);
         });

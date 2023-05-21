@@ -17,7 +17,7 @@ public class SecondQuestionActivity extends AppCompatActivity {
 
     private SeekBar sBar2;
     private Button nextBtn2,backBtn2;
-    int val;
+    private int val;
     String msg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class SecondQuestionActivity extends AppCompatActivity {
         sBar2 = findViewById(R.id.overallSB);
         nextBtn2 = findViewById(R.id.nextBtn2);
         backBtn2 = findViewById(R.id.backBtn2);
+
 
         backBtn2.setOnClickListener(v -> SecondQuestionActivity.this.onBackPressed());
 
@@ -68,6 +69,7 @@ public class SecondQuestionActivity extends AppCompatActivity {
         });
 
         nextBtn2.setOnClickListener(view -> {
+            sBar2.setEnabled(false);
             System.out.println("Val: " + val);
             QuizGlobalVariables.todaysQuestions.add(new Question("Satisfaction", val));
 
@@ -77,6 +79,8 @@ public class SecondQuestionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             else {
+                MainActivity.setQuizCounterActive();
+                Intent intent = new Intent(SecondQuestionActivity.this, MainActivity.class);
                 QuizGlobalVariables.wasSatisfied = true;
                 Intent intent = new Intent(SecondQuestionActivity.this, QuizCompletedActivity.class);
                 startActivity(intent);

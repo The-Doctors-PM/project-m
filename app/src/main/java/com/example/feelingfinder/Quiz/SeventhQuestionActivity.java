@@ -15,7 +15,7 @@ public class SeventhQuestionActivity extends AppCompatActivity {
 
     private Button backBtn7, nextBtn7;
     private SeekBar sBar7;
-    private int prog7;
+    public int prog7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,7 @@ public class SeventhQuestionActivity extends AppCompatActivity {
         backBtn7.setOnClickListener(v -> SeventhQuestionActivity.this.onBackPressed());
 
         nextBtn7.setOnClickListener(v ->    {
+            sBar7.setEnabled(false);
             System.out.println("Val: " + prog7);
             QuizGlobalVariables.todaysQuestions.add(new Question("Heart", prog7));
             Intent intent = new Intent(SeventhQuestionActivity.this, EighthQuestionActivity.class);
