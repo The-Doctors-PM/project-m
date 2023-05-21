@@ -107,7 +107,7 @@ public class ThirdQuestionActivity extends AppCompatActivity {
 
         nextBtn3.setOnClickListener(view -> {
                 sBar3.setEnabled(false);
-                MainActivity.setQuizCounterActive();
+
                 //fqa.sBar1.setClickable(false);
             System.out.println("Val: " + prog3);
             QuizGlobalVariables.todaysQuestions.add(new Question("BetterTomorrow", prog3));

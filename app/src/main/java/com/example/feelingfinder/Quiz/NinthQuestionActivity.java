@@ -79,8 +79,6 @@ public class NinthQuestionActivity extends AppCompatActivity {
 
         nextBtn9.setOnClickListener(v ->    {
             sBar9.setEnabled(false);
-            MainActivity.setQuizCounterActive();
-            Intent intent = new Intent(NinthQuestionActivity.this, MainActivity.class);
             System.out.println("Val: " + prog9);
             QuizGlobalVariables.todaysQuestions.add(new Question("RightNow", prog9));
             Intent intent = new Intent(NinthQuestionActivity.this, QuizCompletedActivity.class);

@@ -79,12 +79,9 @@ public class SecondQuestionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             else {
-                MainActivity.setQuizCounterActive();
-                Intent intent = new Intent(SecondQuestionActivity.this, MainActivity.class);
                 QuizGlobalVariables.wasSatisfied = true;
                 Intent intent = new Intent(SecondQuestionActivity.this, QuizCompletedActivity.class);
                 startActivity(intent);
-                //TODO Lock the mood activity for the day
             }
 
         });
