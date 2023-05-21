@@ -79,14 +79,10 @@ public class Note {
         this.content = content;
         String dateS = "" + date;
         this.year = Integer.parseInt(dateS.substring(0,4));
-        this.month = Integer.parseInt(dateS.substring(5,6));
-        this.day = Integer.parseInt(dateS.substring(7,8));
+        this.month = Integer.parseInt(dateS.substring(4,6));
+        this.day = Integer.parseInt(dateS.substring(6,8));
         this.dayOfTheWeek = "Neptunday";
         this.fullDate = this.dayOfTheWeek + " " + this.day + "/" + this.month + "/" + this.year;
-        System.out.println(this.fullDate);
-        System.out.println(this.day);
-        System.out.println(this.month);
-        System.out.println(this.year);
     }
 
 }

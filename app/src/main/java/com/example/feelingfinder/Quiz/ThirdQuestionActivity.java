@@ -10,11 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.feelingfinder.Database.Question;
+import com.example.feelingfinder.Utility.QuizGlobalVariables;
 import com.example.feelingfinder.MainActivity;
-import com.example.feelingfinder.Quiz.FirstQuestionActivity;
 import com.example.feelingfinder.R;
 import kotlin.random.Random;
-import kotlin.random.URandomKt;
 
 public class ThirdQuestionActivity extends AppCompatActivity {
 
@@ -106,10 +106,17 @@ public class ThirdQuestionActivity extends AppCompatActivity {
         });
 
         nextBtn3.setOnClickListener(view -> {
-                // Do something with the progress, such as save it in a global variable
                 //fqa.sBar1.setClickable(false);
-                Intent intent = new Intent(ThirdQuestionActivity.this, MainActivity.class);
-                startActivity(intent);
+            System.out.println("Val: " + prog3);
+            QuizGlobalVariables.todaysQuestions.add(new Question("BetterTomorrow", prog3));
+            if(prog3 < 5){
+                QuizGlobalVariables.betterTomorrow = false;
+            }
+            else{
+                QuizGlobalVariables.betterTomorrow = true;
+            }
+            Intent intent = new Intent(ThirdQuestionActivity.this, QuizCompletedActivity.class);
+            startActivity(intent);
 
         });
     }

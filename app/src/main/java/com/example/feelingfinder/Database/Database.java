@@ -63,9 +63,8 @@ public class Database {
 
     public static void importMockData(){
         boolean nextStatus = false;
-        for (int i = 0; i < 20; i++){
-            int date = DateToStringConverter.dateToInt(LocalDate.now()) - i*2;
-            System.out.println("Today: " + DateToStringConverter.dateToInt(LocalDate.now()) + "\nNew: " + date);
+        for (int i = 0; i < 14; i++){
+            int date = fakeDate + i;
             Note n = new Note(date,"Mock Note #" + i);
             db.notesDAO().addNote(n);
             Random rand = new Random();
@@ -74,8 +73,8 @@ public class Database {
             nextStatus = !nextStatus;
             db.goalsDAO().addGoal(g);
 
-
-            Quiz quiz = new Quiz(fakeDate++);
+            int fakedate2 = fakeDate + i;
+            Quiz quiz = new Quiz(fakedate2);
             quiz.hadAnxiety = nextStatus;
             quiz.betterTomorrow = !nextStatus;
             quiz.wasSatisfied = nextStatus;
@@ -88,7 +87,16 @@ public class Database {
             Question q2 = new Question("Question #2 here", rand.nextInt(7));
             q2.quizId = quiz.id;
             db.questionsDAO().addQuestion(q2);
+            Question q3 = new Question("Question #3 here", rand.nextInt(5));
+            q3.quizId = quiz.id;
+            db.questionsDAO().addQuestion(q3);
+            if(quiz.hadAnxiety){
+                Question q4 = new Question("Anxiety", rand.nextInt(8));
+                q4.quizId = quiz.id;
+                db.questionsDAO().addQuestion(q4);
+            }
         }
+        System.out.println("Mock Data Added successfully");
     }
 
     public static void wipeAllData(){
@@ -96,6 +104,5 @@ public class Database {
         Database.wipeNotes();
         Database.wipeQuizAndQuestions();
     }
-
 
 }

@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.SeekBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.feelingfinder.MainActivity;
+import com.example.feelingfinder.Utility.QuizGlobalVariables;
 import com.example.feelingfinder.R;
 
 public class FirstQuestionActivity extends AppCompatActivity {
@@ -20,6 +23,8 @@ public class FirstQuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_question);
+
+        QuizGlobalVariables.dayRating = -1;
 
         sBar1 = findViewById(R.id.anxiousSB);
         nextBtn1 = findViewById(R.id.nextBtn1);
@@ -42,9 +47,21 @@ public class FirstQuestionActivity extends AppCompatActivity {
 
         nextBtn1.setOnClickListener(view -> {
             // Do something with the progress, such as save it in a global variable
+            System.out.println("Prog: " + this.prog);
+
+            QuizGlobalVariables.initDailyQuestions();
+            QuizGlobalVariables.dayRating = prog;
+
             Intent intent = new Intent(FirstQuestionActivity.this, MoodTrackerActivity.class);
             startActivity(intent);
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(FirstQuestionActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

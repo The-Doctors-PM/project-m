@@ -1,6 +1,7 @@
 package com.example.feelingfinder.Profile;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,11 +13,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.feelingfinder.Database.Database;
+import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 import com.example.feelingfinder.SettingsActivity.SettingsActivity;
+import com.example.feelingfinder.Utility.FeelingFinder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
@@ -104,7 +109,20 @@ public class ProfileActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteProfile();
+                new AlertDialog.Builder(ProfileActivity.this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Reset your profile data?")
+                        .setMessage("Are you sure you want to reset you profile?\n" +
+                                "Nothing will happen to the Diary/Goals/Mood Tracker data.")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteProfile();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+
             }
         });
     }

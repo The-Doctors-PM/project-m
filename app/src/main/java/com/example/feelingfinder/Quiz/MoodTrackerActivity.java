@@ -12,8 +12,8 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.feelingfinder.Database.AppDatabase;
-import com.example.feelingfinder.Database.Database;
+import com.example.feelingfinder.Database.Question;
+import com.example.feelingfinder.Utility.QuizGlobalVariables;
 import com.example.feelingfinder.R;
 
 
@@ -23,10 +23,6 @@ public class MoodTrackerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
-
-
-        // Retrieve the Database instance
-        AppDatabase db = Database.getAppDatabase();
 
         //Submit button
         //Button submitBtn = findViewById(R.id.moodSubmitBtn);
@@ -61,6 +57,9 @@ public class MoodTrackerActivity extends AppCompatActivity {
         next2ndBtn.setOnClickListener(v -> {
             Intent intent;
             rtng = moodBar.getProgress();
+            System.out.println("Val: " + rtng);
+            QuizGlobalVariables.todaysQuestions.add(new Question("Emoji", rtng));
+            QuizGlobalVariables.hadAnxiety = false;
             if (rtng < 5) {
                 intent = new Intent(MoodTrackerActivity.this, FourthQuestionActivity.class);
             } else{
