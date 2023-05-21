@@ -26,7 +26,7 @@ public class NinthQuestionActivity extends AppCompatActivity {
             return 0;
         }
     };
-    private int prog9, rndn;
+    public int prog9, rndn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +37,6 @@ public class NinthQuestionActivity extends AppCompatActivity {
         backBtn9 = findViewById(R.id.backBtn9);
         nextBtn9 = findViewById(R.id.nextBtn9);
         sBar9 = findViewById(R.id.sBar9);
-
         sBar9.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -79,6 +78,7 @@ public class NinthQuestionActivity extends AppCompatActivity {
         backBtn9.setOnClickListener(v -> NinthQuestionActivity.this.onBackPressed());
 
         nextBtn9.setOnClickListener(v ->    {
+            sBar9.setEnabled(false);
             System.out.println("Val: " + prog9);
             QuizGlobalVariables.todaysQuestions.add(new Question("RightNow", prog9));
             Intent intent = new Intent(NinthQuestionActivity.this, QuizCompletedActivity.class);

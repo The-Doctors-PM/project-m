@@ -59,6 +59,7 @@ public class QuizCompletedActivity extends AppCompatActivity {
             }
 
             // TODO: Can lock here the test.
+            MainActivity.setQuizCounterActive();
 
             Intent intent = new Intent(QuizCompletedActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

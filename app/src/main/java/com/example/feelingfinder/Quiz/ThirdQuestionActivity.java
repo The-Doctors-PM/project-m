@@ -20,7 +20,7 @@ public class ThirdQuestionActivity extends AppCompatActivity {
 
     public SeekBar sBar3;
     private Button nextBtn3,backBtn3;
-    int prog3, rndn;
+    public int prog3, rndn;
     Random rnd = new Random() {
         @Override
         public int nextBits(int i) {
@@ -106,6 +106,8 @@ public class ThirdQuestionActivity extends AppCompatActivity {
         });
 
         nextBtn3.setOnClickListener(view -> {
+                sBar3.setEnabled(false);
+
                 //fqa.sBar1.setClickable(false);
             System.out.println("Val: " + prog3);
             QuizGlobalVariables.todaysQuestions.add(new Question("BetterTomorrow", prog3));

@@ -18,7 +18,7 @@ import com.example.feelingfinder.R;
 
 
 public class MoodTrackerActivity extends AppCompatActivity {
-    int rtng;
+    public int rtng;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +56,7 @@ public class MoodTrackerActivity extends AppCompatActivity {
         //Go to next destination based on a value
         next2ndBtn.setOnClickListener(v -> {
             Intent intent;
+            moodBar.setEnabled(false);
             rtng = moodBar.getProgress();
             System.out.println("Val: " + rtng);
             QuizGlobalVariables.todaysQuestions.add(new Question("Emoji", rtng));
