@@ -5,7 +5,7 @@
     android:layout_marginLeft="0dp"
     android:layout_marginRight="0dp"
     android:padding="5dp"
-    android:background="@drawable/baseline_delete_24"
+    android:background="@drawable/delete_icon"
     android:gravity="center_vertical">
 
     <View
@@ -32,7 +32,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="320dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/baseline_delete_24"
+        android:background="@drawable/delete_icon"
         android:contentDescription="Delete Goal" />
 
     <Button
@@ -41,7 +41,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="270dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/baseline_edit_24"
+        android:background="@drawable/edit_icon"
         android:contentDescription="Edit Goal" />
 
 </FrameLayout>
