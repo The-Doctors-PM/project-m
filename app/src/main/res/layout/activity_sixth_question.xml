@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/pastel_orange">
+    android:background="@color/pastel_green">
 
 
     <TextView
         android:id="@+id/compareTV6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="How hard did it \nfeel to breath?"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -51,7 +51,7 @@
             android:textColor="@color/grey"
             android:textSize="14sp"
             android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/baseline_arrow_back_24"/>
+            android:drawableLeft="@drawable/arrow_back"/>
 
         <Button
             android:id="@+id/nextBtn6"

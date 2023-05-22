@@ -23,7 +23,7 @@
             android:clickable="true"
             android:contentDescription="Back"
             app:backgroundTint="@color/white"
-            app:srcCompat="@drawable/baseline_arrow_back_24" />
+            app:srcCompat="@drawable/arrow_back" />
 
         <TextView
             android:id="@+id/goalsInfo"

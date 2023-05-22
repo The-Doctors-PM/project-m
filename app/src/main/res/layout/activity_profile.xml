@@ -20,7 +20,7 @@
             android:contentDescription="Back"
             app:backgroundTint="@color/white"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/baseline_arrow_back_24" />
+            app:srcCompat="@drawable/arrow_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
             android:layout_marginStart="60dp"
             android:contentDescription="Settings"
             app:backgroundTint="@color/blueSplash"
-            app:srcCompat="@drawable/baseline_settings_24" />
+            app:srcCompat="@drawable/settings_icon" />
 
     </LinearLayout>
 
