@@ -3,9 +3,11 @@ package com.example.feelingfinder.Statistics;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.feelingfinder.Database.AppDatabase;
 import com.example.feelingfinder.Database.Database;
@@ -13,6 +15,9 @@ import com.example.feelingfinder.Database.Question;
 import com.example.feelingfinder.Database.QuestionsDAO;
 import com.example.feelingfinder.Database.Quiz;
 import com.example.feelingfinder.Database.QuizDAO;
+import com.example.feelingfinder.ExportPDF.ExportActivity;
+import com.example.feelingfinder.Goals.GoalsActivity;
+import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
@@ -26,6 +31,8 @@ import java.util.List;
 public class GraphActivity extends AppCompatActivity {
 
     private List<Quiz> quizList;
+
+    private Button exportButton;
     private List<Question> questionList;
     private GraphView graph;
     private AppDatabase db = Database.getAppDatabase();
@@ -54,10 +61,10 @@ public class GraphActivity extends AppCompatActivity {
         loadDailyRatingGraph();
 
         graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMinX(10.0);
+        graph.getViewport().setMinX(2.0);
         graph.getViewport().setMaxX(20.0);
         graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMinY(5.0);
+        graph.getViewport().setMinY(1.0);
         graph.getViewport().setMaxY(10.0);
 
 
@@ -91,6 +98,14 @@ public class GraphActivity extends AppCompatActivity {
             }
         });
 
+        exportButton = findViewById(R.id.exportsButton);
+        exportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GraphActivity.this, ExportActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 

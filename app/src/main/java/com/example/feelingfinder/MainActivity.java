@@ -14,6 +14,7 @@ import com.example.feelingfinder.Database.Database;
 import com.example.feelingfinder.Diary.MyDiaryActivity;
 import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.Profile.ProfileActivity;
+import com.example.feelingfinder.Statistics.GraphActivity;
 import com.example.feelingfinder.Statistics.StatisticsPlaceholderActivity;
 import com.example.feelingfinder.Quiz.FirstQuestionActivity;
 import com.example.feelingfinder.Utility.FeelingFinder;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, StatisticsPlaceholderActivity.class);
+                Intent i = new Intent(MainActivity.this, GraphActivity.class);
                 startActivity(i);
             }
         });

@@ -14,14 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Graphs"
+        android:layout_marginTop="20dp"
+        android:text="Statitics"
         android:textAlignment="center"
         android:textSize="34sp"
-        android:textStyle="bold" />
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/white"/>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,8 +39,8 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="40dp"
                 android:layout_weight="1"
-                android:background="@color/pastel_pink"
-                android:backgroundTint="@color/pastel_pink"
+                android:background="@color/pastel_blue"
+                android:backgroundTint="@color/pastel_blue"
                 android:clickable="true"
                 app:cardCornerRadius="20dp">
 
@@ -67,8 +70,8 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="40dp"
                 android:layout_weight="1"
-                android:background="@color/pastel_pink"
-                android:backgroundTint="@color/pastel_pink"
+                android:background="@color/pastel_blue"
+                android:backgroundTint="@color/pastel_blue"
                 android:clickable="true"
                 app:cardCornerRadius="20dp">
 
@@ -97,8 +100,8 @@
                 android:layout_height="130dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/pastel_pink"
-                android:backgroundTint="@color/pastel_pink"
+                android:background="@color/pastel_blue"
+                android:backgroundTint="@color/pastel_blue"
                 android:clickable="true"
                 app:cardCornerRadius="20dp"
                 android:layout_marginEnd="40dp">
@@ -128,8 +131,8 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="40dp"
                 android:layout_weight="1"
-                android:background="@color/pastel_pink"
-                android:backgroundTint="@color/pastel_pink"
+                android:background="@color/pastel_blue"
+                android:backgroundTint="@color/pastel_blue"
                 android:clickable="true"
                 app:cardCornerRadius="20dp">
 
@@ -162,6 +165,19 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="5dp"
-        android:background="@color/ButterMilk" />
+        android:background="@color/test" />
+
+    <Button
+        android:id="@+id/exportsButton"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Exports"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_save" />
+
 
 </LinearLayout>

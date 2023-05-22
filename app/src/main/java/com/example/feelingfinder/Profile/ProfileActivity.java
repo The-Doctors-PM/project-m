@@ -5,23 +5,23 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.feelingfinder.Database.Database;
-import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 import com.example.feelingfinder.SettingsActivity.SettingsActivity;
-import com.example.feelingfinder.Utility.FeelingFinder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
@@ -29,7 +29,9 @@ import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    EditText firstName, lastName, etDate, email, phone;
+    EditText firstName, lastName, email, phone;
+    ImageView calendarIV;
+    TextView etDate;
     RadioGroup gender;
     RadioButton selectedGender;
     Button saveButton, deleteButton;
@@ -54,6 +56,8 @@ public class ProfileActivity extends AppCompatActivity {
         deleteButton = findViewById(R.id.deleteButtonProfile);
         backButton = findViewById(R.id.toolbar);
         settingsButton = findViewById(R.id.settingsButton);
+        calendarIV = findViewById(R.id.calendarButton);
+        calendarIV.setClickable(true);
 
         Calendar calendar  = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -82,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        etDate.setOnClickListener(new View.OnClickListener() {
+        calendarIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -148,13 +152,67 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void saveProfile() {
-        //Save profile data to SharedPreferences
+        // Save profile data to SharedPreferences
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("firstName", firstName.getText().toString());
         editor.putString("lastName", lastName.getText().toString());
         editor.putString("dateOfBirth", etDate.getText().toString());
         editor.putString("phone", phone.getText().toString());
-        editor.putString("email", email.getText().toString());
+        String emailInput = email.getText().toString().trim();
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            email.setError("Invalid email address");
+            return;
+        }
+
+        editor.putString("email", emailInput);
+
+        // Check if the user is older than 10 years old
+        Calendar calendar = Calendar.getInstance();
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH) + 1;
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String[] dobParts = etDate.getText().toString().split("/");
+        int selectedYear = -1;
+        int selectedMonth = -1;
+        int selectedDay = -1;
+        etDate.setFocusable(true);
+        etDate.setFocusableInTouchMode(true);
+        if (dobParts.length < 2){
+            etDate.requestFocus();
+            etDate.setError("You must choose a birthday");
+            return;
+        }
+        else{
+            selectedYear = Integer.parseInt(dobParts[2]);
+            selectedMonth = Integer.parseInt(dobParts[1]);
+            selectedDay = Integer.parseInt(dobParts[0]);
+        }
+        if (selectedDay == -1){
+            etDate.requestFocus();
+            etDate.setError("You must choose a birthday!");
+            return;
+        }
+        else{
+            if (currentYear - selectedYear < 10) {
+                etDate.requestFocus();
+                etDate.setError("You must be older than 10 years old");
+                return;
+            } else if (currentYear - selectedYear == 10) {
+                if (currentMonth < selectedMonth) {
+                    etDate.requestFocus();
+                    etDate.setError("You must be older than 10 years old");
+                    return;
+                } else if (currentMonth == selectedMonth && currentDay < selectedDay) {
+                    etDate.requestFocus();
+                    etDate.setError("You must be older than 10 years old");
+                    return;
+                }
+            }
+        }
+
+
         int selectedGenderId = gender.getCheckedRadioButtonId();
         if (selectedGenderId != -1) {
             selectedGender = findViewById(selectedGenderId);
@@ -165,6 +223,8 @@ public class ProfileActivity extends AppCompatActivity {
         editor.apply();
         Toast.makeText(this, "Profile Saved", Toast.LENGTH_SHORT).show();
     }
+
+
 
     private void deleteProfile() {
         // Clear all the saved profile data from SharedPreferences

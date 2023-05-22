@@ -1,86 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/ButterMilk">
+    android:background="@color/pastel_blue">
 
-    <TextView
-        android:id="@+id/settingsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="App Settings"
-        android:textSize="40sp"
+    <FrameLayout
+        android:layout_width="350dp"
+        android:layout_height="160dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="25dp">
 
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/notification">
+        </ImageView>
 
-    <TextView
-        android:id="@+id/moodTrackerEditTimeText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Edit Mood Tracker notification time"
-        android:textSize="18sp"
-        android:layout_marginTop="15dp"/>
+        <TextView
+            android:id="@+id/settingsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif"
+            android:text="Notification \nAlert"
+            android:textColor="@color/white"
+            android:textSize="28sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/moodTrackerEditTimeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Edit Mood Tracker notification time"
+            android:textSize="18sp"
+            android:layout_marginTop="130dp"/>
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/moodTrackerCurrentNotifTimeSet"
-        android:layout_width="117dp"
-        android:layout_height="124dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Current notification time set: "
         android:textAlignment="center"
+        android:textColor="@color/teal_200"
         android:textSize="18sp" />
 
     <TimePicker
         android:id='@+id/moodTrackerEditTimePicker'
-        android:layout_width="wrap_content"
-        android:layout_height="158dp"
-        android:layout_marginStart="50dp"
-        android:scaleX="0.7"
-        android:scaleY="0.7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
         android:timePickerMode="spinner" />
 
     <Button
         android:id="@+id/moodTrackerEditTimeButton"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
         android:text="Confirm notification time"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_gravity="center"
-        />
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/done"/>
 
 
-    <Button
-        android:id="@+id/profilePictureUploadButton"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="Upload profile picture"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_gravity="center"
-        />
-
-
-    <TextView
-        android:id="@+id/dataExport"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Export your diary to a save file"
-        android:textSize="18sp"
-        android:layout_marginTop="40dp"/>
-
-    <Button
-        android:id="@+id/dataExportButton"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:text="Export Diary"
-        android:layout_marginTop="5dp"/>
 
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import com.example.feelingfinder.Quiz.FirstQuestionActivity
 import com.example.feelingfinder.Quiz.MoodTrackerActivity
 import com.example.feelingfinder.R
 
@@ -19,7 +20,7 @@ class Notification : BroadcastReceiver()
 {
     override fun onReceive(context: Context, intent: Intent)
     {
-        var resultIntent = Intent(context, MoodTrackerActivity::class.java)
+        var resultIntent = Intent(context, FirstQuestionActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
         val resultPendingIntent = PendingIntent.getActivity(

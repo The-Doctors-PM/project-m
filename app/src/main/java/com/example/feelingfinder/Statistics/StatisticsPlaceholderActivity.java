@@ -18,7 +18,6 @@ import com.example.feelingfinder.Dialogs.NotificationPermissionDialog;
 import com.example.feelingfinder.ExportPDF.ExportActivity;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
-import com.example.feelingfinder.SettingsActivity.SettingsActivity;
 import com.example.feelingfinder.Utility.FeelingFinder;
 
 public class StatisticsPlaceholderActivity extends AppCompatActivity {
@@ -30,12 +29,14 @@ public class StatisticsPlaceholderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_statitics);
 
         // Retrieving some stuff
-        Button nowButton;
-        nowButton = findViewById(R.id.notifyNowButton);
+        //Button nowButton;
+        //nowButton = findViewById(R.id.notifyNowButton);
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
+        /*
         // Create a notification on button click
         nowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +60,7 @@ public class StatisticsPlaceholderActivity extends AppCompatActivity {
                 notificationManager.notify(1, builder.build());
 
             }
-        });
+        });*/
 
 
         // Go to export
@@ -73,17 +74,7 @@ public class StatisticsPlaceholderActivity extends AppCompatActivity {
             }
         });
 
-        // Go to Leonardo's Settings
-        Button goToSetting = findViewById(R.id.goToSettings);
-        goToSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FeelingFinder.getAppContext(), SettingsActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-
+        /*
         Button goGraph = findViewById(R.id.goToGraph);
         goGraph.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +83,7 @@ public class StatisticsPlaceholderActivity extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 }
