@@ -44,12 +44,16 @@ public class FifthQuestionActivity extends AppCompatActivity {
             }
         });
 
-        backBtn5.setOnClickListener(v -> FifthQuestionActivity.this.onBackPressed());
+        backBtn5.setOnClickListener(v -> {
+            QuizGlobalVariables.todaysQuestions.remove(QuizGlobalVariables.counter--);
+            FifthQuestionActivity.this.onBackPressed();
+        });
 
         nextBtn5.setOnClickListener(v ->    {
             sBar5.setEnabled(false);
             System.out.println("Val: " + prog5);
             QuizGlobalVariables.todaysQuestions.add(new Question("AnxietyFrequency", prog5));
+            QuizGlobalVariables.counter++;
             Intent intent = new Intent(FifthQuestionActivity.this, SixthQuestionActivity.class);
             startActivity(intent);
         });

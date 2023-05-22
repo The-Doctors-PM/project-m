@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.feelingfinder.Database.Question;
+import com.example.feelingfinder.Database.Quiz;
 import com.example.feelingfinder.Utility.QuizGlobalVariables;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
@@ -29,7 +30,10 @@ public class SecondQuestionActivity extends AppCompatActivity {
         backBtn2 = findViewById(R.id.backBtn2);
 
 
-        backBtn2.setOnClickListener(v -> SecondQuestionActivity.this.onBackPressed());
+        backBtn2.setOnClickListener(v -> {
+            QuizGlobalVariables.todaysQuestions.remove(QuizGlobalVariables.counter);
+            SecondQuestionActivity.this.onBackPressed();
+        });
 
         sBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -72,6 +76,7 @@ public class SecondQuestionActivity extends AppCompatActivity {
             sBar2.setEnabled(false);
             System.out.println("Val: " + val);
             QuizGlobalVariables.todaysQuestions.add(new Question("Satisfaction", val));
+            QuizGlobalVariables.counter++;
 
             if(val < 5) {
                 QuizGlobalVariables.wasSatisfied = false;

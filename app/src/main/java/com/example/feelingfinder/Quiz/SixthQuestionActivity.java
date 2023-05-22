@@ -44,12 +44,16 @@ public class SixthQuestionActivity extends AppCompatActivity {
             }
         });
 
-        backBtn6.setOnClickListener(v -> SixthQuestionActivity.this.onBackPressed());
+        backBtn6.setOnClickListener(v -> {
+            QuizGlobalVariables.todaysQuestions.remove(QuizGlobalVariables.counter--);
+            SixthQuestionActivity.this.onBackPressed();
+        });
 
         nextBtn6.setOnClickListener(v ->{
             sBar6.setEnabled(false);
             System.out.println("Val: " + prog6);
             QuizGlobalVariables.todaysQuestions.add(new Question("Breathing", prog6));
+            QuizGlobalVariables.counter++;
             Intent intent = new Intent(SixthQuestionActivity.this, SeventhQuestionActivity.class);
             startActivity(intent);
         });

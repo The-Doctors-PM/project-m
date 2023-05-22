@@ -41,7 +41,10 @@ public class ThirdQuestionActivity extends AppCompatActivity {
         nextBtn3 = findViewById(R.id.nextBtn3);
         backBtn3 = findViewById(R.id.backBtn3);
 
-        backBtn3.setOnClickListener(v -> ThirdQuestionActivity.this.onBackPressed());
+        backBtn3.setOnClickListener(v -> {
+            QuizGlobalVariables.todaysQuestions.remove(QuizGlobalVariables.counter--);
+            ThirdQuestionActivity.this.onBackPressed();
+        });
 
         sBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -111,6 +114,7 @@ public class ThirdQuestionActivity extends AppCompatActivity {
                 //fqa.sBar1.setClickable(false);
             System.out.println("Val: " + prog3);
             QuizGlobalVariables.todaysQuestions.add(new Question("BetterTomorrow", prog3));
+            QuizGlobalVariables.counter++;
             if(prog3 < 5){
                 QuizGlobalVariables.betterTomorrow = false;
             }

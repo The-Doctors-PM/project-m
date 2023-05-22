@@ -48,13 +48,18 @@ public class FourthQuestionActivity extends AppCompatActivity {
             }
         });
 
-        backBtn4.setOnClickListener(v -> FourthQuestionActivity.this.onBackPressed());
+        backBtn4.setOnClickListener(v -> {
+            QuizGlobalVariables.todaysQuestions.remove(QuizGlobalVariables.counter--);
+            FourthQuestionActivity.this.onBackPressed();
+
+        });
 
         nextBtn4.setOnClickListener(v ->    {
             sBar4.setEnabled(false);
             Intent intent;
             System.out.println("Val: " + prog4);
             QuizGlobalVariables.todaysQuestions.add(new Question("Anxiety", prog4));
+            QuizGlobalVariables.counter++;
             if(prog4 < 5){
                 QuizGlobalVariables.hadAnxiety = false;
                 intent = new Intent(FourthQuestionActivity.this, ThirdQuestionActivity.class);

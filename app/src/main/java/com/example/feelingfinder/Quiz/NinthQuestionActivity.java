@@ -75,12 +75,16 @@ public class NinthQuestionActivity extends AppCompatActivity {
             }
         });
 
-        backBtn9.setOnClickListener(v -> NinthQuestionActivity.this.onBackPressed());
+        backBtn9.setOnClickListener(v -> {
+            QuizGlobalVariables.todaysQuestions.remove(QuizGlobalVariables.counter--);
+            NinthQuestionActivity.this.onBackPressed();
+        });
 
         nextBtn9.setOnClickListener(v ->    {
             sBar9.setEnabled(false);
             System.out.println("Val: " + prog9);
             QuizGlobalVariables.todaysQuestions.add(new Question("RightNow", prog9));
+            QuizGlobalVariables.counter++;
             Intent intent = new Intent(NinthQuestionActivity.this, QuizCompletedActivity.class);
             startActivity(intent);
         });
