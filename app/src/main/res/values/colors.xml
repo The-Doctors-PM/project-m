@@ -7,7 +7,7 @@
     <color name="teal_700">#08D8D6</color>
     <color name="green">#54CD60</color>
     <color name="black">#FF000000</color>
-    <color name="Grey">#4E4E4E</color>
+    <color name="grey">#4E4E4E</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blueSplash">#06B0F3</color>
     <color name="blueDarker">#0679F3</color>
@@ -19,9 +19,17 @@
 
     <color name="IslandSpice">#FFFAEE</color>
     <color name="ButterMilk">#FFF1CA</color>
-
-    <color name="pastel_pink">#FFC3A6B1</color>
     <color name="pastel_purple">#FFB4A7D6</color>
+    <color name="pastel_red">#FFBCBC</color>
+    <color name="pastel_green">#A3FFA7</color>
+    <color name="pastel_blue">#AEE6FF</color>
+    <color name="pastel_pink">#FFC2F0</color>
+    <color name="pastel_pink2">#FF99E6</color>
+    <color name="pink">#FF52D4</color>
+    <color name="pastel_orange">#FBD295</color>
+
+
+
 
     <color name="red_500">#FF5722</color>
     <color name="goals_blue">#88EDFA</color>

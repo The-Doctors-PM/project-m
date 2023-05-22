@@ -1,64 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_second_question"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+    android:orientation="vertical"
+    android:background="@color/pastel_green">
 
     <TextView
         android:id="@+id/overallTV"
-        android:layout_width="338dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="Are you overall satisfied with yourself today?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Are you overall satisfied \nwith yourself today?"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/overallSB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/second"/>
 
 
     <SeekBar
         android:id="@+id/overallSB"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
         android:indeterminate="false"
         android:max="10"
         android:min="0"
         android:progress="0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/overallTV" />
+        android:backgroundTint="@color/green"/>
 
-    <Button
-        android:id="@+id/backBtn2"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="32dp"
-        android:text="BACK"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/nextBtn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="32dp"
-        android:text="Next"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/backBtn2"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Back"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/baseline_arrow_back_24"/>
+
+        <Button
+            android:id="@+id/nextBtn2"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="Next"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            android:backgroundTint="@color/white"
+            android:drawableRight="@drawable/ic_forward" />
+
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -145,7 +145,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:text="Save"
-            android:textColor="@color/Grey"
+            android:textColor="@color/grey"
             android:textSize="14sp"
             android:backgroundTint="@color/white"
             android:drawableLeft="@drawable/ic_save" />
@@ -157,7 +157,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:text="Delete"
-            android:textColor="@color/Grey"
+            android:textColor="@color/grey"
             android:textSize="14sp"
             android:backgroundTint="@color/white"
             android:drawableLeft="@drawable/ic_delete"/>

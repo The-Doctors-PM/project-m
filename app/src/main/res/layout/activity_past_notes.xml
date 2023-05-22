@@ -57,7 +57,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="@color/white"
-        android:textColor="@color/Grey"
+        android:textColor="@color/grey"
         android:text="Wipe Database's Notes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
