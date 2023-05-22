@@ -32,8 +32,6 @@ class SettingsActivity : AppCompatActivity() {
         createNotificationChannel()
         moodTrackerEditButton.setOnClickListener { scheduleNotification() }
 
-        // button which lets the user upload his/her own profile picture or avatar
-        val uploadProfilePicture = findViewById<Button>(R.id.profilePictureUploadButton)
 
         // button which lets the user export his/her diary
         val dataExportButton = findViewById<Button>(R.id.dataExportButton)
