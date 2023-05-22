@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.feelingfinder.Notifications.*
 import com.example.feelingfinder.R
+import com.example.feelingfinder.Utility.FeelingFinder
 import com.example.feelingfinder.databinding.ActivitySettingsBinding
 import org.w3c.dom.Text
 import java.sql.Time
@@ -31,6 +32,10 @@ class SettingsActivity : AppCompatActivity() {
         val moodTrackerEditButton = findViewById<Button>(R.id.moodTrackerEditTimeButton)
         createNotificationChannel()
         moodTrackerEditButton.setOnClickListener { scheduleNotification() }
+
+        val showCurrentTimeSet = findViewById<TextView>(R.id.moodTrackerCurrentNotifTimeSet)
+        val currentTimeSetText = "Current mood tracker notification time set to: " + FeelingFinder.timeNotification
+        showCurrentTimeSet.text = currentTimeSetText
 
 
         // button which lets the user export his/her diary
@@ -58,6 +63,7 @@ class SettingsActivity : AppCompatActivity() {
         val showCurrentTimeSet = findViewById<TextView>(R.id.moodTrackerCurrentNotifTimeSet)
         val currentTimeSetText = "Current mood tracker notification time set to: " + timeString(time)
         showCurrentTimeSet.text = currentTimeSetText
+        FeelingFinder.timeNotification = timeString(time)
 
         // schedule notification daily
         alarmManager.setRepeating(

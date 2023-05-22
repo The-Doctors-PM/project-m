@@ -8,9 +8,15 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.feelingfinder.Database.AppDatabase;
+import com.example.feelingfinder.Database.Database;
+import com.example.feelingfinder.Database.DateToStringConverter;
+import com.example.feelingfinder.Database.Quiz;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.Utility.QuizGlobalVariables;
 import com.example.feelingfinder.R;
+
+import java.time.LocalDate;
 
 public class FirstQuestionActivity extends AppCompatActivity {
 
@@ -26,6 +32,13 @@ public class FirstQuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_question);
+
+        AppDatabase database = Database.getAppDatabase();
+        Quiz quiz = database.quizDAO().getTodayQuiz(DateToStringConverter.dateToInt(LocalDate.now()));
+        if (quiz != null){
+            System.out.println("One quiz per day is enough!");
+            FirstQuestionActivity.this.onBackPressed();
+        }
 
         QuizGlobalVariables.dayRating = -1;
 

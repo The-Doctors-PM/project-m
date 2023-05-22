@@ -61,10 +61,10 @@ public class GraphActivity extends AppCompatActivity {
         loadDailyRatingGraph();
 
         graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMinX(10.0);
+        graph.getViewport().setMinX(2.0);
         graph.getViewport().setMaxX(20.0);
         graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMinY(5.0);
+        graph.getViewport().setMinY(1.0);
         graph.getViewport().setMaxY(10.0);
 
 
