@@ -13,6 +13,8 @@ import android.content.Context;
     private static final String CHANNEL_DESCRIPTION = "Notifications channel per the application " +
             "\"Feeling Finder\"";
 
+    public static String timeNotification;
+
     public void onCreate() {
         super.onCreate();
         FeelingFinder.context = getApplicationContext();

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,12 +17,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.feelingfinder.Database.Database;
-import com.example.feelingfinder.Goals.GoalsActivity;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
 import com.example.feelingfinder.SettingsActivity.SettingsActivity;
-import com.example.feelingfinder.Utility.FeelingFinder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
@@ -148,13 +146,45 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void saveProfile() {
-        //Save profile data to SharedPreferences
+        // Save profile data to SharedPreferences
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("firstName", firstName.getText().toString());
         editor.putString("lastName", lastName.getText().toString());
         editor.putString("dateOfBirth", etDate.getText().toString());
         editor.putString("phone", phone.getText().toString());
-        editor.putString("email", email.getText().toString());
+        String emailInput = email.getText().toString().trim();
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            email.setError("Invalid email address");
+            return;
+        }
+
+        editor.putString("email", emailInput);
+
+        // Check if the user is older than 10 years old
+        Calendar calendar = Calendar.getInstance();
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH) + 1;
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String[] dobParts = etDate.getText().toString().split("/");
+        int selectedYear = Integer.parseInt(dobParts[2]);
+        int selectedMonth = Integer.parseInt(dobParts[1]);
+        int selectedDay = Integer.parseInt(dobParts[0]);
+
+        if (currentYear - selectedYear < 10) {
+            etDate.setError("You must be older than 10 years old");
+            return;
+        } else if (currentYear - selectedYear == 10) {
+            if (currentMonth < selectedMonth) {
+                etDate.setError("You must be older than 10 years old");
+                return;
+            } else if (currentMonth == selectedMonth && currentDay < selectedDay) {
+                etDate.setError("You must be older than 10 years old");
+                return;
+            }
+        }
+
         int selectedGenderId = gender.getCheckedRadioButtonId();
         if (selectedGenderId != -1) {
             selectedGender = findViewById(selectedGenderId);
@@ -165,6 +195,8 @@ public class ProfileActivity extends AppCompatActivity {
         editor.apply();
         Toast.makeText(this, "Profile Saved", Toast.LENGTH_SHORT).show();
     }
+
+
 
     private void deleteProfile() {
         // Clear all the saved profile data from SharedPreferences

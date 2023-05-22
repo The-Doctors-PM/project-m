@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,30 +8,125 @@
     android:orientation="vertical"
     tools:context=".ExportPDF.ExportActivity">
 
-    <Button
-        android:id="@+id/exportGoals"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="200dp"
-        android:text="Export All Goals"
-        android:layout_gravity="center"
-        />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:fontFamily="sans-serif-light"
+        android:text="Export Data"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        android:textSize="40sp" />
 
-    <Button
-        android:id="@+id/exportNotes"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
+    <FrameLayout
+        android:layout_width="290dp"
+        android:layout_height="130dp"
         android:layout_gravity="center"
-        android:text="Export All Notes"
-        />
+        android:layout_marginTop="25dp"
+        android:background="@drawable/round_menu">
 
-    <Button
-        android:id="@+id/exportWeeklyNotes"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
+        <ImageButton
+            android:id="@+id/exportGoals"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center|end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/white"
+            android:clickable="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/goals">
+
+        </ImageButton>
+
+        <TextView
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Export \nAll Goals"
+            android:textColor="@color/blueDarker"
+            android:textSize="25sp">
+
+        </TextView>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="290dp"
+        android:layout_height="130dp"
         android:layout_gravity="center"
-        android:text="Export this week notes"
-        />
+        android:layout_marginTop="25dp"
+        android:background="@drawable/round_menu">
+
+        <ImageButton
+            android:id="@+id/exportNotes"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center|end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/white"
+            android:clickable="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/notes_export">
+
+        </ImageButton>
+
+        <TextView
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Export \nNotes"
+            android:textColor="@color/blueDarker"
+            android:textSize="25sp">
+
+        </TextView>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="290dp"
+        android:layout_height="130dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/round_menu">
+
+        <ImageButton
+            android:id="@+id/exportWeeklyNotes"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center|end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/white"
+            android:clickable="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/notes_week">
+
+        </ImageButton>
+
+        <TextView
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Export \nWeekly \nNotes"
+            android:textColor="@color/blueDarker"
+            android:textSize="25sp">
+
+        </TextView>
+
+    </FrameLayout>
+
+
 </LinearLayout>
