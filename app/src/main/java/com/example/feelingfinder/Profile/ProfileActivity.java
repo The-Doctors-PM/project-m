@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -27,7 +29,9 @@ import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    EditText firstName, lastName, etDate, email, phone;
+    EditText firstName, lastName, email, phone;
+    ImageView calendarIV;
+    TextView etDate;
     RadioGroup gender;
     RadioButton selectedGender;
     Button saveButton, deleteButton;
@@ -52,6 +56,8 @@ public class ProfileActivity extends AppCompatActivity {
         deleteButton = findViewById(R.id.deleteButtonProfile);
         backButton = findViewById(R.id.toolbar);
         settingsButton = findViewById(R.id.settingsButton);
+        calendarIV = findViewById(R.id.calendarButton);
+        calendarIV.setClickable(true);
 
         Calendar calendar  = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -80,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        etDate.setOnClickListener(new View.OnClickListener() {
+        calendarIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -168,22 +174,44 @@ public class ProfileActivity extends AppCompatActivity {
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
 
         String[] dobParts = etDate.getText().toString().split("/");
-        int selectedYear = Integer.parseInt(dobParts[2]);
-        int selectedMonth = Integer.parseInt(dobParts[1]);
-        int selectedDay = Integer.parseInt(dobParts[0]);
-
-        if (currentYear - selectedYear < 10) {
-            etDate.setError("You must be older than 10 years old");
+        int selectedYear = -1;
+        int selectedMonth = -1;
+        int selectedDay = -1;
+        etDate.setFocusable(true);
+        etDate.setFocusableInTouchMode(true);
+        if (dobParts.length < 2){
+            etDate.requestFocus();
+            etDate.setError("You must choose a birthday");
             return;
-        } else if (currentYear - selectedYear == 10) {
-            if (currentMonth < selectedMonth) {
+        }
+        else{
+            selectedYear = Integer.parseInt(dobParts[2]);
+            selectedMonth = Integer.parseInt(dobParts[1]);
+            selectedDay = Integer.parseInt(dobParts[0]);
+        }
+        if (selectedDay == -1){
+            etDate.requestFocus();
+            etDate.setError("You must choose a birthday!");
+            return;
+        }
+        else{
+            if (currentYear - selectedYear < 10) {
+                etDate.requestFocus();
                 etDate.setError("You must be older than 10 years old");
                 return;
-            } else if (currentMonth == selectedMonth && currentDay < selectedDay) {
-                etDate.setError("You must be older than 10 years old");
-                return;
+            } else if (currentYear - selectedYear == 10) {
+                if (currentMonth < selectedMonth) {
+                    etDate.requestFocus();
+                    etDate.setError("You must be older than 10 years old");
+                    return;
+                } else if (currentMonth == selectedMonth && currentDay < selectedDay) {
+                    etDate.requestFocus();
+                    etDate.setError("You must be older than 10 years old");
+                    return;
+                }
             }
         }
+
 
         int selectedGenderId = gender.getCheckedRadioButtonId();
         if (selectedGenderId != -1) {
