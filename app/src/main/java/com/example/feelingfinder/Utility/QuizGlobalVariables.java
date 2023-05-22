@@ -16,8 +16,11 @@ public class QuizGlobalVariables {
     public static boolean wasSatisfied = false;
     public static boolean betterTomorrow = false;
 
+    public static int counter = 0;
+
     public static void initDailyQuestions(){
         QuizGlobalVariables.todaysQuestions = new ArrayList<>();
+        QuizGlobalVariables.counter = 0;
         System.out.println("TQ size: " + todaysQuestions.size());
     }
 }

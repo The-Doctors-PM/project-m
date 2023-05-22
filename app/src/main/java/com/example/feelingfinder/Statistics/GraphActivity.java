@@ -46,18 +46,26 @@ public class GraphActivity extends AppCompatActivity {
 
         graph = (GraphView) findViewById(R.id.graph);
         graph.getGridLabelRenderer().setGridColor(Color.GRAY);
-        //graph.getViewport().setScalable(true);
-        //graph.getViewport().setScalableY(true);
+        graph.getViewport().setScalable(true);
+        graph.getViewport().setScalableY(true);
         //graph.getViewport().setScrollable(true);
         //graph.getViewport().setScrollableY(true);
 
         loadDailyRatingGraph();
+
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(10.0);
+        graph.getViewport().setMaxX(20.0);
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(5.0);
+        graph.getViewport().setMaxY(10.0);
 
 
         // Items
         CardView dailyRating = findViewById(R.id.dailyRatingCV);
         CardView anxiety = findViewById(R.id.anxietyCV);
         CardView anxietyRating = findViewById(R.id.anxietyRating);
+        CardView stomachace = findViewById(R.id.stomachace);
         dailyRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +82,12 @@ public class GraphActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loadAnxietyRatingGraph();
+            }
+        });
+        stomachace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadStomachacheGraph();
             }
         });
 
@@ -170,6 +184,47 @@ public class GraphActivity extends AppCompatActivity {
         series.setColor(Color.BLUE);
         graph.addSeries(series);
         graph.setTitle("Anxiety Detailed");
+        GridLabelRenderer glr = graph.getGridLabelRenderer();
+        glr.setHorizontalAxisTitle("Days");
+        glr.setVerticalAxisTitle("Amount");
+    }
+
+    private void loadStomachacheGraph(){
+        resetGraph();
+        DataPoint[] dataPoints;
+        dataPoints = new DataPoint[quizList.size()];
+        List<Quiz> quizAnx = new ArrayList<>();
+        for (Quiz q: quizList) {
+            if (q.hadAnxiety) {
+                quizAnx.add(q);
+            }
+        }
+
+        int counter = 0;
+
+        for (Quiz q: quizList) {
+            if (quizAnx.contains(q)){
+                List<Question> questions = db.questionsDAO().getQuestionFromQuizId(q.id);
+                for (Question qq : questions){
+                    if (qq.question.equals("Stomach")){
+                        DataPoint d = new DataPoint(counter, qq.answer);
+                        dataPoints[counter] = d;
+                    }
+                }
+            }
+            else{
+                DataPoint d = new DataPoint(counter, 0);
+                dataPoints[counter] = d;
+            }
+
+            counter++;
+        }
+
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(dataPoints);
+        series.setColor(Color.BLUE);
+        graph.addSeries(series);
+        graph.setTitle("Stomach Ache");
         GridLabelRenderer glr = graph.getGridLabelRenderer();
         glr.setHorizontalAxisTitle("Days");
         glr.setVerticalAxisTitle("Amount");

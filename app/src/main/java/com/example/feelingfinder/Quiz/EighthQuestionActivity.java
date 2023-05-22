@@ -44,11 +44,15 @@ public class EighthQuestionActivity extends AppCompatActivity {
             }
         });
 
-        backBtn8.setOnClickListener(v -> EighthQuestionActivity.this.onBackPressed());
+        backBtn8.setOnClickListener(v -> {
+            QuizGlobalVariables.todaysQuestions.remove(QuizGlobalVariables.counter--);
+            EighthQuestionActivity.this.onBackPressed();
+        });
 
         nextBtn8.setOnClickListener(v ->    {
             System.out.println("Val: " + prog8);
             QuizGlobalVariables.todaysQuestions.add(new Question("Stomach", prog8));
+            QuizGlobalVariables.counter++;
             sBar8.setEnabled(false);
             Intent intent = new Intent(EighthQuestionActivity.this, NinthQuestionActivity.class);
             startActivity(intent);

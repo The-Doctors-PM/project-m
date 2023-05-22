@@ -34,7 +34,7 @@ public class QuizCompletedActivity extends AppCompatActivity {
 
         s = s + "All questions results:\n";
         for (Question q :QuizGlobalVariables.todaysQuestions){
-            s = s + q.question + ": " + q.answer + "\n";
+            s = s + q.question + " score: " + q.answer + "\n";
         }
 
         recap.setText(s);
