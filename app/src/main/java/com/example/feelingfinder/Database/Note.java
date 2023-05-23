@@ -74,4 +74,15 @@ public class Note {
         this.id = DateToStringConverter.dateToInt(date);
     }
 
+    public Note (int date, @NonNull String content){
+        this.id = date;
+        this.content = content;
+        String dateS = "" + date;
+        this.year = Integer.parseInt(dateS.substring(0,4));
+        this.month = Integer.parseInt(dateS.substring(4,6));
+        this.day = Integer.parseInt(dateS.substring(6,8));
+        this.dayOfTheWeek = "Neptunday";
+        this.fullDate = this.dayOfTheWeek + " " + this.day + "/" + this.month + "/" + this.year;
+    }
+
 }

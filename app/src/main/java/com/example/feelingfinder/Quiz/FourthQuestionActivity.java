@@ -8,15 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.SeekBar;
 
+import com.example.feelingfinder.Database.Question;
 import com.example.feelingfinder.MainActivity;
 import com.example.feelingfinder.R;
+import com.example.feelingfinder.Utility.QuizGlobalVariables;
 
 public class FourthQuestionActivity extends AppCompatActivity {
 
     private Button backBtn4, nextBtn4;
-    private RadioButton betterRb,sameRb,worseRb;
-
+    private SeekBar sBar4;
+    public int prog4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +29,45 @@ public class FourthQuestionActivity extends AppCompatActivity {
 
         backBtn4 = findViewById(R.id.backBtn4);
         nextBtn4 = findViewById(R.id.nextBtn4);
+        sBar4 = findViewById(R.id.sBar4);
 
-        backBtn4.setOnClickListener(v -> FourthQuestionActivity.this.onBackPressed());
-        nextBtn4.setOnClickListener(new View.OnClickListener() {
+        sBar4.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onClick(View view) {
-                // TODO: Store the user's rating and move to the next question/activity
-                startActivity(new Intent(FourthQuestionActivity.this, MoodTrackerActivity.class));
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                prog4 = sBar4.getProgress();
             }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        backBtn4.setOnClickListener(v -> {
+            QuizGlobalVariables.todaysQuestions.remove(QuizGlobalVariables.counter--);
+            FourthQuestionActivity.this.onBackPressed();
+
+        });
+
+        nextBtn4.setOnClickListener(v ->    {
+            sBar4.setEnabled(false);
+            Intent intent;
+            System.out.println("Val: " + prog4);
+            QuizGlobalVariables.todaysQuestions.add(new Question("Anxiety", prog4));
+            QuizGlobalVariables.counter++;
+            if(prog4 < 5){
+                QuizGlobalVariables.hadAnxiety = false;
+                intent = new Intent(FourthQuestionActivity.this, ThirdQuestionActivity.class);
+            } else{
+                QuizGlobalVariables.hadAnxiety = true;
+                intent = new Intent(FourthQuestionActivity.this, FifthQuestionActivity.class);
+            }
+            startActivity(intent);
         });
     }
     /*

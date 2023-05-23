@@ -8,7 +8,8 @@ import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
-import android.widget.Button;
+
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.feelingfinder.Database.AppDatabase;
@@ -42,7 +43,7 @@ public class ExportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_export);
 
-        Button exportGoals, exportNotes, exportWeeklyNotes;
+        ImageButton exportGoals, exportNotes, exportWeeklyNotes;
         exportGoals = findViewById(R.id.exportGoals);
         exportNotes = findViewById(R.id.exportNotes);
         exportWeeklyNotes = findViewById(R.id.exportWeeklyNotes);

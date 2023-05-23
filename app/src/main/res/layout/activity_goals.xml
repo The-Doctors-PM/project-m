@@ -23,7 +23,7 @@
             android:clickable="true"
             android:contentDescription="Back"
             app:backgroundTint="@color/white"
-            app:srcCompat="@drawable/baseline_arrow_back_24" />
+            app:srcCompat="@drawable/arrow_back" />
 
         <TextView
             android:id="@+id/goalsInfo"
@@ -80,7 +80,7 @@
             android:layout_height="70dp"
             android:backgroundTint="@color/white"
             android:text="Wipe Database"
-            android:textColor="@color/Grey"
+            android:textColor="@color/grey"
             android:visibility="visible" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
